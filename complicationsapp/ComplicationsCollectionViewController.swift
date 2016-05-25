@@ -2,20 +2,33 @@
 //  ComplicationsCollectionViewController.swift
 //  complicationsapp
 //
-//  Created by Ken Chen on 5/24/16.
+//  Created by Ken Chen on 5/25/16.
 //  Copyright © 2016 cvicu. All rights reserved.
 //
 
 import UIKit
 
+private let reuseIdentifier = "Cell"
+
 class ComplicationsCollectionViewController: UICollectionViewController {
     
-    private let reuseIdentifier = "cell1"
     var complications = [String]()
+    
+    // padding of collection view controller is set to 10
+    // leftAndRightPadding = (numberOfColumns + 1) * padding
+    let numberOfColumns : CGFloat = 3.0
+    let leftAndRightPadding : CGFloat = 40.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Register cell classes
+        // self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+
+        // Do any additional setup after loading the view.
         complications = ["Cardiopulmonary resuscitation",
                          "Unplanned return to CICU (<48 hours)",
                          "Unplanned readmission to the hospital within 30 days",
@@ -34,14 +47,11 @@ class ComplicationsCollectionViewController: UICollectionViewController {
                          "Intraoperative death or intraprocedural death",
                          "Infections",
                          "Unplanned operation/procedure"].sort()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        
+        // setting width of cells according to number of columns
+        let width = (CGRectGetWidth(collectionView!.frame) - leftAndRightPadding) / numberOfColumns
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSizeMake(width, width)
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,6 +69,24 @@ class ComplicationsCollectionViewController: UICollectionViewController {
     }
     */
 
+    // MARK: UICollectionViewDataSource
+
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
+
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return complications.count
+    }
+
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("complication", forIndexPath: indexPath) as! ComplicationsCollectionViewCell
+    
+        // Configure the cell
+        cell.complicationLabel.text = complications[indexPath.row]
+        return cell
+    }
 
     // MARK: UICollectionViewDelegate
 
@@ -90,29 +118,5 @@ class ComplicationsCollectionViewController: UICollectionViewController {
     
     }
     */
-    
-    // MARK: UICollectionViewDataSource
-    
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
-    
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return complications.count
-    }
-    
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as UICollectionViewCell
-        
-        // Configure the cell
-        let cellButton = cell.viewWithTag(10) as! UIButton
-        cellButton.setTitle(complications[indexPath.row], forState: UIControlState.Normal)
-        cellButton.titleLabel!.font = UIFont(name: cellButton.titleLabel!.font.fontName, size: 10)
-        
-        return cell
-    }
 
 }

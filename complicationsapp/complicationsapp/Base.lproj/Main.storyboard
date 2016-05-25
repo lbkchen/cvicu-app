@@ -218,7 +218,7 @@
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="submitValue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sw2-rL-yhZ"/>
-                                                                    <segue destination="kuL-6q-B22" kind="presentation" id="Uv0-0e-lk8"/>
+                                                                    <segue destination="sWw-ok-Gq4" kind="presentation" id="Ddk-Ze-I71"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -269,84 +269,6 @@
             </objects>
             <point key="canvasLocation" x="183" y="409"/>
         </scene>
-        <!--Select complication-->
-        <scene sceneID="Ti4-oe-9hv">
-            <objects>
-                <collectionViewController id="PzO-TW-Sff" customClass="ComplicationsCollectionViewController" customModule="complicationsapp" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bVu-8C-rgI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="x6I-gJ-4ve">
-                            <size key="itemSize" width="120" height="120"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" reuseIdentifier="cell1" id="282-3n-fAE">
-                                <rect key="frame" x="10" y="74" width="120" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="QLD-24-dzH">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                                            <color key="backgroundColor" red="0.6588235294117647" green="0.24313725490196078" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                            <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                            <state key="normal" title="Arrhythmia">
-                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            </state>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <constraints>
-                                    <constraint firstItem="QLD-24-dzH" firstAttribute="leading" secondItem="282-3n-fAE" secondAttribute="leading" id="1Xp-Dn-1eG"/>
-                                    <constraint firstAttribute="bottom" secondItem="QLD-24-dzH" secondAttribute="bottom" id="MGT-Pw-Qjn"/>
-                                    <constraint firstAttribute="trailing" secondItem="QLD-24-dzH" secondAttribute="trailing" id="U52-Wk-SHI"/>
-                                    <constraint firstItem="QLD-24-dzH" firstAttribute="top" secondItem="282-3n-fAE" secondAttribute="top" id="wxk-XS-O7U"/>
-                                </constraints>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="PzO-TW-Sff" id="Eei-jS-34z"/>
-                            <outlet property="delegate" destination="PzO-TW-Sff" id="kNv-RD-ziU"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" title="Select complication" id="TgZ-mz-5vl">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="8aH-Sg-d9a">
-                            <connections>
-                                <segue destination="Au5-kW-Cwp" kind="unwind" unwindAction="cancelToMRNViewController:" id="5oL-cD-uaF"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pHf-JV-den" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Au5-kW-Cwp" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="932" y="409"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="60Y-NI-EaY">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kuL-6q-B22" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ejp-Xz-g90">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="PzO-TW-Sff" kind="relationship" relationship="rootViewController" id="ndd-Ke-2lz"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="leB-uc-El4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="183" y="1117"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="Oib-YS-VfK">
             <objects>
@@ -381,7 +303,120 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOn-3L-xmr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="932" y="-240"/>
+            <point key="canvasLocation" x="1744" y="-240"/>
+        </scene>
+        <!--Select complication-->
+        <scene sceneID="4Or-Go-3II">
+            <objects>
+                <collectionViewController id="Bp4-fb-yZU" customClass="ComplicationsCollectionViewController" customModule="complicationsapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="xMH-mu-WLn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tLk-TC-EgY">
+                            <size key="itemSize" width="120" height="120"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="complication" id="zHQ-1E-LLw" customClass="ComplicationsCollectionViewCell" customModule="complicationsapp" customModuleProvider="target">
+                                <rect key="frame" x="10" y="74" width="120" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eNK-sf-ur9">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complication" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Mt1-Fc-t96">
+                                                    <rect key="frame" x="5" y="5" width="110" height="110"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.7087081755050505" green="0.17417731393426311" blue="0.41925526556201043" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Mt1-Fc-t96" secondAttribute="bottom" constant="5" id="E50-Xy-5aB"/>
+                                                <constraint firstItem="Mt1-Fc-t96" firstAttribute="leading" secondItem="eNK-sf-ur9" secondAttribute="leading" constant="5" id="J4L-Uv-w2h"/>
+                                                <constraint firstAttribute="trailing" secondItem="Mt1-Fc-t96" secondAttribute="trailing" constant="5" id="NXx-Y9-0Kp"/>
+                                                <constraint firstItem="Mt1-Fc-t96" firstAttribute="top" secondItem="eNK-sf-ur9" secondAttribute="top" constant="5" id="ubI-tz-T8x"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="8"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="eNK-sf-ur9" firstAttribute="leading" secondItem="zHQ-1E-LLw" secondAttribute="leading" id="B2C-yl-3P9"/>
+                                    <constraint firstAttribute="bottom" secondItem="eNK-sf-ur9" secondAttribute="bottom" id="RXa-mD-O1e"/>
+                                    <constraint firstItem="eNK-sf-ur9" firstAttribute="top" secondItem="zHQ-1E-LLw" secondAttribute="top" id="bJH-Bo-Mv4"/>
+                                    <constraint firstAttribute="trailing" secondItem="eNK-sf-ur9" secondAttribute="trailing" id="r5A-5x-zHF"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="complicationCellColorView" destination="eNK-sf-ur9" id="Kxf-Qt-fLx"/>
+                                    <outlet property="complicationLabel" destination="Mt1-Fc-t96" id="H5K-7g-R82"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Bp4-fb-yZU" id="Ajz-We-4Wg"/>
+                            <outlet property="delegate" destination="Bp4-fb-yZU" id="TbW-yC-Mls"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Select complication" id="DLC-BX-0Ff">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="xvk-Rg-ttM">
+                            <connections>
+                                <segue destination="Mbm-Dq-6VC" kind="unwind" unwindAction="cancelToMRNViewController:" id="Cd7-jj-7SF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e5x-5i-Ewu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Mbm-Dq-6VC" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="917" y="409"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tfI-iX-0an">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sWw-ok-Gq4" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ef-b0-TMF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Bp4-fb-yZU" kind="relationship" relationship="rootViewController" id="0Vg-Nq-F8o"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VPT-gd-OLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="183" y="1195"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ZxZ-k6-yxf">
+            <objects>
+                <viewController id="tU0-Qm-7Eo" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Iz4-Qj-oKs"/>
+                        <viewControllerLayoutGuide type="bottom" id="kUe-nY-daO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BbN-TF-PZM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eM5-ey-SP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
 </document>

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8474D0571CF6343A00374E69 /* ComplicationsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474D0561CF6343A00374E69 /* ComplicationsCollectionViewController.swift */; };
+		8474D0591CF636F400374E69 /* ComplicationsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474D0581CF636F400374E69 /* ComplicationsCollectionViewCell.swift */; };
+		8474D05C1CF6512B00374E69 /* Complications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474D05B1CF6512B00374E69 /* Complications.swift */; };
 		849CE34C1CF4D13300D9D81E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CE34B1CF4D13300D9D81E /* AppDelegate.swift */; };
 		849CE34E1CF4D13300D9D81E /* MRNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CE34D1CF4D13300D9D81E /* MRNViewController.swift */; };
 		849CE3511CF4D13300D9D81E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849CE34F1CF4D13300D9D81E /* Main.storyboard */; };
@@ -16,7 +19,6 @@
 		849CE36C1CF4D13300D9D81E /* complicationsappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CE36B1CF4D13300D9D81E /* complicationsappUITests.swift */; };
 		849CE37A1CF5016600D9D81E /* KeypadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CE3791CF5016600D9D81E /* KeypadButton.swift */; };
 		849CE37C1CF507D200D9D81E /* SimpleKeypadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CE37B1CF507D200D9D81E /* SimpleKeypadButton.swift */; };
-		849CE3801CF5247300D9D81E /* ComplicationsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CE37F1CF5247300D9D81E /* ComplicationsCollectionViewController.swift */; };
 		84C462901CF62C9A00BD1BF6 /* CompCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4628F1CF62C9A00BD1BF6 /* CompCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8474D0561CF6343A00374E69 /* ComplicationsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComplicationsCollectionViewController.swift; path = ../ComplicationsCollectionViewController.swift; sourceTree = "<group>"; };
+		8474D0581CF636F400374E69 /* ComplicationsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationsCollectionViewCell.swift; sourceTree = "<group>"; };
+		8474D05B1CF6512B00374E69 /* Complications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Complications.swift; sourceTree = "<group>"; };
 		849CE3481CF4D13300D9D81E /* complicationsapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = complicationsapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		849CE34B1CF4D13300D9D81E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		849CE34D1CF4D13300D9D81E /* MRNViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRNViewController.swift; sourceTree = "<group>"; };
@@ -53,7 +58,6 @@
 		849CE36D1CF4D13300D9D81E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		849CE3791CF5016600D9D81E /* KeypadButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeypadButton.swift; sourceTree = "<group>"; };
 		849CE37B1CF507D200D9D81E /* SimpleKeypadButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleKeypadButton.swift; sourceTree = "<group>"; };
-		849CE37F1CF5247300D9D81E /* ComplicationsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationsCollectionViewController.swift; sourceTree = "<group>"; };
 		84C4628F1CF62C9A00BD1BF6 /* CompCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8474D05A1CF6511500374E69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8474D05B1CF6512B00374E69 /* Complications.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		849CE33F1CF4D13300D9D81E = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +117,8 @@
 		849CE34A1CF4D13300D9D81E /* complicationsapp */ = {
 			isa = PBXGroup;
 			children = (
+				8474D05A1CF6511500374E69 /* Model */,
+				8474D0561CF6343A00374E69 /* ComplicationsCollectionViewController.swift */,
 				849CE34B1CF4D13300D9D81E /* AppDelegate.swift */,
 				849CE34D1CF4D13300D9D81E /* MRNViewController.swift */,
 				849CE34F1CF4D13300D9D81E /* Main.storyboard */,
@@ -113,8 +127,8 @@
 				849CE3571CF4D13300D9D81E /* Info.plist */,
 				849CE3791CF5016600D9D81E /* KeypadButton.swift */,
 				849CE37B1CF507D200D9D81E /* SimpleKeypadButton.swift */,
-				849CE37F1CF5247300D9D81E /* ComplicationsCollectionViewController.swift */,
 				84C4628F1CF62C9A00BD1BF6 /* CompCollectionViewController.swift */,
+				8474D0581CF636F400374E69 /* ComplicationsCollectionViewCell.swift */,
 			);
 			path = complicationsapp;
 			sourceTree = "<group>";
@@ -268,10 +282,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				849CE3801CF5247300D9D81E /* ComplicationsCollectionViewController.swift in Sources */,
 				849CE34E1CF4D13300D9D81E /* MRNViewController.swift in Sources */,
+				8474D0591CF636F400374E69 /* ComplicationsCollectionViewCell.swift in Sources */,
 				849CE37A1CF5016600D9D81E /* KeypadButton.swift in Sources */,
+				8474D0571CF6343A00374E69 /* ComplicationsCollectionViewController.swift in Sources */,
 				849CE34C1CF4D13300D9D81E /* AppDelegate.swift in Sources */,
+				8474D05C1CF6512B00374E69 /* Complications.swift in Sources */,
 				849CE37C1CF507D200D9D81E /* SimpleKeypadButton.swift in Sources */,
 				84C462901CF62C9A00BD1BF6 /* CompCollectionViewController.swift in Sources */,
 			);
