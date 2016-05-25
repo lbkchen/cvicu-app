@@ -11,9 +11,29 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class ComplicationsCollectionViewController: UICollectionViewController {
-
+    
+    var complications = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        complications = ["Cardiopulmonary resuscitation",
+                         "Unplanned return to CICU (<48 hours)",
+                         "Unplanned readmission to the hospital within 30 days",
+                         "Arrhythmia",
+                         "Mechanical circulatory support during CICU encounter",
+                         "Low Cardiac Output Syndrome",
+                         "Pericardial effusion requiring drainage",
+                         "Pulmonary hypertension",
+                         "Pulmonary vein obstruction",
+                         "Systemic vein obstruction",
+                         "RESPIRATORY",
+                         "Listed for heart transplant during CICU encounter",
+                         "Reoperation for bleeding",
+                         "ORGAN DYSFUNCTION",
+                         "Delayed Sternal Closure",
+                         "Intraoperative death or intraprocedural death",
+                         "Infections",
+                         "Unplanned operation/procedure"].sort()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -38,8 +58,6 @@ class ComplicationsCollectionViewController: UICollectionViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    // MARK: UICollectionViewDataSource
 
 
     // MARK: UICollectionViewDelegate
@@ -73,9 +91,7 @@ class ComplicationsCollectionViewController: UICollectionViewController {
     }
     */
     
-    private struct Storyboard {
-        static let cellIdentifier = "Arrhythmia"
-    }
+    // MARK: UICollectionViewDataSource
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -85,13 +101,16 @@ class ComplicationsCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 3
+        return complications.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.cellIdentifier, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
         
         // Configure the cell
+        let cellButton = cell.viewWithTag(1) as! UIButton
+        cellButton.setTitle(complications[indexPath.row], forState: UIControlState.Normal)
+//        cellButton.titleLabel!.font = UIFont(name: cellButton.titleLabel!.font.fontName, size: 10)
         
         return cell
     }
