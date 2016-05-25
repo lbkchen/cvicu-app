@@ -53,10 +53,10 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zxy-sE-t9y">
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zxy-sE-t9y">
                                                 <rect key="frame" x="267" y="91" width="27" height="77"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="dB5-Ba-h1b">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="dB5-Ba-h1b">
                                                         <rect key="frame" x="0.0" y="0.0" width="27" height="77"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="48"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -284,14 +284,14 @@
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Arrhythmia" id="282-3n-fAE">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" reuseIdentifier="cell1" id="282-3n-fAE">
                                 <rect key="frame" x="10" y="74" width="120" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="QLD-24-dzH">
+                                        <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="QLD-24-dzH">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                             <color key="backgroundColor" red="0.6588235294117647" green="0.24313725490196078" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
@@ -309,76 +309,6 @@
                                     <constraint firstAttribute="trailing" secondItem="QLD-24-dzH" secondAttribute="trailing" id="U52-Wk-SHI"/>
                                     <constraint firstItem="QLD-24-dzH" firstAttribute="top" secondItem="282-3n-fAE" secondAttribute="top" id="wxk-XS-O7U"/>
                                 </constraints>
-                            </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cC6-T7-3xQ">
-                                <rect key="frame" x="163" y="74" width="120" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="2BA-r6-jI4">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                                            <color key="backgroundColor" red="0.85882352941176465" green="0.36862745098039218" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                            <state key="normal" title="Cardiopulmonary resuscitation">
-                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            </state>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="2BA-r6-jI4" secondAttribute="trailing" id="UHS-fX-KLa"/>
-                                    <constraint firstItem="2BA-r6-jI4" firstAttribute="leading" secondItem="cC6-T7-3xQ" secondAttribute="leading" id="ZQc-gF-0D1"/>
-                                    <constraint firstItem="2BA-r6-jI4" firstAttribute="top" secondItem="cC6-T7-3xQ" secondAttribute="top" id="iMP-Qy-dij"/>
-                                    <constraint firstAttribute="bottom" secondItem="2BA-r6-jI4" secondAttribute="bottom" id="nV4-4g-7x7"/>
-                                </constraints>
-                            </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cwg-2p-NLR">
-                                <rect key="frame" x="317" y="74" width="120" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="G1O-v5-YOy">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                                            <color key="backgroundColor" red="0.97254901959999995" green="0.56078431370000004" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                            <state key="normal" title="Delayed sternal closure">
-                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            </state>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="G1O-v5-YOy" secondAttribute="bottom" id="0ej-Jg-Os3"/>
-                                    <constraint firstItem="G1O-v5-YOy" firstAttribute="leading" secondItem="cwg-2p-NLR" secondAttribute="leading" id="4h4-QO-YOs"/>
-                                    <constraint firstAttribute="trailing" secondItem="G1O-v5-YOy" secondAttribute="trailing" id="CcH-Ny-aj0"/>
-                                    <constraint firstItem="G1O-v5-YOy" firstAttribute="top" secondItem="cwg-2p-NLR" secondAttribute="top" id="FNN-s5-10e"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="G1O-v5-YOy" secondAttribute="bottom" id="Fse-lC-5oS"/>
-                                    <constraint firstAttribute="bottom" secondItem="G1O-v5-YOy" secondAttribute="bottom" id="L9Z-1n-mGp"/>
-                                    <constraint firstAttribute="trailing" secondItem="G1O-v5-YOy" secondAttribute="trailing" id="VKO-PV-7Y4"/>
-                                    <constraint firstItem="G1O-v5-YOy" firstAttribute="top" secondItem="cwg-2p-NLR" secondAttribute="topMargin" id="eDp-7J-H6u"/>
-                                    <constraint firstItem="G1O-v5-YOy" firstAttribute="leading" secondItem="cwg-2p-NLR" secondAttribute="leadingMargin" id="hJ1-jn-yYt"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="G1O-v5-YOy" secondAttribute="trailing" id="haR-6y-lpn"/>
-                                    <constraint firstItem="G1O-v5-YOy" firstAttribute="top" secondItem="cwg-2p-NLR" secondAttribute="top" id="ucs-cl-Vhl"/>
-                                    <constraint firstItem="G1O-v5-YOy" firstAttribute="leading" secondItem="cwg-2p-NLR" secondAttribute="leading" id="xVE-iW-LpN"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="0ej-Jg-Os3"/>
-                                        <exclude reference="CcH-Ny-aj0"/>
-                                        <exclude reference="Fse-lC-5oS"/>
-                                        <exclude reference="eDp-7J-H6u"/>
-                                        <exclude reference="hJ1-jn-yYt"/>
-                                        <exclude reference="haR-6y-lpn"/>
-                                        <exclude reference="ucs-cl-Vhl"/>
-                                        <exclude reference="xVE-iW-LpN"/>
-                                    </mask>
-                                </variation>
                             </collectionViewCell>
                         </cells>
                         <connections>

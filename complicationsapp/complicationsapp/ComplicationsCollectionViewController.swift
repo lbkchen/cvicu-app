@@ -8,14 +8,14 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class ComplicationsCollectionViewController: UICollectionViewController {
     
+    private let reuseIdentifier = "cell1"
     var complications = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         complications = ["Cardiopulmonary resuscitation",
                          "Unplanned return to CICU (<48 hours)",
                          "Unplanned readmission to the hospital within 30 days",
@@ -105,12 +105,12 @@ class ComplicationsCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as UICollectionViewCell
         
         // Configure the cell
-        let cellButton = cell.viewWithTag(1) as! UIButton
+        let cellButton = cell.viewWithTag(10) as! UIButton
         cellButton.setTitle(complications[indexPath.row], forState: UIControlState.Normal)
-//        cellButton.titleLabel!.font = UIFont(name: cellButton.titleLabel!.font.fontName, size: 10)
+        cellButton.titleLabel!.font = UIFont(name: cellButton.titleLabel!.font.fontName, size: 10)
         
         return cell
     }
