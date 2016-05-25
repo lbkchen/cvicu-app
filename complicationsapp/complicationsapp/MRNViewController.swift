@@ -44,5 +44,9 @@ class MRNViewController: UIViewController {
     @IBAction func submitValue(sender: SimpleKeypadButton) {
         
     }
+    
+    @IBAction func cancelToMRNViewController(segue:UIStoryboardSegue) {
+        
+    }
 }
 

@@ -218,6 +218,7 @@
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="submitValue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sw2-rL-yhZ"/>
+                                                                    <segue destination="kuL-6q-B22" kind="presentation" id="Uv0-0e-lk8"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -266,7 +267,190 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="183" y="397"/>
+            <point key="canvasLocation" x="183" y="409"/>
+        </scene>
+        <!--Select complication-->
+        <scene sceneID="Ti4-oe-9hv">
+            <objects>
+                <collectionViewController id="PzO-TW-Sff" customClass="ComplicationsCollectionViewController" customModule="complicationsapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bVu-8C-rgI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="x6I-gJ-4ve">
+                            <size key="itemSize" width="80" height="80"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Arrhythmia" id="282-3n-fAE">
+                                <rect key="frame" x="10" y="74" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLD-24-dzH">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <color key="backgroundColor" red="0.6588235294117647" green="0.24313725490196078" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                            <state key="normal" title="Arrhythmia">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="QLD-24-dzH" firstAttribute="leading" secondItem="282-3n-fAE" secondAttribute="leading" id="1Xp-Dn-1eG"/>
+                                    <constraint firstAttribute="bottom" secondItem="QLD-24-dzH" secondAttribute="bottom" id="MGT-Pw-Qjn"/>
+                                    <constraint firstAttribute="trailing" secondItem="QLD-24-dzH" secondAttribute="trailing" id="U52-Wk-SHI"/>
+                                    <constraint firstItem="QLD-24-dzH" firstAttribute="top" secondItem="282-3n-fAE" secondAttribute="top" id="wxk-XS-O7U"/>
+                                </constraints>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cC6-T7-3xQ">
+                                <rect key="frame" x="110" y="74" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="2BA-r6-jI4">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <color key="backgroundColor" red="0.85882352941176465" green="0.36862745098039218" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                            <state key="normal" title="Cardiopulmonary resuscitation">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="2BA-r6-jI4" secondAttribute="trailing" id="UHS-fX-KLa"/>
+                                    <constraint firstItem="2BA-r6-jI4" firstAttribute="leading" secondItem="cC6-T7-3xQ" secondAttribute="leading" id="ZQc-gF-0D1"/>
+                                    <constraint firstItem="2BA-r6-jI4" firstAttribute="top" secondItem="cC6-T7-3xQ" secondAttribute="top" id="iMP-Qy-dij"/>
+                                    <constraint firstAttribute="bottom" secondItem="2BA-r6-jI4" secondAttribute="bottom" id="nV4-4g-7x7"/>
+                                </constraints>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cwg-2p-NLR">
+                                <rect key="frame" x="210" y="74" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="G1O-v5-YOy">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <color key="backgroundColor" red="0.97254901959999995" green="0.56078431370000004" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                            <state key="normal" title="Delayed sternal closure">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="G1O-v5-YOy" secondAttribute="bottom" id="0ej-Jg-Os3"/>
+                                    <constraint firstItem="G1O-v5-YOy" firstAttribute="leading" secondItem="cwg-2p-NLR" secondAttribute="leading" id="4h4-QO-YOs"/>
+                                    <constraint firstAttribute="trailing" secondItem="G1O-v5-YOy" secondAttribute="trailing" id="CcH-Ny-aj0"/>
+                                    <constraint firstItem="G1O-v5-YOy" firstAttribute="top" secondItem="cwg-2p-NLR" secondAttribute="top" id="FNN-s5-10e"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="G1O-v5-YOy" secondAttribute="bottom" id="Fse-lC-5oS"/>
+                                    <constraint firstAttribute="bottom" secondItem="G1O-v5-YOy" secondAttribute="bottom" id="L9Z-1n-mGp"/>
+                                    <constraint firstAttribute="trailing" secondItem="G1O-v5-YOy" secondAttribute="trailing" id="VKO-PV-7Y4"/>
+                                    <constraint firstItem="G1O-v5-YOy" firstAttribute="top" secondItem="cwg-2p-NLR" secondAttribute="topMargin" id="eDp-7J-H6u"/>
+                                    <constraint firstItem="G1O-v5-YOy" firstAttribute="leading" secondItem="cwg-2p-NLR" secondAttribute="leadingMargin" id="hJ1-jn-yYt"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="G1O-v5-YOy" secondAttribute="trailing" id="haR-6y-lpn"/>
+                                    <constraint firstItem="G1O-v5-YOy" firstAttribute="top" secondItem="cwg-2p-NLR" secondAttribute="top" id="ucs-cl-Vhl"/>
+                                    <constraint firstItem="G1O-v5-YOy" firstAttribute="leading" secondItem="cwg-2p-NLR" secondAttribute="leading" id="xVE-iW-LpN"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0ej-Jg-Os3"/>
+                                        <exclude reference="CcH-Ny-aj0"/>
+                                        <exclude reference="Fse-lC-5oS"/>
+                                        <exclude reference="eDp-7J-H6u"/>
+                                        <exclude reference="hJ1-jn-yYt"/>
+                                        <exclude reference="haR-6y-lpn"/>
+                                        <exclude reference="ucs-cl-Vhl"/>
+                                        <exclude reference="xVE-iW-LpN"/>
+                                    </mask>
+                                </variation>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="PzO-TW-Sff" id="Eei-jS-34z"/>
+                            <outlet property="delegate" destination="PzO-TW-Sff" id="kNv-RD-ziU"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Select complication" id="TgZ-mz-5vl">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="8aH-Sg-d9a">
+                            <connections>
+                                <segue destination="Au5-kW-Cwp" kind="unwind" unwindAction="cancelToMRNViewController:" id="5oL-cD-uaF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pHf-JV-den" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Au5-kW-Cwp" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="932" y="409"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="60Y-NI-EaY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kuL-6q-B22" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ejp-Xz-g90">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PzO-TW-Sff" kind="relationship" relationship="rootViewController" id="ndd-Ke-2lz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="leB-uc-El4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="183" y="1117"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Oib-YS-VfK">
+            <objects>
+                <viewController id="aPM-ap-Ze2" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SfA-yc-DTh"/>
+                        <viewControllerLayoutGuide type="bottom" id="7NB-Lw-dF0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ye2-ro-53q">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="PBV-Iq-9hT">
+                                <rect key="frame" x="137" y="465" width="80" height="80"/>
+                                <color key="backgroundColor" red="0.6588235294" green="0.24313725489999999" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <state key="normal" title="Arrhythmia">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gXb-KW-pbX">
+                                <rect key="frame" x="233" y="465" width="80" height="80"/>
+                                <color key="backgroundColor" red="0.97254901960784312" green="0.5607843137254902" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <state key="normal" title="Delayed sternal closure">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zOn-3L-xmr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="932" y="-240"/>
         </scene>
     </scenes>
 </document>

@@ -16,6 +16,7 @@
 		849CE36C1CF4D13300D9D81E /* complicationsappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CE36B1CF4D13300D9D81E /* complicationsappUITests.swift */; };
 		849CE37A1CF5016600D9D81E /* KeypadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CE3791CF5016600D9D81E /* KeypadButton.swift */; };
 		849CE37C1CF507D200D9D81E /* SimpleKeypadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CE37B1CF507D200D9D81E /* SimpleKeypadButton.swift */; };
+		849CE3801CF5247300D9D81E /* ComplicationsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CE37F1CF5247300D9D81E /* ComplicationsCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		849CE36D1CF4D13300D9D81E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		849CE3791CF5016600D9D81E /* KeypadButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeypadButton.swift; sourceTree = "<group>"; };
 		849CE37B1CF507D200D9D81E /* SimpleKeypadButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleKeypadButton.swift; sourceTree = "<group>"; };
+		849CE37F1CF5247300D9D81E /* ComplicationsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationsCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				849CE3571CF4D13300D9D81E /* Info.plist */,
 				849CE3791CF5016600D9D81E /* KeypadButton.swift */,
 				849CE37B1CF507D200D9D81E /* SimpleKeypadButton.swift */,
+				849CE37F1CF5247300D9D81E /* ComplicationsCollectionViewController.swift */,
 			);
 			path = complicationsapp;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849CE3801CF5247300D9D81E /* ComplicationsCollectionViewController.swift in Sources */,
 				849CE34E1CF4D13300D9D81E /* MRNViewController.swift in Sources */,
 				849CE37A1CF5016600D9D81E /* KeypadButton.swift in Sources */,
 				849CE34C1CF4D13300D9D81E /* AppDelegate.swift in Sources */,
