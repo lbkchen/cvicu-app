@@ -1,0 +1,14 @@
+{
+  "name": "cvicu",
+  "version": "1.0.0",
+  "description": "A connection to the cvicu mysql database.",
+  "main": "database.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ken Chen",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
