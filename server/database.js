@@ -91,7 +91,7 @@ app.post('/', function(req, res) {
         connection.connect();
 
         for (comp in complicationTables) {
-            var query = "SELECT date FROM ? WHERE FIN = ?;";
+            var query = "SELECT date FROM ?? WHERE FIN = ?;";
             connection.query("USE cvicu;");
             connection.query(query, [comp, request["FIN"]], function(err, results) {
                 if (err) {
@@ -131,7 +131,7 @@ app.post('/', function(req, res) {
         }
 
         // Generate query
-        var query = "INSERT INTO ? SET ?;";
+        var query = "INSERT INTO ?? SET ?;";
         connection.query("USE cvicu");
         connection.query(query, [thisComplication, patientLog], function(err, results) {
             if (err) {
