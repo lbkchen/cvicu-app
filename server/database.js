@@ -33,17 +33,22 @@ var complicationTables = {
     dsclog : dsc
 };
 
+// Helper Functions
+function isEmpty(obj) { // check if object is empty
+    return !Object.keys(obj).length;
+}
+
 // Configure app
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(multer());
+app.use(multer({dest:'./uploads/'}).single('singleInputFileName'));
 
 app.post('/', function(req, res) {
     var request = req.body;
 
 
     // Checking FIN patient MRN number
-    if (request["Target Action"] == "check FIN") {
+    if (request["targetAction"] == "checkFIN") {
         var connection = db.createConnection(connectionInfo);
         connection.connect(function(err) {
             if (err) {
@@ -55,9 +60,10 @@ app.post('/', function(req, res) {
 
         var fin = request["FIN"];
         var table = request["Table"];
-        var query = "USE cvicu; SELECT * from ? where FIN = ?;";
+        var query = "SELECT * from ?? WHERE FIN = ?;";
 
-        connection.query(query, [table, fin], function(err, results) {
+        connection.query("USE cvicu;");
+        var conn = connection.query(query, [table, fin], function(err, results) {
             if (err) {
                 console.error("Error in FIN query: " + err.stack);
                 return;
@@ -73,18 +79,20 @@ app.post('/', function(req, res) {
                 res.end();
             }
         });
+        console.log(conn.sql);
         connection.end();
     }
 
 
     // All queries requesting logs
-    if (request["Target Action"] == "requestLogs") {
+    if (request["targetAction"] == "requestLogs") {
         var toClient = [];
         var connection = db.createConnection(connectionInfo);
         connection.connect();
 
         for (comp in complicationTables) {
-            var query = "USE cvicu; SELECT date FROM ? WHERE FIN = ?;";
+            var query = "SELECT date FROM ? WHERE FIN = ?;";
+            connection.query("USE cvicu;");
             connection.query(query, [comp, request["FIN"]], function(err, results) {
                 if (err) {
                     console.error("Error in requesting " + comp + ": " + err.stack);
@@ -107,7 +115,7 @@ app.post('/', function(req, res) {
 
 
     // All queries inserting into logs
-    if (request["Target Action"] == "add log") {
+    if (request["targetAction"] == "addLog") {
         // Create connection and get table name
         var connection = db.createConnection(connectionInfo);
         connection.connect();
@@ -123,7 +131,8 @@ app.post('/', function(req, res) {
         }
 
         // Generate query
-        var query = "USE cvicu; INSERT INTO ? SET ?;";
+        var query = "INSERT INTO ? SET ?;";
+        connection.query("USE cvicu");
         connection.query(query, [thisComplication, patientLog], function(err, results) {
             if (err) {
                 console.error("Error in " + thisComplication + " insertion: " + err.stack);

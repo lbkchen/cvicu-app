@@ -52,6 +52,13 @@ class ComplicationsCollectionViewController: UICollectionViewController {
         let width = (CGRectGetWidth(collectionView!.frame) - leftAndRightPadding) / numberOfColumns
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSizeMake(width, width)
+        
+        // Network testing
+        let url = "http://localhost:3000"
+        let postString = "targetAction=checkFIN&Table=arrhythmialog&FIN=234234"
+        let net = NetworkHandler(url: url, postString: postString)
+        print("starting to postToServer")
+        net.postToServer()
     }
 
     override func didReceiveMemoryWarning() {

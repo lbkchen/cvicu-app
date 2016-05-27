@@ -39,8 +39,9 @@ class NetworkHandler {
             
             // Print out response string
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("responseString = \(responseString)")
+            print("responseString = \(responseString!)")
         }
         task.resume()
+        print("posted \(postString)")
     }
 }

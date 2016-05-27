@@ -18,7 +18,6 @@
 		849CE36C1CF4D13300D9D81E /* complicationsappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CE36B1CF4D13300D9D81E /* complicationsappUITests.swift */; };
 		849CE37A1CF5016600D9D81E /* KeypadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CE3791CF5016600D9D81E /* KeypadButton.swift */; };
 		849CE37C1CF507D200D9D81E /* SimpleKeypadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CE37B1CF507D200D9D81E /* SimpleKeypadButton.swift */; };
-		84C462901CF62C9A00BD1BF6 /* CompCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4628F1CF62C9A00BD1BF6 /* CompCollectionViewController.swift */; };
 		84EA0ADC1CF79EE400AD1748 /* ComplicationsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474D0561CF6343A00374E69 /* ComplicationsCollectionViewController.swift */; };
 		84EA0AE01CF8EA9700AD1748 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA0ADF1CF8EA9700AD1748 /* NetworkHandler.swift */; };
 /* End PBXBuildFile section */
@@ -59,7 +58,6 @@
 		849CE36D1CF4D13300D9D81E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		849CE3791CF5016600D9D81E /* KeypadButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeypadButton.swift; sourceTree = "<group>"; };
 		849CE37B1CF507D200D9D81E /* SimpleKeypadButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleKeypadButton.swift; sourceTree = "<group>"; };
-		84C4628F1CF62C9A00BD1BF6 /* CompCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompCollectionViewController.swift; sourceTree = "<group>"; };
 		84EA0ADF1CF8EA9700AD1748 /* NetworkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,7 +128,6 @@
 				849CE3571CF4D13300D9D81E /* Info.plist */,
 				849CE3791CF5016600D9D81E /* KeypadButton.swift */,
 				849CE37B1CF507D200D9D81E /* SimpleKeypadButton.swift */,
-				84C4628F1CF62C9A00BD1BF6 /* CompCollectionViewController.swift */,
 				8474D0581CF636F400374E69 /* ComplicationsCollectionViewCell.swift */,
 			);
 			path = complicationsapp;
@@ -292,7 +289,6 @@
 				8474D05C1CF6512B00374E69 /* Complications.swift in Sources */,
 				849CE37C1CF507D200D9D81E /* SimpleKeypadButton.swift in Sources */,
 				84EA0ADC1CF79EE400AD1748 /* ComplicationsCollectionViewController.swift in Sources */,
-				84C462901CF62C9A00BD1BF6 /* CompCollectionViewController.swift in Sources */,
 				84EA0AE01CF8EA9700AD1748 /* NetworkHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
