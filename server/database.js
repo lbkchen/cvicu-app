@@ -14,25 +14,29 @@ var connectionInfo = {
     port : 3306
 };
 
-// Complications maps
-
-var arrhythmia = {
-    tableName : "arrhythmialog",
-    columnNames : ["FIN", "Type", "Therapy", "StopDate", "date", "date_1"]
+// Complication object
+var Complication = function(table, columns) {
+    this.tableName = table;
+    this.columnNames = columns;
 };
 
+// Complications maps
+var arrhythmia = new Complication("arrhythmialog", ["FIN", "Type", "Therapy", "StopDate", "date", "date_1"]);
+
+var cpr = new Complication("cprlog", ["FIN", "startDate", "endDate", "outcome", "Hypothermia", "date"]);
+
+var dsc = new Complication("dsclog", ["FIN", "Plan", "date", "date_1"]);
+
 var complicationTables = {
-    arrhythmialog : arrythmia
+    arrhythmialog : arrhythmia,
+    cprlog : cpr,
+    dsclog : dsc
 };
 
 // Configure app
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(multer());
-
-// app.get('/', function(req, res) {
-//     res.send('Hello World!');
-// });
 
 app.post('/', function(req, res) {
     var request = req.body;
@@ -75,17 +79,38 @@ app.post('/', function(req, res) {
 
     // All queries requesting logs
     if (request["Target Action"] == "requestLogs") {
-        var backMessage = [];
+        var toClient = [];
         var connection = db.createConnection(connectionInfo);
         connection.connect();
 
-        connection.query(); //TODO: Figure out why logs are nested within each other (mistake?). Also, how do we get the particular complication from the connection before query? Use multiple dictionaries to make modular code?
+        for (comp in complicationTables) {
+            var query = "USE cvicu; SELECT date FROM ? WHERE FIN = ?;";
+            connection.query(query, [comp, request["FIN"]], function(err, results) {
+                if (err) {
+                    console.error("Error in requesting " + comp + ": " + err.stack);
+                    return;
+                } else if (!isEmpty(results)) {
+                    var lastLog = {
+                        table : comp,
+                        date : results[results.length - 1]["date"]
+                    };
+                } else {
+                    var lastLog = {
+                        table : "null"
+                    };
+                }
+            });
+            toClient.push(lastLog);
+        }
+        //TODO: Figure out why logs are nested within each other (mistake?). Also, how do we get the particular complication from the connection before query? Use multiple dictionaries to make modular code?
     }
+
 
     // All queries inserting into logs
     if (request["Target Action"] == "add log") {
         // Create connection and get table name
         var connection = db.createConnection(connectionInfo);
+        connection.connect();
         var thisComplication = request["Table"];
 
         console.log ("Start: adding to " + thisComplication);
