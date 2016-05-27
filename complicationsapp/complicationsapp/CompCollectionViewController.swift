@@ -33,6 +33,12 @@ class CompCollectionViewController: UICollectionViewController {
                          "Intraoperative death or intraprocedural death",
                          "Infections",
                          "Unplanned operation/procedure"].sort()
+        
+        // Network testing
+        let url = "http://localhost:3000"
+        let postString = "targetAction=checkFIN&Table=arrhythmialog&FIN=234234"
+        let net = NetworkHandler(url: url, postString: postString)
+        net.postToServer()
     }
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

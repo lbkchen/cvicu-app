@@ -20,7 +20,7 @@ var Complication = function(table, columns) {
     this.columnNames = columns;
 };
 
-// Complications maps
+// Complications maps and table to iterate
 var arrhythmia = new Complication("arrhythmialog", ["FIN", "Type", "Therapy", "StopDate", "date", "date_1"]);
 
 var cpr = new Complication("cprlog", ["FIN", "startDate", "endDate", "outcome", "Hypothermia", "date"]);
@@ -56,7 +56,7 @@ app.post('/', function(req, res) {
         var fin = request["FIN"];
         var table = request["Table"];
         var query = "USE cvicu; SELECT * from ? where FIN = ?;";
-        console.log(sql);
+
         connection.query(query, [table, fin], function(err, results) {
             if (err) {
                 console.error("Error in FIN query: " + err.stack);
