@@ -6,6 +6,11 @@ var db = require('mysql');
 var bodyParser = require('body-parser');
 var multer = require('multer');
 
+// Configure app
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(multer({dest:'./uploads/'}).single('singleInputFileName'));
+
 // Database information
 var connectionInfo = {
     host : "localhost",
@@ -58,13 +63,14 @@ connection.query(query, function(err, results) {
                     }
                     complicationTables[table] = new Complication(table, columns);
                     console.log(columns);
+                    //TODO : FIGURE OUT WHY COLUMNS ARE EMPTY
                 }
             });
         }
     }
 });
 console.log("YEE");
-connection.end();
+// connection.end();
 
 // TODO: Only need one connection.connect / end ?
 
@@ -85,11 +91,6 @@ var complicationTables = {
 function isEmpty(obj) { // check if object is empty
     return !Object.keys(obj).length;
 }
-
-// Configure app
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(multer({dest:'./uploads/'}).single('singleInputFileName'));
 
 app.post('/', function(req, res) {
     var request = req.body;
