@@ -20,6 +20,54 @@ var Complication = function(table, columns) {
     this.columnNames = columns;
 };
 
+// Getting an array of all tables in the database
+var connection = db.createConnection(connectionInfo);
+connection.connect(function(err) {
+    if (err) {
+        console.error("Error connecting: " + err.stack);
+        return;
+    }
+    console.log('Connected as id ' + connection.threadId);
+});
+
+var tables = [];
+var query = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'cvicu';";
+connection.query(query, function(err, results) {
+    if (err) {
+        console.error("Error in accessing schema: " + err.stack);
+        return;
+    } else {
+        for (var i = 1; i < results.length; i++) {
+            tables.push(results[i]["TABLE_NAME"]);
+        }
+        console.log(tables);
+
+        // Generating Complication objects from all MySQL tables
+        var complicationTables = {};
+        var query = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'cvicu' AND `TABLE_NAME` = ?;";
+
+        for (table in tables) {
+            var columns = [];
+            connection.query(query, table, function(err, results) {
+                if (err) {
+                    console.error("Error in accessing tables: " + err.stack);
+                    return;
+                } else {
+                    for (var i = 1; i < results.length; i++) {
+                        columns.push(results[i]["COLUMN_NAME"]);
+                    }
+                    complicationTables[table] = new Complication(table, columns);
+                    console.log(columns);
+                }
+            });
+        }
+    }
+});
+console.log("YEE");
+connection.end();
+
+// TODO: Only need one connection.connect / end ?
+
 // Complications maps and table to iterate
 var arrhythmia = new Complication("arrhythmialog", ["FIN", "Type", "Therapy", "StopDate", "date", "date_1"]);
 
@@ -50,20 +98,14 @@ app.post('/', function(req, res) {
     // Checking FIN patient MRN number
     if (request["targetAction"] == "checkFIN") {
         var connection = db.createConnection(connectionInfo);
-        connection.connect(function(err) {
-            if (err) {
-                console.error("Error connecting: " + err.stack);
-                return;
-            }
-            console.log('Connected as id ' + connection.threadId);
-        });
+        connection.connect();
 
         var fin = request["FIN"];
         var table = request["Table"];
         var query = "SELECT * from ?? WHERE FIN = ?;";
 
         connection.query("USE cvicu;");
-        var conn = connection.query(query, [table, fin], function(err, results) {
+        connection.query(query, [table, fin], function(err, results) {
             if (err) {
                 console.error("Error in FIN query: " + err.stack);
                 return;
@@ -79,7 +121,6 @@ app.post('/', function(req, res) {
                 res.end();
             }
         });
-        console.log(conn.sql);
         connection.end();
     }
 
