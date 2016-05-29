@@ -42,7 +42,7 @@ connection.query(query, function(err, results) {
         console.error("Error in accessing schema: " + err.stack);
         return;
     } else {
-        for (var i = 1; i < results.length; i++) {
+        for (var i = 0; i < results.length; i++) {
             tables.push(results[i]["TABLE_NAME"]);
         }
         console.log(tables);
@@ -50,21 +50,36 @@ connection.query(query, function(err, results) {
         // Generating Complication objects from all MySQL tables
         var complicationTables = {};
         var query = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'cvicu' AND `TABLE_NAME` = ?;";
-
-        for (table in tables) {
+        // for (table in tables) {
+        //     console.log(table);
+        //     var columns = [];
+        //     connection.query(query, table, function(err, results) {
+        //         if (err) {
+        //             console.error("Error in accessing tables: " + err.stack);
+        //             return;
+        //         } else {
+        //             for (var i = 1; i < results.length; i++) {
+        //                 columns.push(results[i]["COLUMN_NAME"]);
+        //             }
+        //             complicationTables[table] = new Complication(table, columns);
+        //             console.log(columns);
+        //             //TODO : FIGURE OUT WHY COLUMNS ARE EMPTY
+        //         }
+        //     });
+        // }
+        for (var j = 0; j < tables.length; j++) {
             var columns = [];
-            connection.query(query, table, function(err, results) {
+            connection.query(query, tables[j], function(err, results) {
                 if (err) {
                     console.error("Error in accessing tables: " + err.stack);
                     return;
                 } else {
-                    for (var i = 1; i < results.length; i++) {
-                        columns.push(results[i]["COLUMN_NAME"]);
+                    for (var k = 0; k < results.length; k++) {
+                        columns.push(results[k]["COLUMN_NAME"]);
                     }
-                    complicationTables[table] = new Complication(table, columns);
-                    console.log(columns);
-                    //TODO : FIGURE OUT WHY COLUMNS ARE EMPTY
+                    complicationTables[tables[j]] = new Complication(tables[j], columns);
                 }
+                console.log(complicationTables);
             });
         }
     }
