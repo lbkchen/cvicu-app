@@ -5,6 +5,7 @@ var app = require('express')();
 var db = require('mysql');
 var bodyParser = require('body-parser');
 var multer = require('multer');
+var loadedTables = require("./loadTables.js");
 
 // Configure app
 app.use(bodyParser.json());
@@ -35,43 +36,10 @@ connection.connect(function(err) {
     console.log('Connected as id ' + connection.threadId);
 });
 
-var tables = [];
-var query = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'cvicu';";
-connection.query(query, function(err, results) {
-    if (err) {
-        console.error("Error in accessing schema: " + err.stack);
-        return;
-    } else {
-        for (var i = 0; i < results.length; i++) {
-            tables.push(results[i]["TABLE_NAME"]);
-        }
-        console.log(tables);
-
-        // Generating Complication objects from all MySQL tables
-        var complicationTables = {};
-        var query = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'cvicu' AND `TABLE_NAME` = ?;";
-
-        for (var j = 0; j < tables.length; j++) {
-            var columns = [];
-            connection.query(query, tables[j], function(err, results) {
-                if (err) {
-                    console.error("Error in accessing tables: " + err.stack);
-                    return;
-                } else {
-                    for (var k = 0; k < results.length; k++) {
-                        columns.push(results[k]["COLUMN_NAME"]);
-                    }
-                    complicationTables[tables[j]] = new Complication(tables[j], columns);
-                }
-                // console.log(complicationTables);
-            });
-        }
-    }
-});
-console.log("YEE");
-// connection.end();
-
-// TODO: Only need one connection.connect / end ?
+var compTables = loadedTables.loaded;
+console.log(compTables);
+console.log(loadedTables.yada);
+console.log(loadedTables.loaded);
 
 // Complications maps and table to iterate
 var arrhythmia = new Complication("arrhythmialog", ["FIN", "Type", "Therapy", "StopDate", "date", "date_1"]);
