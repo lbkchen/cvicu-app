@@ -50,7 +50,7 @@ connection.query(query, function(err, results) {
         // Generating Complication objects from all MySQL tables
         var complicationTables = {};
         var query = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'cvicu' AND `TABLE_NAME` = ?;";
-        
+
         for (var j = 0; j < tables.length; j++) {
             var columns = [];
             connection.query(query, tables[j], function(err, results) {
@@ -151,7 +151,6 @@ app.post('/', function(req, res) {
             });
             toClient.push(lastLog);
         }
-        //TODO: Figure out why logs are nested within each other (mistake?). Also, how do we get the particular complication from the connection before query? Use multiple dictionaries to make modular code?
     }
 
 
