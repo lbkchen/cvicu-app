@@ -27,8 +27,6 @@ var Complication = function(table, columns) {
     this.columnNames = columns;
 };
 
-exports.yada = "YEE";
-
 // Getting an array of all tables in the database
 var tables = [];
 var query = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'cvicu';";
