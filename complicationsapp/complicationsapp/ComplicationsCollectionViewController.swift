@@ -51,7 +51,7 @@ class ComplicationsCollectionViewController: UICollectionViewController {
         // setting width of cells according to number of columns
         let width = (CGRectGetWidth(collectionView!.frame) - leftAndRightPadding) / numberOfColumns
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSizeMake(width, width)
+        layout.itemSize = CGSizeMake(width, 2 * width)
         
         // Network testing
         let url = "http://localhost:3000"
@@ -95,6 +95,14 @@ class ComplicationsCollectionViewController: UICollectionViewController {
     
         // Configure the cell
         cell.complicationLabel.text = complications[indexPath.row]
+        
+        // Add the ComplicationHistoryCollectionViewController
+//        let chcvc = self.storyboard?.instantiateViewControllerWithIdentifier("HistoryCollection") as! ComplicationHistoryCollectionViewController
+//        self.addChildViewController(chcvc)
+//        chcvc.view.frame = cell.bounds
+//        chcvc.didMoveToParentViewController(self)
+        
+        // Return cell
         return cell
     }
 
