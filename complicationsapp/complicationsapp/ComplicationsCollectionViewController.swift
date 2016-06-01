@@ -59,6 +59,9 @@ class ComplicationsCollectionViewController: UICollectionViewController {
         let net = NetworkHandler(url: url, postString: postString)
         print("starting to postToServer")
         net.postToServer()
+        
+        // Confirm connection with patient MRN
+        print("Connected to patient with MRN #\(SessionData.sharedInstance.MRN!)")
     }
 
     override func didReceiveMemoryWarning() {

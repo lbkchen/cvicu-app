@@ -47,6 +47,9 @@ class MRNViewController: UIViewController {
         let net = NetworkHandler(url: url, postString: postString)
         print("starting to postToServer")
         net.postToServer()
+        
+        // Set SessionData MRN
+        SessionData.sharedInstance.MRN = Int(MRNValue.text!)
     }
     
     @IBAction func cancelToMRNViewController(segue:UIStoryboardSegue) {

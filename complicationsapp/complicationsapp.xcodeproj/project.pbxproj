@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		843371B21CFF7473003E1FBA /* SessionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843371B11CFF7473003E1FBA /* SessionData.swift */; };
 		8474D0591CF636F400374E69 /* ComplicationsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474D0581CF636F400374E69 /* ComplicationsCollectionViewCell.swift */; };
 		8474D05C1CF6512B00374E69 /* Complications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474D05B1CF6512B00374E69 /* Complications.swift */; };
 		849CE34C1CF4D13300D9D81E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CE34B1CF4D13300D9D81E /* AppDelegate.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		843371B11CFF7473003E1FBA /* SessionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionData.swift; sourceTree = "<group>"; };
 		8474D0561CF6343A00374E69 /* ComplicationsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationsCollectionViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		8474D0581CF636F400374E69 /* ComplicationsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationsCollectionViewCell.swift; sourceTree = "<group>"; };
 		8474D05B1CF6512B00374E69 /* Complications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Complications.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			children = (
 				8474D05B1CF6512B00374E69 /* Complications.swift */,
 				84EA0ADF1CF8EA9700AD1748 /* NetworkHandler.swift */,
+				843371B11CFF7473003E1FBA /* SessionData.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				849CE34E1CF4D13300D9D81E /* MRNViewController.swift in Sources */,
+				843371B21CFF7473003E1FBA /* SessionData.swift in Sources */,
 				8474D0591CF636F400374E69 /* ComplicationsCollectionViewCell.swift in Sources */,
 				849CE37A1CF5016600D9D81E /* KeypadButton.swift in Sources */,
 				849CE34C1CF4D13300D9D81E /* AppDelegate.swift in Sources */,
