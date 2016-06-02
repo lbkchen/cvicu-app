@@ -60,6 +60,11 @@ class ComplicationsCollectionViewController: UICollectionViewController {
         print("starting to postToServer")
         net.postToServer()
         
+        // Network testing requestLogs
+        let requestString = "targetAction=requestLogs&FIN=234234"
+        let net2 = NetworkHandler(url: url, postString: requestString)
+        net2.postToServer()
+        
         // Confirm connection with patient MRN
         print("Connected to patient with MRN #\(SessionData.sharedInstance.MRN!)")
     }

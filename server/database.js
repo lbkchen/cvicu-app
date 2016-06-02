@@ -70,6 +70,13 @@ function createComplications(tables) {
                     complicationTables[tableName] = new Complication(tableName, [columnName]);
                 }
             }
+            // Remove tables that are not actually complications by 'date' column
+            for (key in complicationTables) {
+                if (complicationTables[key]["columnNames"].indexOf("date") < 0) {
+                    delete complicationTables[key];
+                }
+            }
+            console.log(complicationTables);
             main();
         }
     });
@@ -115,32 +122,68 @@ function main() {
             connection.end();
         }
 
+        // All queries requesting logs
+        // if (request["targetAction"] == "requestLogs") {
+        //     var toClient = [];
+        //     var connection = db.createConnection(connectionInfo);
+        //     connection.connect();
+        //
+        //     for (comp in complicationTables) {
+        //         var query = "SELECT date FROM ?? WHERE FIN = ?;";
+        //         connection.query("USE cvicu;");
+        //         connection.query(query, [comp, request["FIN"]], function(err, results) {
+        //             if (err) {
+        //                 console.error("Error in requesting " + comp + ": " + err.stack);
+        //                 return;
+        //             } else if (!isEmpty(results)) {
+        //                 var lastLog = {
+        //                     table : comp,
+        //                     date : results[results.length - 1]["date"]
+        //                 };
+        //             } else {
+        //                 var lastLog = {
+        //                     table : "null"
+        //                 };
+        //             }
+        //         });
+        //         toClient.push(lastLog);
+        //     }
+        // }
+
+        function queryComplication(comp) {
+            var query = "SELECT date from ?? where FIN = ?;";
+            connection.query("USE cvicu;");
+            connection.query(query, [comp, request["FIN"]], function(err, results) {
+                if (err) {
+                    console.error("Error in requesting " + comp + ": " + err.stack);
+                } else {
+                    var lastLog = {
+                        table : comp,
+                        dates : results.map(function(obj) {return obj["date"];})
+                    }
+                    toClient.push(lastLog);
+                    lock--;
+                    if (lock == 0) finishRequest();
+                }
+            });
+        }
+
+        function finishRequest() {
+            toClient = JSON.stringify(toClient);
+            res.write(toClient);
+            res.end();
+        }
+
 
         // All queries requesting logs
         if (request["targetAction"] == "requestLogs") {
             var toClient = [];
+            var lock = Object.keys(complicationTables).length;
             var connection = db.createConnection(connectionInfo);
             connection.connect();
 
             for (comp in complicationTables) {
-                var query = "SELECT date FROM ?? WHERE FIN = ?;";
-                connection.query("USE cvicu;");
-                connection.query(query, [comp, request["FIN"]], function(err, results) {
-                    if (err) {
-                        console.error("Error in requesting " + comp + ": " + err.stack);
-                        return;
-                    } else if (!isEmpty(results)) {
-                        var lastLog = {
-                            table : comp,
-                            date : results[results.length - 1]["date"]
-                        };
-                    } else {
-                        var lastLog = {
-                            table : "null"
-                        };
-                    }
-                });
-                toClient.push(lastLog);
+                queryComplication(comp);
             }
         }
 

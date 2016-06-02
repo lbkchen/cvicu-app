@@ -10,6 +10,25 @@ import UIKit
 
 class ComplicationHistoryCollectionViewController : UICollectionViewController {
     
+    let complications = ["Cardiopulmonary resuscitation",
+                         "Unplanned return to CICU (<48 hours)",
+                         "Unplanned readmission to the hospital within 30 days",
+                         "Arrhythmia",
+                         "Mechanical circulatory support during CICU encounter",
+                         "Low Cardiac Output Syndrome",
+                         "Pericardial effusion requiring drainage",
+                         "Pulmonary hypertension",
+                         "Pulmonary vein obstruction",
+                         "Systemic vein obstruction",
+                         "RESPIRATORY",
+                         "Listed for heart transplant during CICU encounter",
+                         "Reoperation for bleeding",
+                         "ORGAN DYSFUNCTION",
+                         "Delayed Sternal Closure",
+                         "Intraoperative death or intraprocedural death",
+                         "Infections",
+                         "Unplanned operation/procedure"].sort()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -17,7 +36,6 @@ class ComplicationHistoryCollectionViewController : UICollectionViewController {
         let width = (CGRectGetWidth(collectionView!.frame))
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSizeMake(width, width / 10)
-        print(layout.itemSize)
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,8 +59,9 @@ class ComplicationHistoryCollectionViewController : UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("history", forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("history", forIndexPath: indexPath) as! ComplicationHistoryCollectionViewCell
         cell.backgroundColor = UIColor(red: 0.5, green: 0.1, blue: 0.2, alpha: 0)
+        cell.timeLabel.text = complications[indexPath.row]
         
 //        let cellView = UIView(frame: cell.bounds)
 //        cellView.backgroundColor = UIColor(red: 0.5, green: 0.1, blue: 0.2, alpha: 1)
