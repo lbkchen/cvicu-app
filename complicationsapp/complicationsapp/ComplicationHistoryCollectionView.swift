@@ -9,7 +9,7 @@
 import UIKit
 
 class ComplicationHistoryCollectionView : UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
-    var complications = ["Cardiopulmonary resuscitation",
+    let complications = ["Cardiopulmonary resuscitation",
                          "Unplanned return to CICU (<48 hours)",
                          "Unplanned readmission to the hospital within 30 days",
                          "Arrhythmia",
@@ -29,7 +29,7 @@ class ComplicationHistoryCollectionView : UICollectionView, UICollectionViewData
                          "Unplanned operation/procedure"].sort()
     
     @IBOutlet weak var historyLabel: UILabel!
-
+    
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
