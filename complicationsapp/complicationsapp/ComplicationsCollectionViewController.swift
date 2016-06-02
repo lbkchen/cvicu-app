@@ -97,10 +97,11 @@ class ComplicationsCollectionViewController: UICollectionViewController {
         cell.complicationLabel.text = complications[indexPath.row]
         
         // Add the ComplicationHistoryCollectionViewController
-//        let chcvc = self.storyboard?.instantiateViewControllerWithIdentifier("HistoryCollection") as! ComplicationHistoryCollectionViewController
-//        self.addChildViewController(chcvc)
-//        chcvc.view.frame = cell.bounds
-//        chcvc.didMoveToParentViewController(self)
+        let chcvc = self.storyboard?.instantiateViewControllerWithIdentifier("HistoryCollection") as! ComplicationHistoryCollectionViewController
+        self.addChildViewController(chcvc)
+        let subView = cell.viewWithTag(42)!
+        chcvc.view.frame = subView.bounds
+        chcvc.didMoveToParentViewController(self)
         
         // Return cell
         return cell

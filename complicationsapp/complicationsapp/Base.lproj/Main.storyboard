@@ -350,51 +350,23 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zrs-6y-1Gb" customClass="ComplicationHistoryCollectionView" customModule="complicationsapp" customModuleProvider="target">
+                                        <view tag="42" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jli-FN-G6Y">
                                             <rect key="frame" x="0.0" y="120" width="120" height="120"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="agY-aP-0Su">
-                                                <size key="itemSize" width="100" height="50"/>
-                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
-                                            </collectionViewFlowLayout>
-                                            <cells>
-                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="history" id="4NY-bf-TDB" customClass="ComplicationHistoryCollectionViewCell" customModule="complicationsapp" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="5" width="100" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehk-Ac-pZN">
-                                                                <rect key="frame" x="34" y="14" width="33" height="21"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    </view>
-                                                    <connections>
-                                                        <outlet property="historyLabel" destination="ehk-Ac-pZN" id="Y52-5u-vSO"/>
-                                                    </connections>
-                                                </collectionViewCell>
-                                            </cells>
-                                        </collectionView>
+                                            <color key="backgroundColor" red="0.85882352939999995" green="0.36862745099999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="zrs-6y-1Gb" firstAttribute="leading" secondItem="zHQ-1E-LLw" secondAttribute="leading" id="84Y-j5-TzG"/>
+                                    <constraint firstItem="Jli-FN-G6Y" firstAttribute="leading" secondItem="zHQ-1E-LLw" secondAttribute="leading" id="2Cy-sY-NAd"/>
                                     <constraint firstItem="eNK-sf-ur9" firstAttribute="leading" secondItem="zHQ-1E-LLw" secondAttribute="leading" id="B2C-yl-3P9"/>
-                                    <constraint firstAttribute="trailing" secondItem="zrs-6y-1Gb" secondAttribute="trailing" id="IDZ-iH-wEC"/>
+                                    <constraint firstItem="Jli-FN-G6Y" firstAttribute="top" secondItem="eNK-sf-ur9" secondAttribute="bottom" id="NZr-uV-7TS"/>
                                     <constraint firstAttribute="bottom" secondItem="eNK-sf-ur9" secondAttribute="bottom" id="RXa-mD-O1e"/>
                                     <constraint firstItem="eNK-sf-ur9" firstAttribute="top" secondItem="zHQ-1E-LLw" secondAttribute="top" id="bJH-Bo-Mv4"/>
-                                    <constraint firstAttribute="bottom" secondItem="zrs-6y-1Gb" secondAttribute="bottom" id="i4Q-rA-Pgz"/>
-                                    <constraint firstItem="zrs-6y-1Gb" firstAttribute="top" secondItem="eNK-sf-ur9" secondAttribute="bottom" id="oES-Gp-roL"/>
-                                    <constraint firstItem="zrs-6y-1Gb" firstAttribute="height" secondItem="eNK-sf-ur9" secondAttribute="height" id="olJ-ho-py6"/>
+                                    <constraint firstItem="Jli-FN-G6Y" firstAttribute="height" secondItem="eNK-sf-ur9" secondAttribute="height" id="cNU-Bo-T6H"/>
+                                    <constraint firstAttribute="bottom" secondItem="Jli-FN-G6Y" secondAttribute="bottom" id="qyl-Wg-LOB"/>
                                     <constraint firstAttribute="trailing" secondItem="eNK-sf-ur9" secondAttribute="trailing" id="r5A-5x-zHF"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jli-FN-G6Y" secondAttribute="trailing" id="v6X-W5-BCC"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
