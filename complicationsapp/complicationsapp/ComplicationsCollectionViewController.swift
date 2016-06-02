@@ -100,7 +100,8 @@ class ComplicationsCollectionViewController: UICollectionViewController {
         let chcvc = self.storyboard?.instantiateViewControllerWithIdentifier("HistoryCollection") as! ComplicationHistoryCollectionViewController
         self.addChildViewController(chcvc)
         let subView = cell.viewWithTag(42)!
-        chcvc.view.frame = subView.bounds
+        chcvc.view.frame = subView.frame
+        cell.addSubview(chcvc.view)
         chcvc.didMoveToParentViewController(self)
         
         // Return cell
