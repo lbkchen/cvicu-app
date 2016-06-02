@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		843371B21CFF7473003E1FBA /* SessionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843371B11CFF7473003E1FBA /* SessionData.swift */; };
 		843371B41CFF8D76003E1FBA /* ComplicationHistoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843371B31CFF8D76003E1FBA /* ComplicationHistoryCollectionViewController.swift */; };
-		843371B61CFFA1CC003E1FBA /* ComplicationHistoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843371B51CFFA1CC003E1FBA /* ComplicationHistoryCollectionView.swift */; };
 		843371B81CFFABF1003E1FBA /* ComplicationHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843371B71CFFABF1003E1FBA /* ComplicationHistoryCollectionViewCell.swift */; };
 		8474D0591CF636F400374E69 /* ComplicationsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474D0581CF636F400374E69 /* ComplicationsCollectionViewCell.swift */; };
 		8474D05C1CF6512B00374E69 /* Complications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474D05B1CF6512B00374E69 /* Complications.swift */; };
@@ -46,7 +45,6 @@
 /* Begin PBXFileReference section */
 		843371B11CFF7473003E1FBA /* SessionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionData.swift; sourceTree = "<group>"; };
 		843371B31CFF8D76003E1FBA /* ComplicationHistoryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationHistoryCollectionViewController.swift; sourceTree = "<group>"; };
-		843371B51CFFA1CC003E1FBA /* ComplicationHistoryCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationHistoryCollectionView.swift; sourceTree = "<group>"; };
 		843371B71CFFABF1003E1FBA /* ComplicationHistoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationHistoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		8474D0561CF6343A00374E69 /* ComplicationsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationsCollectionViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		8474D0581CF636F400374E69 /* ComplicationsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -139,7 +137,6 @@
 				849CE37B1CF507D200D9D81E /* SimpleKeypadButton.swift */,
 				8474D0581CF636F400374E69 /* ComplicationsCollectionViewCell.swift */,
 				843371B31CFF8D76003E1FBA /* ComplicationHistoryCollectionViewController.swift */,
-				843371B51CFFA1CC003E1FBA /* ComplicationHistoryCollectionView.swift */,
 				843371B71CFFABF1003E1FBA /* ComplicationHistoryCollectionViewCell.swift */,
 			);
 			path = complicationsapp;
@@ -304,7 +301,6 @@
 				849CE37C1CF507D200D9D81E /* SimpleKeypadButton.swift in Sources */,
 				84EA0ADC1CF79EE400AD1748 /* ComplicationsCollectionViewController.swift in Sources */,
 				843371B81CFFABF1003E1FBA /* ComplicationHistoryCollectionViewCell.swift in Sources */,
-				843371B61CFFA1CC003E1FBA /* ComplicationHistoryCollectionView.swift in Sources */,
 				84EA0AE01CF8EA9700AD1748 /* NetworkHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

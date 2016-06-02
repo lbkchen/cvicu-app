@@ -9,6 +9,5 @@
 import UIKit
 
 class ComplicationHistoryCollectionViewCell : UICollectionViewCell {
-    @IBOutlet weak var historyLabel: UILabel!
-    
+    var chcvc : ComplicationHistoryCollectionViewController?
 }

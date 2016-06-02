@@ -12,5 +12,6 @@ class ComplicationsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var complicationCellColorView: UIView!
     @IBOutlet weak var complicationLabel: UILabel!
-    
+    var chcvc: ComplicationHistoryCollectionViewController?
+
 }
