@@ -40,22 +40,39 @@ class NetworkHandler {
             // Print out response string
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
             print("responseString = \(responseString!)")
-            print("converted \(self.convertStringToDictionary(responseString!.lowercaseString))")
+            
+            // If JSON
+            if ((responseString! as String).characters.first == "[") {
+                let responseArray = self.convertStringToArray(responseString! as String)
+                print("converted \(responseArray)")
+            }
+            
         }
         task.resume()
         print("posted \(postString)")
         
     }
     
-    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+    func convertStringToArray(text: String) -> NSArray? {
         if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
             do {
-                let json = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String:AnyObject]
+                let json = try NSJSONSerialization.JSONObjectWithData(data, options: [.MutableContainers, .AllowFragments, .MutableLeaves]) as? NSArray
                 return json
-            } catch {
-                print("Something went wrong")
+            } catch let error as NSError {
+                print(error)
             }
         }
         return nil
     }
+    
+//    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+//        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
+//            do {
+//                return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
+//            } catch let error as NSError {
+//                print(error)
+//            }
+//        }
+//        return nil
+//    }
 }
