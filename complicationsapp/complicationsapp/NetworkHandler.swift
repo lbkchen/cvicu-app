@@ -44,10 +44,17 @@ class NetworkHandler {
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
             print("responseString = \(responseString!)")
             
-            // If JSON
+            
+            // If request sent to check patient MRN in system
+            if (self.targetAction == "checkFIN") {
+                
+            }
+            
+            // If request sent to check patient logs
             if (self.targetAction == "requestLogs") {
                 let responseArray = self.convertStringToArray(responseString! as String)
-                print("converted \(responseArray)")
+                print("converted \(responseArray!)")
+                SessionData.sharedInstance.patientLogs = responseArray!
             }
             
         }
@@ -76,4 +83,10 @@ class NetworkHandler {
         }
         return String(resultString.characters.dropLast())
     }
+    
+    // Converts the patient log (an array of objects) into a single dictionary
+//    func convertLogArrayToDictionary(patientLog: NSArray) -> [String : String] {
+////        var result = [String : NSArray]
+//        // TODO: WRITE A FOR LOOP TO CONVERT ARRAY TO PROPER FORMAT
+//    }
 }

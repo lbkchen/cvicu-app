@@ -86,7 +86,6 @@ class ComplicationsCollectionViewController: UICollectionViewController {
         if cell.chcvc == nil {
             let chcvc = self.storyboard?.instantiateViewControllerWithIdentifier("HistoryCollection") as! ComplicationHistoryCollectionViewController
             chcvc.complication = Complications.dataB[Complications.complications[indexPath.row]]
-            print(chcvc.complication)
             self.addChildViewController(chcvc)
             let subView = cell.viewWithTag(42)!
             chcvc.view.frame = subView.frame
