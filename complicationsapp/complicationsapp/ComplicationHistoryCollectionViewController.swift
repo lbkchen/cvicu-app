@@ -38,13 +38,16 @@ class ComplicationHistoryCollectionViewController : UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        let logs = SessionData.sharedInstance.patientLogs!
+        return logs[self.complication!]!.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("history", forIndexPath: indexPath) as! ComplicationHistoryCollectionViewCell
         cell.backgroundColor = UIColor(red: 0.5, green: 0.1, blue: 0.2, alpha: 0)
-        cell.timeLabel.text = Complications.complications[indexPath.row]
+        let dates = SessionData.sharedInstance.patientLogs![self.complication!]!
+        cell.timeLabel.text = dates[indexPath.row]
+//        cell.timeLabel.text = Complications.complications[indexPath.row]
         
 //        let cellView = UIView(frame: cell.bounds)
 //        cellView.backgroundColor = UIColor(red: 0.5, green: 0.1, blue: 0.2, alpha: 1)

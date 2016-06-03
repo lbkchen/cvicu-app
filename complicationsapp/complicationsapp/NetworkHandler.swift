@@ -53,8 +53,11 @@ class NetworkHandler {
             // If request sent to check patient logs
             if (self.targetAction == "requestLogs") {
                 let responseArray = self.convertStringToArray(responseString! as String)
-                print("converted \(responseArray!)")
-                SessionData.sharedInstance.patientLogs = responseArray!
+//                print("converted \(responseArray!)")
+                let responseDict = self.convertLogArrayToDictionary(responseArray as! [NSDictionary])
+                SessionData.sharedInstance.patientLogs = responseDict
+                print(responseDict)
+                print(SessionData.sharedInstance.patientLogs)
             }
             
         }
@@ -85,8 +88,11 @@ class NetworkHandler {
     }
     
     // Converts the patient log (an array of objects) into a single dictionary
-//    func convertLogArrayToDictionary(patientLog: NSArray) -> [String : String] {
-////        var result = [String : NSArray]
-//        // TODO: WRITE A FOR LOOP TO CONVERT ARRAY TO PROPER FORMAT
-//    }
+    func convertLogArrayToDictionary(patientLog: [NSDictionary]) -> [String : [String]] {
+        var result = [String : [String]]()
+        for comp in patientLog {
+            result[comp["table"] as! String] = comp["dates"] as? [String]
+        }
+        return result
+    }
 }

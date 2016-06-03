@@ -44,6 +44,15 @@ class MRNViewController: UIViewController {
     @IBAction func submitValue(sender: SimpleKeypadButton) {
         // Set SessionData MRN
         SessionData.sharedInstance.MRN = Int(MRNValue.text!)
+        
+        // Connect to network and requestLogs
+        let url = "http://localhost:3000"
+        let args = ["FIN" : String(SessionData.sharedInstance.MRN)]
+        let net = NetworkHandler(url: url, targetAction: "requestLogs", args: args)
+        net.postToServer()
+        
+        // Confirm connection with patient MRN
+        print("Connected to patient with MRN #\(SessionData.sharedInstance.MRN!)")
     }
     
     @IBAction func cancelToMRNViewController(segue:UIStoryboardSegue) {

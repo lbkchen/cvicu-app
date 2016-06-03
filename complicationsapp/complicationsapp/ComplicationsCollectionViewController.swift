@@ -34,20 +34,13 @@ class ComplicationsCollectionViewController: UICollectionViewController {
         layout.itemSize = CGSizeMake(width, 2 * width)
         
         // Network testing
-        let url = "http://localhost:3000"
-        let args = ["Table" : "arrhythmialog",
-                    "FIN" : "234234"]
-        let net = NetworkHandler(url: url, targetAction: "checkFIN", args: args)
-        print("starting to postToServer")
-        net.postToServer()
+//        let url = "http://localhost:3000"
+//        let args = ["Table" : "arrhythmialog",
+//                    "FIN" : "234234"]
+//        let net = NetworkHandler(url: url, targetAction: "checkFIN", args: args)
+//        print("starting to postToServer")
+//        net.postToServer()
         
-        // Network testing requestLogs
-        let args2 = ["FIN" : "234234"]
-        let net2 = NetworkHandler(url: url, targetAction: "requestLogs", args: args2)
-        net2.postToServer()
-        
-        // Confirm connection with patient MRN
-        print("Connected to patient with MRN #\(SessionData.sharedInstance.MRN!)")
     }
 
     override func didReceiveMemoryWarning() {

@@ -15,7 +15,7 @@ class SessionData {
     private init() {} // Prevents access
     
     var MRN : Int?
-    var patientLogs : NSArray?
+    var patientLogs : [String : [String]]?
     var targetAction : String?
     var postObject : [String : String] = [:]
     
