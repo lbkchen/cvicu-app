@@ -218,7 +218,6 @@
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="submitValue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sw2-rL-yhZ"/>
-                                                                    <segue destination="sWw-ok-Gq4" kind="presentation" id="Ddk-Ze-I71"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -263,6 +262,7 @@
                     </view>
                     <connections>
                         <outlet property="MRNValue" destination="dB5-Ba-h1b" id="hcL-la-Xcg"/>
+                        <segue destination="sWw-ok-Gq4" kind="show" identifier="submit" id="tCI-Je-u4q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -303,7 +303,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eNK-sf-ur9">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complication" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Mt1-Fc-t96">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complication" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Mt1-Fc-t96">
                                                     <rect key="frame" x="5" y="5" width="110" height="110"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -449,7 +449,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VPT-gd-OLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="183" y="1195"/>
+            <point key="canvasLocation" x="183" y="1171"/>
         </scene>
     </scenes>
 </document>

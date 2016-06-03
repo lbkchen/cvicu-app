@@ -47,10 +47,14 @@ class MRNViewController: UIViewController {
         
         // Connect to network and requestLogs
         let url = "http://localhost:3000"
-        let args = ["FIN" : String(SessionData.sharedInstance.MRN)]
+        let args = ["FIN" : String(SessionData.sharedInstance.MRN!)]
+        print(args)
         let net = NetworkHandler(url: url, targetAction: "requestLogs", args: args)
         net.postToServer()
-        
+        while (SessionData.sharedInstance.patientLogs == nil) {
+            // Wait until data is retrieved
+        }
+        self.performSegueWithIdentifier("submit", sender: self)
         // Confirm connection with patient MRN
         print("Connected to patient with MRN #\(SessionData.sharedInstance.MRN!)")
     }
