@@ -12,8 +12,6 @@ private let reuseIdentifier = "Cell"
 
 class ComplicationsCollectionViewController: UICollectionViewController {
     
-    var complications = [String]()
-    
     // padding of collection view controller is set to 10
     // leftAndRightPadding = (numberOfColumns + 1) * padding
     let numberOfColumns : CGFloat = 3.0
@@ -29,25 +27,7 @@ class ComplicationsCollectionViewController: UICollectionViewController {
         // self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
-        complications = ["Cardiopulmonary resuscitation",
-                         "Unplanned return to CICU (<48 hours)",
-                         "Unplanned readmission to the hospital within 30 days",
-                         "Arrhythmia",
-                         "Mechanical circulatory support during CICU encounter",
-                         "Low Cardiac Output Syndrome",
-                         "Pericardial effusion requiring drainage",
-                         "Pulmonary hypertension",
-                         "Pulmonary vein obstruction",
-                         "Systemic vein obstruction",
-                         "RESPIRATORY",
-                         "Listed for heart transplant during CICU encounter",
-                         "Reoperation for bleeding",
-                         "ORGAN DYSFUNCTION",
-                         "Delayed Sternal Closure",
-                         "Intraoperative death or intraprocedural death",
-                         "Infections",
-                         "Unplanned operation/procedure"].sort()
-        
+
         // setting width of cells according to number of columns
         let width = (CGRectGetWidth(collectionView!.frame) - leftAndRightPadding) / numberOfColumns
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
@@ -55,14 +35,15 @@ class ComplicationsCollectionViewController: UICollectionViewController {
         
         // Network testing
         let url = "http://localhost:3000"
-        let postString = "targetAction=checkFIN&Table=arrhythmialog&FIN=234234"
-        let net = NetworkHandler(url: url, postString: postString)
+        let args = ["Table" : "arrhythmialog",
+                    "FIN" : "234234"]
+        let net = NetworkHandler(url: url, targetAction: "checkFIN", args: args)
         print("starting to postToServer")
         net.postToServer()
         
         // Network testing requestLogs
-        let requestString = "targetAction=requestLogs&FIN=234234"
-        let net2 = NetworkHandler(url: url, postString: requestString)
+        let args2 = ["FIN" : "234234"]
+        let net2 = NetworkHandler(url: url, targetAction: "requestLogs", args: args2)
         net2.postToServer()
         
         // Confirm connection with patient MRN
@@ -92,18 +73,20 @@ class ComplicationsCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return complications.count
+        return Complications.complications.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("complication", forIndexPath: indexPath) as! ComplicationsCollectionViewCell
     
         // Configure the cell
-        cell.complicationLabel.text = complications[indexPath.row]
+        cell.complicationLabel.text = Complications.complications[indexPath.row]
         
         // Add the ComplicationHistoryCollectionViewController
         if cell.chcvc == nil {
             let chcvc = self.storyboard?.instantiateViewControllerWithIdentifier("HistoryCollection") as! ComplicationHistoryCollectionViewController
+            chcvc.complication = Complications.dataB[Complications.complications[indexPath.row]]
+            print(chcvc.complication)
             self.addChildViewController(chcvc)
             let subView = cell.viewWithTag(42)!
             chcvc.view.frame = subView.frame

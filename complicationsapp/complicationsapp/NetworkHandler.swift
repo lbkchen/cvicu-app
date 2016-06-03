@@ -10,11 +10,14 @@ import Foundation
 
 class NetworkHandler {
     let myURL : NSURL
-    let postString : String
+    var targetAction : String
+    var postString : String
     
-    init(url: String, postString: String) {
+    init(url: String, targetAction: String, args: [String : String]) {
         myURL = NSURL(string: url)!
-        self.postString = postString
+        self.targetAction = targetAction
+        postString = ""
+        postString = "targetAction=\(targetAction)&" + convertDictionaryToHTTPString(args)
     }
     
     func postToServer() {
@@ -42,7 +45,7 @@ class NetworkHandler {
             print("responseString = \(responseString!)")
             
             // If JSON
-            if ((responseString! as String).characters.first == "[") {
+            if (self.targetAction == "requestLogs") {
                 let responseArray = self.convertStringToArray(responseString! as String)
                 print("converted \(responseArray)")
             }
@@ -65,14 +68,12 @@ class NetworkHandler {
         return nil
     }
     
-//    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
-//        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
-//            do {
-//                return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
-//            } catch let error as NSError {
-//                print(error)
-//            }
-//        }
-//        return nil
-//    }
+    // Note: None of the strings in args can have any spaces in them!
+    func convertDictionaryToHTTPString(args: [String : String]) -> String {
+        var resultString = ""
+        for (key, value) in args {
+            resultString += "\(key)=\(value)&"
+        }
+        return String(resultString.characters.dropLast())
+    }
 }
