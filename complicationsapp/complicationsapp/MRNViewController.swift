@@ -45,6 +45,9 @@ class MRNViewController: UIViewController {
         // Set SessionData MRN
         SessionData.sharedInstance.MRN = Int(MRNValue.text!)
         
+        // Reset stored CHCVC cache
+        Complications.resetCHCVC()
+        
         // Connect to network and requestLogs
         let url = "http://localhost:3000"
         let args = ["FIN" : String(SessionData.sharedInstance.MRN!)]
@@ -54,7 +57,10 @@ class MRNViewController: UIViewController {
         while (SessionData.sharedInstance.patientLogs == nil) {
             // Wait until data is retrieved
         }
+        
+        // Segue to next screen after done
         self.performSegueWithIdentifier("submit", sender: self)
+        
         // Confirm connection with patient MRN
         print("Connected to patient with MRN #\(SessionData.sharedInstance.MRN!)")
     }

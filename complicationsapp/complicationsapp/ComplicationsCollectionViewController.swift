@@ -75,18 +75,44 @@ class ComplicationsCollectionViewController: UICollectionViewController {
         // Configure the cell
         cell.complicationLabel.text = Complications.complications[indexPath.row]
         
-        // Add the ComplicationHistoryCollectionViewController
-        if cell.chcvc == nil {
+        print(cell.chcvc)
+        print(cell.complicationLabel.text)
+        
+        // Instantiate necessary child CollectionViewControllers and store them
+        let logName = Complications.dataB[cell.complicationLabel.text!]!
+        if (Complications.chcvcDict[logName] == nil) {
             let chcvc = self.storyboard?.instantiateViewControllerWithIdentifier("HistoryCollection") as! ComplicationHistoryCollectionViewController
             chcvc.complication = Complications.dataB[Complications.complications[indexPath.row]]
-            print(chcvc.complication! + cell.complicationLabel.text!)
+            Complications.chcvcDict[logName] = chcvc
             self.addChildViewController(chcvc)
-            let subView = cell.viewWithTag(42)!
-            chcvc.view.frame = subView.frame
-            cell.addSubview(chcvc.view)
-            chcvc.didMoveToParentViewController(self)
-            cell.chcvc = chcvc
         }
+        
+        // If this cell already has a CollectionViewController (probably wrong), remove it
+        if (cell.chcvc != nil) {
+            cell.viewWithTag(40)?.removeFromSuperview()
+        }
+        
+        // Add the appropriate CollectionViewController to the right frame
+        let subView = cell.viewWithTag(42)!
+        let thisController = Complications.chcvcDict[logName] as! ComplicationHistoryCollectionViewController
+        thisController.view.frame = subView.frame
+        cell.addSubview(thisController.view)
+        thisController.view.tag = 40
+        thisController.didMoveToParentViewController(self)
+        cell.chcvc = thisController
+        
+        // Add the ComplicationHistoryCollectionViewController
+//        if cell.chcvc == nil {
+//            let chcvc = self.storyboard?.instantiateViewControllerWithIdentifier("HistoryCollection") as! ComplicationHistoryCollectionViewController
+//            chcvc.complication = Complications.dataB[Complications.complications[indexPath.row]]
+//            self.addChildViewController(chcvc)
+//            let subView = cell.viewWithTag(42)!
+//            chcvc.view.frame = subView.frame
+//            cell.addSubview(chcvc.view)
+//            chcvc.view.tag = 40
+//            chcvc.didMoveToParentViewController(self)
+//            cell.chcvc = chcvc
+//        }
         
         // Return cell
         return cell

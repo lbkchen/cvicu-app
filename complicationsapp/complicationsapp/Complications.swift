@@ -60,6 +60,8 @@ class Complications {
     
     static let dataB = Complications.reverseKeyValue(data)
     
+    static var chcvcDict = Complications.getEmptyDict(data)
+    
     // args must be a one to one mapping
     static func reverseKeyValue(args: [String : String]) -> [String : String] {
         var result = [String : String]()
@@ -67,5 +69,17 @@ class Complications {
             result[value] = key
         }
         return result
+    }
+    
+    static func getEmptyDict(dict: [String : String]) -> [String : AnyObject?] {
+        var result = [String : AnyObject?]()
+        for key in dict.keys {
+            result[key] = nil
+        }
+        return result
+    }
+    
+    static func resetCHCVC() {
+        chcvcDict = Complications.getEmptyDict(data)
     }
 }

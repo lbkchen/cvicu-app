@@ -47,7 +47,6 @@ class ComplicationHistoryCollectionViewController : UICollectionViewController {
         cell.backgroundColor = UIColor(red: 0.5, green: 0.1, blue: 0.2, alpha: 0)
         let dates = SessionData.sharedInstance.patientLogs![self.complication!]!
         cell.timeLabel.text = dates[indexPath.row]
-        print("THIS TEXT IS \(cell.timeLabel.text)")
 //        cell.timeLabel.text = Complications.complications[indexPath.row]
         
 //        let cellView = UIView(frame: cell.bounds)
