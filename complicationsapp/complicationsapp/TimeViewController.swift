@@ -10,10 +10,15 @@ import UIKit
 
 class TimeViewController: UIViewController {
 
+    @IBOutlet weak var timePicker: UIDatePicker!
+    let dateFormatter: NSDateFormatter = NSDateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        dateFormatter.timeZone = NSTimeZone(abbreviation: "PST")
+        dateFormatter.dateFormat = "HH:mm"
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,6 +40,17 @@ class TimeViewController: UIViewController {
     // Mark: - Submitting to database
     
     @IBAction func submitLog(sender: UIButton) {
-        
+        recordTime()
+        SessionData.sharedInstance.finalize()
+        SessionData.sharedInstance.printData()
+    }
+    
+    // Mark: - Helper functions
+    func recordTime() {
+        SessionData.sharedInstance.addData("time", value: getCurrentTimeString())
+    }
+    
+    func getCurrentTimeString() -> String {
+        return dateFormatter.stringFromDate(timePicker.date)
     }
 }

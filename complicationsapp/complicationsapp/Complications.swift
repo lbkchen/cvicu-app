@@ -62,6 +62,19 @@ class Complications {
     
     static var chcvcDict = Complications.getEmptyDict(data)
     
+    // Smaller lists for directing segues from the CollectionView
+    
+    static let oneStep = [
+        "Unplanned return to CICU (<48 hours)",
+        "Unplanned readmission to the hospital within 30 days",
+        "Pericardial effusion requiring drainage",
+        "Pulmonary vein obstruction",
+        "Systemic vein obstruction",
+        "Listed for heart transplant during CICU encounter",
+        "Reoperation for bleeding",
+        "Intraoperative death or intraprocedural death"
+    ]
+    
     // args must be a one to one mapping
     static func reverseKeyValue(args: [String : String]) -> [String : String] {
         var result = [String : String]()

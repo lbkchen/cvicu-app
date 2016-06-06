@@ -70,12 +70,29 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
         
     }
     
+    // MARK: - Log data
+    
+    @IBAction func recordDate(sender: UIButton) {
+        SessionData.sharedInstance.addData("day", value: getCurrentDateString())
+    }
+    
     // MARK: - Helper functions
     func updateDateLabel() {
         let months = dateFormatter.monthSymbols
         let monthText = months[self.calendarView.presentedDate.month - 1]
         let yearText = String(self.calendarView.presentedDate.year)
         self.month.text = "\(monthText), \(yearText)"
+    }
+    
+    func getCurrentDateString() -> String {
+        var month = String(self.calendarView.presentedDate.month)
+        var day = String(self.calendarView.presentedDate.day)
+        var year = String(self.calendarView.presentedDate.year)
+        
+        if (month.characters.count == 1) { month = "0\(month)" }
+        if (day.characters.count == 1) { day = "0\(day)" }
+        
+        return "\(month)/\(day)/\(year)"
     }
 
 }

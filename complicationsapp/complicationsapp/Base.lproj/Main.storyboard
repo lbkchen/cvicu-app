@@ -348,6 +348,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="recordDate:" destination="GaH-YH-eTw" eventType="touchUpInside" id="nHO-YR-UZt"/>
                                             <segue destination="vZr-Zg-qzr" kind="show" id="xd0-KG-qAJ"/>
                                         </connections>
                                     </button>
@@ -431,9 +432,12 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fN2-g3-S2m">
+                                                <button opaque="NO" tag="44" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fN2-g3-S2m">
                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <state key="normal">
+                                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="segue:" destination="Bp4-fb-yZU" eventType="touchUpInside" id="jiy-Rd-D5E"/>
                                                     </connections>
@@ -666,6 +670,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="timePicker" destination="sCo-W7-A5u" id="kbd-Tv-cHn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i0o-ae-xnw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="92r-hR-HEe" userLabel="Exit" sceneMemberID="exit"/>

@@ -53,10 +53,8 @@ class NetworkHandler {
             // If request sent to check patient logs
             if (self.targetAction == "requestLogs") {
                 let responseArray = self.convertStringToArray(responseString! as String)
-//                print("converted \(responseArray!)")
                 let responseDict = self.convertLogArrayToDictionary(responseArray as! [NSDictionary])
                 SessionData.sharedInstance.patientLogs = responseDict
-                print(responseDict)
                 print(SessionData.sharedInstance.patientLogs)
             }
             

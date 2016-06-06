@@ -195,7 +195,7 @@ function main() {
             connection.connect();
             var thisComplication = request["Table"];
 
-            console.log ("Start: adding to " + thisComplication);
+            console.log("Start: adding to " + thisComplication);
 
             // Create an object patientLog that represents a row of values in the SQL table
             var patientLog = {};

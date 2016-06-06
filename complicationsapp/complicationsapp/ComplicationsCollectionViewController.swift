@@ -32,15 +32,6 @@ class ComplicationsCollectionViewController: UICollectionViewController {
         let width = (CGRectGetWidth(collectionView!.frame) - leftAndRightPadding) / numberOfColumns
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSizeMake(width, 2 * width)
-        
-        // Network testing
-//        let url = "http://localhost:3000"
-//        let args = ["Table" : "arrhythmialog",
-//                    "FIN" : "234234"]
-//        let net = NetworkHandler(url: url, targetAction: "checkFIN", args: args)
-//        print("starting to postToServer")
-//        net.postToServer()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,7 +50,12 @@ class ComplicationsCollectionViewController: UICollectionViewController {
     */
     
     @IBAction func segue(sender: UIButton) {
-        performSegueWithIdentifier("calendar", sender: sender)
+        let complication = sender.titleLabel!.text!
+        if (Complications.oneStep.contains(complication)) {
+            let table = Complications.dataB[complication]!
+            SessionData.sharedInstance.addData("Table", value: table)
+            performSegueWithIdentifier("calendar", sender: sender)
+        }
     }
     
     @IBAction func cancelToComplicationsCollectionViewController(segue: UIStoryboardSegue) {
@@ -83,9 +79,6 @@ class ComplicationsCollectionViewController: UICollectionViewController {
         // Configure the cell
         cell.complicationLabel.text = Complications.complications[indexPath.row]
         
-        print(cell.chcvc)
-        print(cell.complicationLabel.text)
-        
         // Instantiate necessary child CollectionViewControllers and store them
         let logName = Complications.dataB[cell.complicationLabel.text!]!
         if (Complications.chcvcDict[logName] == nil) {
@@ -108,6 +101,10 @@ class ComplicationsCollectionViewController: UICollectionViewController {
         thisController.view.tag = 40
         thisController.didMoveToParentViewController(self)
         cell.chcvc = thisController
+        
+        // Change button text (clear) to label text just to link action of pressing button
+        let button = cell.viewWithTag(44)! as! UIButton
+        button.titleLabel!.text = cell.complicationLabel.text!
         
         // Add the ComplicationHistoryCollectionViewController
 //        if cell.chcvc == nil {
