@@ -55,7 +55,8 @@ class MRNViewController: UIViewController {
         let net = NetworkHandler(url: url, targetAction: "requestLogs", args: args)
         net.postToServer()
         while (SessionData.sharedInstance.patientLogs == nil) {
-            // Wait until data is retrieved
+            // Wait until data is retrieved: potentially dangerous if network fails
+            // FIXME
         }
         
         // Segue to next screen after done

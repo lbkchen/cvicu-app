@@ -57,7 +57,11 @@ class ComplicationsCollectionViewController: UICollectionViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    @IBAction func segue(sender: UIButton) {
+        performSegueWithIdentifier("calendar", sender: sender)
+    }
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
