@@ -66,6 +66,10 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
     }
     */
     
+    @IBAction func cancelToCalendarViewController(segue: UIStoryboardSegue) {
+        
+    }
+    
     // MARK: - Helper functions
     func updateDateLabel() {
         let months = dateFormatter.monthSymbols

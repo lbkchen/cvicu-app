@@ -189,7 +189,7 @@
                                                         <subviews>
                                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBt-RB-vCQ" customClass="SimpleKeypadButton" customModule="complicationsapp" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="88" height="88"/>
-                                                                <color key="backgroundColor" red="0.81960784313725488" green="0.11764705882352941" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="backgroundColor" red="0.87058823529411766" green="0.21176470588235294" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                                 <state key="normal" title="CLEAR">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -347,6 +347,9 @@
                                                 <integer key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="vZr-Zg-qzr" kind="show" id="xd0-KG-qAJ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -366,7 +369,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Select date of complication" id="Sls-0m-eFo">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="QrK-DM-DKD"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="QrK-DM-DKD">
+                            <connections>
+                                <segue destination="TtG-EF-g5D" kind="unwind" unwindAction="cancelToComplicationsCollectionViewController:" id="i8b-jR-rRo"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Today" id="Rxr-ag-Re6">
                             <connections>
                                 <action selector="toggleToToday:" destination="GaH-YH-eTw" id="ipx-ya-w7r"/>
@@ -380,6 +387,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SnN-Z9-9eQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="TtG-EF-g5D" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1604" y="1171"/>
         </scene>
@@ -593,10 +601,10 @@
             </objects>
             <point key="canvasLocation" x="1604" y="409"/>
         </scene>
-        <!--View Controller-->
+        <!--Select time-->
         <scene sceneID="PPt-c1-SVA">
             <objects>
-                <viewController id="oDS-7S-K2m" sceneMemberID="viewController">
+                <viewController id="oDS-7S-K2m" customClass="TimeViewController" customModule="complicationsapp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Odt-CE-upg"/>
                         <viewControllerLayoutGuide type="bottom" id="2cD-Tr-mRD"/>
@@ -604,12 +612,83 @@
                     <view key="view" contentMode="scaleToFill" id="HHT-nE-UPz">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Ol9-dm-qyo">
+                                <rect key="frame" x="0.0" y="64" width="600" height="506"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="sCo-W7-A5u">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="436"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="486942070.58689898">
+                                            <!--2016-06-06 21:41:10 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zN3-Hq-7B5">
+                                        <rect key="frame" x="240" y="466" width="120" height="40"/>
+                                        <color key="backgroundColor" red="0.87058823529411766" green="0.21176470588235294" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="TbI-AI-SPT"/>
+                                            <constraint firstAttribute="height" constant="40" id="ybQ-0d-mGK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                        <state key="normal" title="SUBMIT">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="submitLog:" destination="oDS-7S-K2m" eventType="touchUpInside" id="0pY-NP-xfN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="sCo-W7-A5u" firstAttribute="leading" secondItem="Ol9-dm-qyo" secondAttribute="leading" id="Md9-9x-rcb"/>
+                                    <constraint firstItem="sCo-W7-A5u" firstAttribute="top" secondItem="Ol9-dm-qyo" secondAttribute="top" id="aYi-Z9-aHm"/>
+                                    <constraint firstAttribute="trailing" secondItem="sCo-W7-A5u" secondAttribute="trailing" id="cVC-Hh-sp7"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2cD-Tr-mRD" firstAttribute="top" secondItem="Ol9-dm-qyo" secondAttribute="bottom" constant="30" id="2BB-j2-QU5"/>
+                            <constraint firstItem="Ol9-dm-qyo" firstAttribute="leading" secondItem="HHT-nE-UPz" secondAttribute="leading" id="ABj-v2-UoJ"/>
+                            <constraint firstItem="sCo-W7-A5u" firstAttribute="centerX" secondItem="HHT-nE-UPz" secondAttribute="centerX" id="NIF-Pp-fwZ"/>
+                            <constraint firstAttribute="trailing" secondItem="Ol9-dm-qyo" secondAttribute="trailing" id="tQM-fY-6gD"/>
+                            <constraint firstItem="Ol9-dm-qyo" firstAttribute="top" secondItem="Odt-CE-upg" secondAttribute="bottom" id="wsO-is-HkN"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Select time" id="mua-DC-OtN">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="sqd-nt-MVi">
+                            <connections>
+                                <segue destination="92r-hR-HEe" kind="unwind" unwindAction="cancelToCalendarViewController:" id="PpD-u8-fzb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i0o-ae-xnw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="92r-hR-HEe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2295" y="1171"/>
+            <point key="canvasLocation" x="2315" y="1171"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="a6O-zv-whY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vZr-Zg-qzr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DlW-ES-lyk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oDS-7S-K2m" kind="relationship" relationship="rootViewController" id="e9K-ny-DV2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qer-YY-VnR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2315" y="409"/>
         </scene>
     </scenes>
 </document>

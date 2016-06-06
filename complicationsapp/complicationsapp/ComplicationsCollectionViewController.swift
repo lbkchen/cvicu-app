@@ -62,6 +62,10 @@ class ComplicationsCollectionViewController: UICollectionViewController {
         performSegueWithIdentifier("calendar", sender: sender)
     }
     
+    @IBAction func cancelToComplicationsCollectionViewController(segue: UIStoryboardSegue) {
+        
+    }
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
