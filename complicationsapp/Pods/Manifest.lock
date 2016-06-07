@@ -1,12 +1,15 @@
 PODS:
   - CVCalendar (1.2.9)
+  - Eureka (1.6.0)
 
 DEPENDENCIES:
   - CVCalendar (~> 1.2.9)
+  - Eureka (~> 1.6)
 
 SPEC CHECKSUMS:
   CVCalendar: 0799256e0bc3b43e83b7e86c0729ce9ff0624cb6
+  Eureka: ef5b9ac93aedeecfe50d98b1ac7678bf09a1fc62
 
-PODFILE CHECKSUM: cfead2c586694b114043e9272853609bdce827e0
+PODFILE CHECKSUM: 66d4420232b3783cf4e9fda0d8a1a88b046c3a9b
 
 COCOAPODS: 1.0.1
