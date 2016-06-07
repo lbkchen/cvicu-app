@@ -440,6 +440,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					BA14B622689766F6B8A4F42FD9DE552F = {
+						DevelopmentTeam = RQEYL5BYDC;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -674,6 +679,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B8EB97A0B1CA88D177B192F1E395AD51 /* CVCalendar.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -691,6 +697,7 @@
 				MODULEMAP_FILE = "Target Support Files/CVCalendar/CVCalendar.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = CVCalendar;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -845,6 +852,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B8EB97A0B1CA88D177B192F1E395AD51 /* CVCalendar.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -862,6 +870,7 @@
 				MODULEMAP_FILE = "Target Support Files/CVCalendar/CVCalendar.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = CVCalendar;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";

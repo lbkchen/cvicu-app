@@ -87,7 +87,7 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
     func getCurrentDateString() -> String {
         var month = String(self.calendarView.presentedDate.month)
         var day = String(self.calendarView.presentedDate.day)
-        var year = String(self.calendarView.presentedDate.year)
+        let year = String(self.calendarView.presentedDate.year)
         
         if (month.characters.count == 1) { month = "0\(month)" }
         if (day.characters.count == 1) { day = "0\(day)" }

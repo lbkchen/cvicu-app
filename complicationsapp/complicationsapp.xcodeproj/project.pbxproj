@@ -282,6 +282,7 @@
 				TargetAttributes = {
 					849CE3471CF4D13300D9D81E = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = RQEYL5BYDC;
 					};
 					849CE35B1CF4D13300D9D81E = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -625,10 +626,13 @@
 			baseConfigurationReference = F5EC44954B7996040B7F294C /* Pods-complicationsapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = complicationsapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cvicu.complicationsapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -637,10 +641,13 @@
 			baseConfigurationReference = 8E2BE606FC3AA1A7B4E3F9AA /* Pods-complicationsapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = complicationsapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cvicu.complicationsapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
