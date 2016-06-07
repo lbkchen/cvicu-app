@@ -200,8 +200,12 @@ function main() {
             // Create an object patientLog that represents a row of values in the SQL table
             var patientLog = {};
             var columnNames = complicationTables[thisComplication]["columnNames"];
-            for (column in columnNames) {
-                patientLog[column] = request[column];
+            // for (column in columnNames) {
+            //     patientLog[column] = request[column];
+            // }
+            for (var i = 0; i < columnNames.length; i++) {
+                var thisColumn = columnNames[i];
+                patientLog[thisColumn] = request[thisColumn];
             }
 
             // Generate query

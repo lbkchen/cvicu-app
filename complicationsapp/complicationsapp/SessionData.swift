@@ -16,8 +16,10 @@ class SessionData {
     
     var MRN : Int?
     var patientLogs : [String : [String]]?
-    var targetAction : String?
+    var targetAction : String? // may be unnecessary, duplicate in NetworkHandler
     var postObject : [String : String] = [:]
+    
+    let dateFormatter : NSDateFormatter = NSDateFormatter()
     
     func addData(key: String, value: String) {
         postObject[key] = value
@@ -25,14 +27,41 @@ class SessionData {
     
     // day and time must be already added to postObject before this function is called
     func finalize() {
+        
+        // combine values for day and time into "date_1", and remove the constituent keys
         let date = "\(postObject["day"]!) \(postObject["time"]!)"
-        postObject["date"] = date
+        postObject["date_1"] = date
         postObject.removeValueForKey("day")
         postObject.removeValueForKey("time")
+        
+        // add the current time as a variable "date"
+        recordCurrentTime()
+    }
+    
+    // posts HTTP request to server with action addLog
+    func postToServer() {
+        let url = "http://localhost:3000"
+        let net = NetworkHandler(url: url, targetAction: "addLog", args: self.postObject)
+        net.postToServer()
+    }
+    
+    // logs the patient's MRN
+    func recordMRN() {
+        postObject["FIN"] = String(self.MRN!)
+    }
+    
+    // logs the current time
+    func recordCurrentTime() {
+        let current = NSDate()
+        dateFormatter.timeZone = NSTimeZone(abbreviation: "PST")
+        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
+        let currentString = dateFormatter.stringFromDate(current)
+        postObject["date"] = currentString
     }
     
     // for debugging
     func printData() {
         print(self.postObject)
     }
+
 }

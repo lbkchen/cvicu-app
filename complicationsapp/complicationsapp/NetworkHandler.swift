@@ -44,19 +44,34 @@ class NetworkHandler {
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
             print("responseString = \(responseString!)")
             
-            
-            // If request sent to check patient MRN in system
-            if (self.targetAction == "checkFIN") {
-                
-            }
-            
-            // If request sent to check patient logs
-            if (self.targetAction == "requestLogs") {
+            switch self.targetAction {
+            case "checkFIN": break
+            case "requestLogs":
                 let responseArray = self.convertStringToArray(responseString! as String)
                 let responseDict = self.convertLogArrayToDictionary(responseArray as! [NSDictionary])
                 SessionData.sharedInstance.patientLogs = responseDict
                 print(SessionData.sharedInstance.patientLogs)
+            case "addLog":
+                print("Added log to database with arguments \(SessionData.sharedInstance.postObject)")
+            default: print("Invalid targetAction \(self.targetAction)")
             }
+//            // If request sent to check patient MRN in system
+//            if (self.targetAction == "checkFIN") {
+//                
+//            }
+//            
+//            // If request sent to check patient logs
+//            if (self.targetAction == "requestLogs") {
+//                let responseArray = self.convertStringToArray(responseString! as String)
+//                let responseDict = self.convertLogArrayToDictionary(responseArray as! [NSDictionary])
+//                SessionData.sharedInstance.patientLogs = responseDict
+//                print(SessionData.sharedInstance.patientLogs)
+//            }
+//            
+//            // If request sent to add to logs
+//            if (self.targetAction == "addLog") {
+//                
+//            }
             
         }
         task.resume()
