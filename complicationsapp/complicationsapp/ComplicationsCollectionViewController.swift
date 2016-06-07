@@ -55,6 +55,8 @@ class ComplicationsCollectionViewController: UICollectionViewController {
             let table = Complications.dataB[complication]!
             SessionData.sharedInstance.addData("Table", value: table)
             performSegueWithIdentifier("calendar", sender: sender)
+        } else {
+            performSegueWithIdentifier("toForm", sender: sender)
         }
     }
     
