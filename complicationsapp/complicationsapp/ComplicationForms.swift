@@ -17,6 +17,10 @@ class ComplicationForms {
     // When called, creates all forms for complications, and adds them to listOfForms
     static func createForms() {
         
+        // ---------------------- Overall form setup ---------------------- //
+        LabelRow.defaultCellUpdate = { cell, row in cell.textLabel?.textColor = .redColor()  }
+        
+        
         
         // ---------------------- Arrhythmia form ---------------------- //
         let arrForm = Form()
@@ -30,7 +34,7 @@ class ComplicationForms {
             
             <<< SwitchRow("Therapies present at discharge?") {
                 $0.title = $0.tag
-                $0.value = false
+                $0.value = true
             }
             
             <<< DateTimeInlineRow("Stop Date") {
@@ -38,7 +42,7 @@ class ComplicationForms {
                 $0.value = NSDate()
                 $0.hidden = .Function(["Therapies present at discharge?"], { form -> Bool in
                     let row: RowOf<Bool>! = form.rowByTag("Therapies present at discharge?")
-                    return row.value ?? false == false
+                    return row.value ?? false == true
                 })
             }
         
@@ -77,18 +81,11 @@ class ComplicationForms {
         // ---------------------- CPR form ---------------------- //
         let cprForm = Form()
         
-        cprForm +++ Section("Definition")
- 
-            <<< AlertRow<String>() {
-                $0.title = "Definition"
-                $0.value = "Press to view"
-                $0.options = ["Accept"]
-                $0.selectorTitle = "Yee dis is the definition hoajoweif jaowifjoawefj oaiwfj a foiwje ojoafj oafwj ofwa ofjoia fjow foajf ofo owi fjmie"
-            } .onChange { row in
-                        row.value = "Press to view"
-            }
+        cprForm +++ Section("Dates and times")
             
-            +++ Section("Dates and times")
+            <<< LabelRow() {
+                $0.title = "USE CODE SHEET FOR ACCURATE TIMES"
+            }
             
             <<< DateTimeInlineRow() {
                 $0.title = "Start date/time"
@@ -117,9 +114,74 @@ class ComplicationForms {
             }
         
         
+        // ---------------------- MCS form ---------------------- //
+        let mcsForm = Form()
+        
+        mcsForm +++ Section("Dates and times")
+        
+            <<< DateTimeInlineRow() {
+                $0.title = "Start date/time"
+                $0.value = NSDate()
+            }
+            
+            <<< LabelRow() {
+                $0.title = "(End date) Do not enter: to be adjudicated by Data Manager"
+            }
+            
+            <<< DateTimeInlineRow() {
+                $0.title = "MCS end date/time"
+                $0.value = nil
+            }
+            
+            +++ Section("Details")
+            
+            <<< SwitchRow() {
+                $0.title = "In post-operative period?"
+                $0.value = false
+            }
+            
+            <<< AlertRow<String>() {
+                $0.title = "Support type"
+                $0.value = "Enter"
+                $0.selectorTitle = "Select support type"
+                $0.options = ["VAD", "ECMO", "Both VAD and ECMO"]
+            }
+            
+            <<< AlertRow<String>() {
+                $0.title = "Primary reason"
+                $0.value = "Enter"
+                $0.selectorTitle = "Select primary reason for MCS"
+                $0.options = [
+                    "LCOS/Cardiac failure",
+                    "Ventricular dysfunction",
+                    "Hypoxemia",
+                    "Hypercardic respiratory failure",
+                    "Shunt occlusion",
+                    "Arrhythmia",
+                    "Bleeding",
+                    "Multisystem organ failure"
+                ]
+            }
+            
+            <<< AlertRow<String>() {
+                $0.title = "ECPR"
+                $0.value = "Enter"
+                $0.selectorTitle = "Enter ECPR"
+                $0.options = [
+                    "Active CPR at cannulation",
+                    "Active CPR within 2 hours of cannulation"
+                ]
+            }
+            
+            <<< SwitchRow() {
+                $0.title = "MCS present at start of CICU encounter?"
+                $0.value = false
+            }
+        
         // When done, add all forms to dictionary
         formDict["cprlog"] = cprForm
         formDict["arrhythmialog"] = arrForm
+        formDict["mcslog"] = mcsForm
     }
     
 }

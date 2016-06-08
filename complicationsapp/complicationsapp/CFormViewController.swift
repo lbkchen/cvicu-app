@@ -9,13 +9,15 @@
 import Eureka
 
 class CFormViewController: FormViewController {
+    
+    var formName : String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         ComplicationForms.createForms()
-        form = ComplicationForms.formDict["arrhythmialog"]!
+        form = ComplicationForms.formDict[formName!]!
     }
 
     override func didReceiveMemoryWarning() {

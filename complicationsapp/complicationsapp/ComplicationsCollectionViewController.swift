@@ -48,7 +48,10 @@ class ComplicationsCollectionViewController: UICollectionViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         if (segue.identifier == "toForm") {
-            segue.destinationViewController.navigationItem.title = (sender as! UIButton).titleLabel!.text!
+            let destVC = segue.destinationViewController as! CFormViewController
+            let compName = (sender as! UIButton).titleLabel!.text!
+            destVC.navigationItem.title = compName
+            destVC.formName = Complications.dataB[compName]!
         }
         // Pass the selected object to the new view controller.
     }
