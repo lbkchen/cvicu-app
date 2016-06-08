@@ -15,7 +15,7 @@ class CFormViewController: FormViewController {
 
         // Do any additional setup after loading the view.
         ComplicationForms.createForms()
-        form = ComplicationForms.formDict["cprlog"]!
+        form = ComplicationForms.formDict["arrhythmialog"]!
     }
 
     override func didReceiveMemoryWarning() {
