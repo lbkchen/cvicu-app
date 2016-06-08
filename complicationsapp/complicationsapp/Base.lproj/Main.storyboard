@@ -609,10 +609,10 @@
             </objects>
             <point key="canvasLocation" x="1604" y="-310"/>
         </scene>
-        <!--View Controller-->
+        <!--Confirmation-->
         <scene sceneID="Fex-kI-KBf">
             <objects>
-                <viewController id="xbx-yd-0td" sceneMemberID="viewController">
+                <viewController title="Confirmation" id="xbx-yd-0td" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mL7-jI-WOv"/>
                         <viewControllerLayoutGuide type="bottom" id="yfO-iw-7t8"/>
@@ -621,8 +621,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oyP-LP-exP">
-                                <rect key="frame" x="240" y="499" width="120" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJI-tE-ksw">
+                                <rect key="frame" x="0.0" y="64" width="600" height="420"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oyP-LP-exP">
+                                <rect key="frame" x="240" y="522" width="120" height="40"/>
                                 <color key="backgroundColor" red="0.87058823529999996" green="0.21176470589999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Xid-TW-O4y"/>
@@ -640,6 +644,15 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oyP-LP-exP" firstAttribute="top" secondItem="hJI-tE-ksw" secondAttribute="bottom" constant="38" id="9gI-Sj-lsH"/>
+                            <constraint firstItem="hJI-tE-ksw" firstAttribute="top" secondItem="mL7-jI-WOv" secondAttribute="bottom" id="MTq-Mk-BgL"/>
+                            <constraint firstItem="oyP-LP-exP" firstAttribute="centerX" secondItem="coN-fW-bfV" secondAttribute="centerX" id="Way-s3-cb9"/>
+                            <constraint firstItem="yfO-iw-7t8" firstAttribute="top" secondItem="hJI-tE-ksw" secondAttribute="bottom" constant="116" id="Wgy-5K-Xfc"/>
+                            <constraint firstItem="hJI-tE-ksw" firstAttribute="leading" secondItem="coN-fW-bfV" secondAttribute="leading" id="etS-re-ZDB"/>
+                            <constraint firstAttribute="trailing" secondItem="hJI-tE-ksw" secondAttribute="trailing" id="kAV-We-mPM"/>
+                            <constraint firstItem="yfO-iw-7t8" firstAttribute="top" secondItem="oyP-LP-exP" secondAttribute="bottom" constant="38" id="mpJ-FX-7br"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BvG-4H-R0G" userLabel="First Responder" sceneMemberID="firstResponder"/>
