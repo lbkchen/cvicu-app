@@ -10,6 +10,7 @@ import Eureka
 
 class CFormViewController: FormViewController {
     
+    // Value is set in prepareForSegue from ComplicationsCollectionViewController
     var formName : String?
 
     override func viewDidLoad() {
@@ -18,6 +19,12 @@ class CFormViewController: FormViewController {
         // Do any additional setup after loading the view.
         ComplicationForms.createForms()
         form = ComplicationForms.formDict[formName!]!
+        form +++ Section("Submit")
+
+            <<< ButtonRow() {
+                $0.title = "Submit log"
+                $0.presentationMode = .SegueName(segueName: "toConfirmation", completionCallback: nil)
+            }
     }
 
     override func didReceiveMemoryWarning() {

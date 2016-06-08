@@ -27,6 +27,7 @@
 		849CE37C1CF507D200D9D81E /* SimpleKeypadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CE37B1CF507D200D9D81E /* SimpleKeypadButton.swift */; };
 		84CF32E71D05F23A00C36573 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF32E61D05F23A00C36573 /* CalendarViewController.swift */; };
 		84D3AB5C1D062AA4001FB757 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D3AB5B1D062AA4001FB757 /* TimeViewController.swift */; };
+		84D3EAAD1D08DAD10079AA34 /* SubmitRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D3EAAC1D08DAD10079AA34 /* SubmitRow.swift */; };
 		84EA0ADC1CF79EE400AD1748 /* ComplicationsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474D0561CF6343A00374E69 /* ComplicationsCollectionViewController.swift */; };
 		84EA0AE01CF8EA9700AD1748 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA0ADF1CF8EA9700AD1748 /* NetworkHandler.swift */; };
 		AF66706BC4DDE10658D3B4B9 /* Pods_complicationsappUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF47FD61E122979EE09D70E3 /* Pods_complicationsappUITests.framework */; };
@@ -78,6 +79,7 @@
 		849CE37B1CF507D200D9D81E /* SimpleKeypadButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleKeypadButton.swift; sourceTree = "<group>"; };
 		84CF32E61D05F23A00C36573 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		84D3AB5B1D062AA4001FB757 /* TimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
+		84D3EAAC1D08DAD10079AA34 /* SubmitRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitRow.swift; sourceTree = "<group>"; };
 		84EA0ADF1CF8EA9700AD1748 /* NetworkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
 		8E2BE606FC3AA1A7B4E3F9AA /* Pods-complicationsapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-complicationsapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-complicationsapp/Pods-complicationsapp.release.xcconfig"; sourceTree = "<group>"; };
 		AE62DC5BD7C21CBE4C591A03 /* Pods-complicationsappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-complicationsappTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-complicationsappTests/Pods-complicationsappTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				84CF32E61D05F23A00C36573 /* CalendarViewController.swift */,
 				84D3AB5B1D062AA4001FB757 /* TimeViewController.swift */,
 				847DDD8C1D076B8200E59AF3 /* CFormViewController.swift */,
+				84D3EAAC1D08DAD10079AA34 /* SubmitRow.swift */,
 			);
 			path = complicationsapp;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				843371B21CFF7473003E1FBA /* SessionData.swift in Sources */,
 				8474D0591CF636F400374E69 /* ComplicationsCollectionViewCell.swift in Sources */,
 				843371B41CFF8D76003E1FBA /* ComplicationHistoryCollectionViewController.swift in Sources */,
+				84D3EAAD1D08DAD10079AA34 /* SubmitRow.swift in Sources */,
 				849CE37A1CF5016600D9D81E /* KeypadButton.swift in Sources */,
 				849CE34C1CF4D13300D9D81E /* AppDelegate.swift in Sources */,
 				8474D05C1CF6512B00374E69 /* Complications.swift in Sources */,

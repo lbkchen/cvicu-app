@@ -27,17 +27,18 @@ class ComplicationForms {
         
         arrForm +++ Section("Dates and times")
             
-            <<< DateTimeInlineRow() {
+            <<< DateTimeInlineRow("date_1") {
                 $0.title = "Start date/time"
                 $0.value = NSDate()
             }
             
+            // Need to remove tag in form-processing
             <<< SwitchRow("Therapies present at discharge?") {
                 $0.title = $0.tag
                 $0.value = true
             }
             
-            <<< DateTimeInlineRow("Stop Date") {
+            <<< DateTimeInlineRow("StopDate") {
                 $0.title = "Stop date/time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["Therapies present at discharge?"], { form -> Bool in
@@ -48,7 +49,7 @@ class ComplicationForms {
         
             +++ Section("Details")
             
-            <<< AlertRow<String>() {
+            <<< AlertRow<String>("Type") {
                 $0.title = "Type"
                 $0.selectorTitle = "Which type of arrhythmia?"
                 $0.options = [
@@ -64,7 +65,7 @@ class ComplicationForms {
                     print(row.value)
             }
         
-            <<< AlertRow<String>() {
+            <<< AlertRow<String>("Therapy") {
                 $0.title = "Therapy"
                 $0.value = "Enter"
                 $0.selectorTitle = "Which type of arrhythmia therapy?\n\nDefinition: Treatment with intravenous therapy (continuous infusion, bolus dosing, or electrolyte therapy)"
@@ -87,26 +88,26 @@ class ComplicationForms {
                 $0.title = "USE CODE SHEET FOR ACCURATE TIMES"
             }
             
-            <<< DateTimeInlineRow() {
+            <<< DateTimeInlineRow("startDate") {
                 $0.title = "Start date/time"
                 $0.value = NSDate()
             }
 
-            <<< DateTimeInlineRow() {
+            <<< DateTimeInlineRow("endDate") {
                 $0.title = "End date/time"
                 $0.value = NSDate()
             }
             
             +++ Section("Details")
             
-            <<< AlertRow<String>() {
+            <<< AlertRow<String>("outcome") {
                 $0.title = "CPR Outcome"
                 $0.selectorTitle = "CPR Outcome"
                 $0.options = ["ROSC", "ECMO", "DEATH"]
                 $0.value = "Enter"
             }
         
-            <<< AlertRow<String>() {
+            <<< AlertRow<String>("Hypothermia") {
                 $0.title = "Hypothermia protocol"
                 $0.selectorTitle = "Hypothermia protocol (<34 degrees)?\n\nNo implies hypothermia"
                 $0.options = ["Yes", "No"]
@@ -119,7 +120,7 @@ class ComplicationForms {
         
         mcsForm +++ Section("Dates and times")
         
-            <<< DateTimeInlineRow() {
+            <<< DateTimeInlineRow("date_1") {
                 $0.title = "Start date/time"
                 $0.value = NSDate()
             }
@@ -128,26 +129,26 @@ class ComplicationForms {
                 $0.title = "(End date) Do not enter: to be adjudicated by Data Manager"
             }
             
-            <<< DateTimeInlineRow() {
+            <<< DateTimeInlineRow("MCSE") {
                 $0.title = "MCS end date/time"
                 $0.value = nil
             }
             
             +++ Section("Details")
             
-            <<< SwitchRow() {
+            <<< SwitchRow("In post-ope period") {
                 $0.title = "In post-operative period?"
                 $0.value = false
             }
             
-            <<< AlertRow<String>() {
+            <<< AlertRow<String>("SupportType") {
                 $0.title = "Support type"
                 $0.value = "Enter"
                 $0.selectorTitle = "Select support type"
                 $0.options = ["VAD", "ECMO", "Both VAD and ECMO"]
             }
             
-            <<< AlertRow<String>() {
+            <<< AlertRow<String>("Reason") {
                 $0.title = "Primary reason"
                 $0.value = "Enter"
                 $0.selectorTitle = "Select primary reason for MCS"
@@ -163,7 +164,7 @@ class ComplicationForms {
                 ]
             }
             
-            <<< AlertRow<String>() {
+            <<< AlertRow<String>("ECPR") {
                 $0.title = "ECPR"
                 $0.value = "Enter"
                 $0.selectorTitle = "Enter ECPR"
@@ -173,7 +174,7 @@ class ComplicationForms {
                 ]
             }
             
-            <<< SwitchRow() {
+            <<< SwitchRow("MCSS") {
                 $0.title = "MCS present at start of CICU encounter?"
                 $0.value = false
             }
@@ -182,6 +183,13 @@ class ComplicationForms {
         formDict["cprlog"] = cprForm
         formDict["arrhythmialog"] = arrForm
         formDict["mcslog"] = mcsForm
+    }
+    
+    static func extractDataAndCleanForms() {
+        let arrForm = formDict["arrlog"]
+        var arrValues = arrForm?.values()
+        arrValues?.removeValueForKey("Therapies present at discharge?")
+        
     }
     
 }
