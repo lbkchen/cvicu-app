@@ -43,11 +43,15 @@ class ComplicationsCollectionViewController: UICollectionViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    */
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
+        if (segue.identifier == "toForm") {
+            segue.destinationViewController.navigationItem.title = (sender as! UIButton).titleLabel!.text!
+        }
         // Pass the selected object to the new view controller.
     }
-    */
     
     @IBAction func segue(sender: UIButton) {
         let complication = sender.titleLabel!.text!

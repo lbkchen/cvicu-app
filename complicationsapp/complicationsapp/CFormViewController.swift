@@ -14,16 +14,8 @@ class CFormViewController: FormViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
-        form +++ Section("Custom Cells")
-            <<< LabelRow() {
-                    $0.title = "yes"
-                    $0.value = "no"
-                }
-            <<< CheckRow() {
-                    $0.title = "am i a noob?"
-                    $0.value = true
-                }
+        ComplicationForms.createForms()
+        form = ComplicationForms.formDict["cprlog"]!
     }
 
     override func didReceiveMemoryWarning() {
