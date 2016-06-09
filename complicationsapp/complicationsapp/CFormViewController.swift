@@ -18,7 +18,6 @@ class CFormViewController: FormViewController {
 
         // Do any additional setup after loading the view.
         let forms = ComplicationForms(vc: self)
-        forms.createForms()
         form = forms.formDict[formName!]!
         form +++ Section("Submit")
 

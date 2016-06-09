@@ -197,6 +197,8 @@ class ComplicationForms {
     }
     
     func extractDataAndCleanForms() {
+        // Add cleaning operation
+        
         let arrForm = formDict["arrhythmialog"]
         var arrValues = arrForm!.values()
         SessionData.sharedInstance.addData(convertAllValuesToString(arrValues))
@@ -230,7 +232,7 @@ class ComplicationForms {
             } else if (thisValue is NSDate) {
                 let df = NSDateFormatter()
                 df.timeZone = NSTimeZone(abbreviation: "PST")
-                df.dateFormat = "MM/dd/yyyy hh:mm"
+                df.dateFormat = "MM/dd/yyyy HH:mm"
                 result[key] = df.stringFromDate(thisValue as! NSDate)
             } else if (thisValue is String?) {
                 result[key] = (thisValue as! String?)!
