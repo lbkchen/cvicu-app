@@ -16,6 +16,11 @@ class CFormViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // ----------------- Overall form setup ----------------- //
+        LabelRow.defaultCellUpdate = { cell, row in cell.textLabel?.textColor = .redColor()  }
+        
+        
+        // ----------------- Create form ----------------- //
         let forms = ComplicationForms(vc: self)
         
         form = forms.createForm(formName!)
@@ -28,6 +33,7 @@ class CFormViewController: FormViewController {
                     forms.extractDataAndCleanForms()
         }
         
+////        For the future, when multiple submissions are allowed in one go
 //        let forms : ComplicationForms?
 //        // Do any additional setup after loading the view.
 //        
@@ -55,7 +61,6 @@ class CFormViewController: FormViewController {
 //        } else {
 //            form = (forms?.formDict[formName!])!
 //        }
-        
         
     }
     
