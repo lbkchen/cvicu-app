@@ -15,18 +15,48 @@ class CFormViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
         let forms = ComplicationForms(vc: self)
-        form = forms.formDict[formName!]!
+        
+        form = forms.createForm(formName!)
         form +++ Section("Submit")
-
+            
             <<< ButtonRow() {
                 $0.title = "Submit log"
                 $0.presentationMode = .SegueName(segueName: "toConfirmation", completionCallback: nil)
-            }.onCellSelection { _, _ in
-                forms.extractDataAndCleanForms()
-            }
+                }.onCellSelection { _, _ in
+                    forms.extractDataAndCleanForms()
+        }
+        
+//        let forms : ComplicationForms?
+//        // Do any additional setup after loading the view.
+//        
+//        // If first form
+//        if (SessionData.sharedInstance.forms == nil) {
+//            forms = ComplicationForms(vc: self)
+//            SessionData.sharedInstance.forms = forms
+//        } else {
+//            forms = SessionData.sharedInstance.forms!
+//        }
+//        
+//        // Haven't entered in this form yet
+//        if (forms?.formDict[formName!] == nil) {
+//            forms?.createForm(formName!)
+//            
+//            form = forms!.formDict[formName!]!
+//            form +++ Section("Submit")
+//                
+//                <<< ButtonRow() {
+//                    $0.title = "Submit log"
+//                    $0.presentationMode = .SegueName(segueName: "toConfirmation", completionCallback: nil)
+//                    }.onCellSelection { _, _ in
+//                        forms!.extractDataAndCleanForms()
+//            }
+//        } else {
+//            form = (forms?.formDict[formName!])!
+//        }
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

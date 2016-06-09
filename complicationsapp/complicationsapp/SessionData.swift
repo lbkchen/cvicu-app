@@ -18,15 +18,17 @@ class SessionData {
     var patientLogs : [String : [String]]?
     var targetAction : String? // may be unnecessary, duplicate in NetworkHandler
     var postObject : [String : String] = [:]
+    var confirmObject : [String : String] = [:]
     var postKeys : [String] {
         get {
             var result = [String]()
-            for key in postObject.keys {
+            for key in confirmObject.keys {
                 result.append(key)
             }
             return result
         }
     }
+    var forms : ComplicationForms?
     
     let dateFormatter : NSDateFormatter = NSDateFormatter()
     
@@ -40,6 +42,14 @@ class SessionData {
         }
     }
     
+    func addData(dict: [String : String], toAdd: [String : String]) -> [String : String] {
+        var dict = dict
+        for key in toAdd.keys {
+            dict[key] = toAdd[key]!
+        }
+        return dict
+    }
+
     // day and time must be already added to postObject before this function is called
     func finalize() {
         
@@ -52,6 +62,8 @@ class SessionData {
         // add the current time as a variable "date"
         recordCurrentTime()
     }
+    
+    // TODO: Add another finalize function that sets postObject to equal confirmObject and then post
     
     // posts HTTP request to server with action addLog
     func postToServer() {

@@ -16,26 +16,32 @@ class ComplicationForms {
     
     
     // Instantiates an empty Form dictionary
-    var formDict = Complications.getEmptyDict(Complications.data) as! [String : Form]
+    var formDict = [String : Form]()
     var nonsenseKeys = Complications.getEmptyDictArray(Complications.data)
     
     init(vc: FormViewController) {
         self.vc = vc
-        createForms()
     }
     
-    // When called, creates all forms for complications, and adds them to listOfForms
-    func createForms() {
-        let arrForm = Form()
-        let cprForm = Form()
-        let mcsForm = Form()
-        
-        // ---------------------- Overall form setup ---------------------- //
-        LabelRow.defaultCellUpdate = { cell, row in cell.textLabel?.textColor = .redColor()  }
-        
-        
-        
+    func createForm(logName: String) -> Form {
+        var thisForm : Form
+        switch logName {
+            case "arrhythmialog":
+                thisForm = createArr()
+            case "cprlog":
+                thisForm = createCPR()
+            case "mcslog":
+                thisForm = createMCS()
+        default:
+            thisForm = Form()
+        }
+        formDict[logName] = thisForm
+        return thisForm
+    }
+    
+    func createArr() -> Form {
         // ---------------------- Arrhythmia form ---------------------- //
+        let arrForm = Form()
         arrForm +++ Section("Dates and times")
             
             <<< DateTimeInlineRow("date_1") {
@@ -57,7 +63,7 @@ class ComplicationForms {
                     return row.value ?? false == true
                 })
             }
-        
+            
             +++ Section("Details")
             
             <<< AlertRow<String>("Type") {
@@ -72,10 +78,10 @@ class ComplicationForms {
                     "Sinus or junctional bradycardia"
                 ]
                 $0.value = "Enter"
-            }.onChange { row in
+                }.onChange { row in
                     print(row.value)
             }
-        
+            
             <<< AlertRow<String>("Therapy") {
                 $0.title = "Therapy"
                 $0.value = "Enter"
@@ -88,9 +94,12 @@ class ComplicationForms {
                     "Cooling < 35 degrees"
                 ]
             }
-        
-        
+        return arrForm
+    }
+    
+    func createCPR() -> Form {
         // ---------------------- CPR form ---------------------- //
+        let cprForm = Form()
         cprForm +++ Section("Dates and times")
             
             <<< LabelRow() {
@@ -101,7 +110,7 @@ class ComplicationForms {
                 $0.title = "Start date/time"
                 $0.value = NSDate()
             }
-
+            
             <<< DateTimeInlineRow("endDate") {
                 $0.title = "End date/time"
                 $0.value = NSDate()
@@ -115,18 +124,21 @@ class ComplicationForms {
                 $0.options = ["ROSC", "ECMO", "DEATH"]
                 $0.value = "Enter"
             }
-        
+            
             <<< AlertRow<String>("Hypothermia") {
                 $0.title = "Hypothermia protocol"
                 $0.selectorTitle = "Hypothermia protocol (<34 degrees)?\n\nNo implies hypothermia"
                 $0.options = ["Yes", "No"]
                 $0.value = "Enter"
-            }
-        
-        
+        }
+        return cprForm
+    }
+    
+    func createMCS() -> Form {
         // ---------------------- MCS form ---------------------- //
+        let mcsForm = Form()
         mcsForm +++ Section("Dates and times")
-        
+            
             <<< DateTimeInlineRow("date_1") {
                 $0.title = "Start date/time"
                 $0.value = NSDate()
@@ -184,9 +196,26 @@ class ComplicationForms {
             <<< SwitchRow("MCSS") {
                 $0.title = "MCS present at start of CICU encounter?"
                 $0.value = false
-            }.onCellSelection { cell, row in
-                self.displayAlert("Full description", message: row.title!)
-            }
+                }.onCellSelection { cell, row in
+                    self.displayAlert("Full description", message: row.title!)
+                }
+        return mcsForm
+    }
+    // When called, creates all forms for complications, and adds them to listOfForms
+    func createForms() {
+        let arrForm = Form()
+        let cprForm = Form()
+        let mcsForm = Form()
+        
+        // ---------------------- Overall form setup ---------------------- //
+        LabelRow.defaultCellUpdate = { cell, row in cell.textLabel?.textColor = .redColor()  }
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -199,13 +228,19 @@ class ComplicationForms {
     func extractDataAndCleanForms() {
         // Add cleaning operation
         
-        let arrForm = formDict["arrhythmialog"]
-        var arrValues = arrForm!.values()
-        SessionData.sharedInstance.addData(convertAllValuesToString(arrValues))
-//        for key in formDict.keys {
-//            let form = formDict[key]
+//        let arrForm = formDict["arrhythmialog"]
+//        var arrValues = arrForm!.values()
+//        SessionData.sharedInstance.addData(convertAllValuesToString(arrValues))
+        for key in formDict.keys {
+            let form = formDict[key]
+            // reset confirmObject to postObject
+            let data = SessionData.sharedInstance
+            data.confirmObject = data.postObject
+            
+            let toAdd = convertAllValuesToString(form!.values())
+            data.confirmObject = data.addData(data.confirmObject, toAdd: toAdd)
 //            SessionData.sharedInstance.addData(convertAllValuesToString(form!.values()))
-//        }
+        }
     }
     
     // MARK: - Helper functions

@@ -12,13 +12,14 @@ class ConfirmationViewController: UIViewController {
     
     @IBOutlet weak var confirmLabel: UILabel!
     @IBOutlet weak var viewContainer: UIView!
-    
-    
+    static let defaultText = "Confirm submission for patient #"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // Load child collection view controller
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("confirmation") as! ConfirmationCollectionViewController
         self.addChildViewController(vc)
         
@@ -26,6 +27,11 @@ class ConfirmationViewController: UIViewController {
         container.addSubview(vc.view)
         vc.view.frame = container.bounds
         vc.didMoveToParentViewController(self)
+        
+        // Set label to patient MRN number
+        resetMRNLabel()
+        let MRN = String(SessionData.sharedInstance.MRN!)
+        confirmLabel.text = confirmLabel.text! + MRN + "?"
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,5 +53,10 @@ class ConfirmationViewController: UIViewController {
     
     // MARK: - Data submission
     @IBAction func submitLog(sender: UIButton) {
+    }
+    
+    // MARK: - Helper functions
+    func resetMRNLabel() {
+        confirmLabel.text = ConfirmationViewController.defaultText
     }
 }

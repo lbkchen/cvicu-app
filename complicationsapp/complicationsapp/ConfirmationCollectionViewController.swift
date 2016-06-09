@@ -12,6 +12,9 @@ private let reuseIdentifier = "confirmation"
 
 class ConfirmationCollectionViewController: UICollectionViewController {
     
+    let dataSource = SessionData.sharedInstance.confirmObject
+    let dataKeys = SessionData.sharedInstance.postKeys
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,7 +56,7 @@ class ConfirmationCollectionViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return SessionData.sharedInstance.postObject.count
+        return dataSource.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -63,10 +66,8 @@ class ConfirmationCollectionViewController: UICollectionViewController {
         let keyLabel = cell.viewWithTag(1) as! UILabel
         let valueLabel = cell.viewWithTag(2) as! UILabel
         
-        var postObject = SessionData.sharedInstance.postObject
-        var keySet = SessionData.sharedInstance.postKeys
-        keyLabel.text = keySet[indexPath.row]
-        valueLabel.text = postObject[keySet[indexPath.row]]
+        keyLabel.text = dataKeys[indexPath.row]
+        valueLabel.text = dataSource[dataKeys[indexPath.row]]
         return cell
     }
 
