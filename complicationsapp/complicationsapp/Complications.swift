@@ -92,6 +92,14 @@ class Complications {
         return result
     }
     
+    static func getEmptyDictArray(dict: [String : String]) -> [String : [String]] {
+        var result = [String : [String]]()
+        for key in dict.keys {
+            result[key] = nil
+        }
+        return result
+    }
+    
     static func resetCHCVC() {
         chcvcDict = Complications.getEmptyDict(data)
     }

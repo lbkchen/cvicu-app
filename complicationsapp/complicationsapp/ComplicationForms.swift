@@ -16,6 +16,7 @@ class ComplicationForms {
     
     // Instantiates an empty Form dictionary
     var formDict = Complications.getEmptyDict(Complications.data) as! [String : Form]
+    var nonsenseKeys = Complications.getEmptyDictArray(Complications.data)
     
     init(vc: FormViewController) {
         self.vc = vc
@@ -199,9 +200,9 @@ class ComplicationForms {
     
     func extractDataAndCleanForms() {
         let arrForm = formDict["arrlog"]
-        var arrValues = arrForm?.values()
-        arrValues?.removeValueForKey("Therapies present at discharge?")
-        
+        var arrValues = arrForm!.values()
+        arrValues.removeValueForKey("Therapies present at discharge?")
+        SessionData.sharedInstance.addData(convertAllValuesToString(arrValues))
     }
     
     // MARK: - Helper functions
@@ -209,6 +210,30 @@ class ComplicationForms {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
         self.vc!.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func convertAllValuesToString(dict: [String : Any?]) -> [String : String] {
+        var result = [String : String]()
+        for key in dict.keys {
+            var thisValue = dict[key]!
+            if (thisValue == nil) {
+                result[key] = "null"
+            } else {
+                thisValue = thisValue!
+            }
+            
+            if (thisValue is Int) {
+                result[key] = String(thisValue)
+            } else if (thisValue is Bool) {
+                result[key] = (thisValue as! Bool == true) ? "YES" : "NO"
+            } else if (thisValue is NSDate) {
+                let df = NSDateFormatter()
+                df.timeZone = NSTimeZone(abbreviation: "PST")
+                df.dateFormat = "MM/dd/yyyy hh:mm"
+                result[key] = df.stringFromDate(thisValue as! NSDate)
+            }
+        }
+        return result
     }
     
 }

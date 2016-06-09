@@ -25,6 +25,12 @@ class SessionData {
         postObject[key] = value
     }
     
+    func addData(dict: [String : String]) {
+        for key in dict.keys {
+            postObject[key] = dict[key]
+        }
+    }
+    
     // day and time must be already added to postObject before this function is called
     func finalize() {
         
