@@ -17,8 +17,9 @@ class CFormViewController: FormViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        ComplicationForms.createForms()
-        form = ComplicationForms.formDict[formName!]!
+        let forms = ComplicationForms(vc: self)
+        forms.createForms()
+        form = forms.formDict[formName!]!
         form +++ Section("Submit")
 
             <<< ButtonRow() {

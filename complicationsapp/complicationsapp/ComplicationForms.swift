@@ -11,11 +11,19 @@ import Eureka
 // Creates a variable to hold all the forms generated for each complication
 class ComplicationForms {
     
+    // Keeps a reference to the view controller being used to display
+    var vc: FormViewController?
+    
     // Instantiates an empty Form dictionary
-    static var formDict = Complications.getEmptyDict(Complications.data) as! [String : Form]
+    var formDict = Complications.getEmptyDict(Complications.data) as! [String : Form]
+    
+    init(vc: FormViewController) {
+        self.vc = vc
+        createForms()
+    }
     
     // When called, creates all forms for complications, and adds them to listOfForms
-    static func createForms() {
+    func createForms() {
         
         // ---------------------- Overall form setup ---------------------- //
         LabelRow.defaultCellUpdate = { cell, row in cell.textLabel?.textColor = .redColor()  }
@@ -177,7 +185,11 @@ class ComplicationForms {
             <<< SwitchRow("MCSS") {
                 $0.title = "MCS present at start of CICU encounter?"
                 $0.value = false
+            }.onCellSelection { cell, row in
+                self.displayAlert("Full description", message: row.title!)
             }
+        
+        
         
         // When done, add all forms to dictionary
         formDict["cprlog"] = cprForm
@@ -185,11 +197,18 @@ class ComplicationForms {
         formDict["mcslog"] = mcsForm
     }
     
-    static func extractDataAndCleanForms() {
+    func extractDataAndCleanForms() {
         let arrForm = formDict["arrlog"]
         var arrValues = arrForm?.values()
         arrValues?.removeValueForKey("Therapies present at discharge?")
         
+    }
+    
+    // MARK: - Helper functions
+    func displayAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+        self.vc!.presentViewController(alert, animated: true, completion: nil)
     }
     
 }
