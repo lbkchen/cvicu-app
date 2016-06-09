@@ -1,41 +1,38 @@
 //
-//  CFormViewController.swift
+//  ConfirmationViewController.swift
 //  complicationsapp
 //
-//  Created by Ken Chen on 6/7/16.
+//  Created by Ken Chen on 6/9/16.
 //  Copyright © 2016 cvicu. All rights reserved.
 //
 
-import Eureka
+import UIKit
 
-class CFormViewController: FormViewController {
+class ConfirmationViewController: UIViewController {
     
-    // Value is set in prepareForSegue from ComplicationsCollectionViewController
-    var formName : String?
-
+    @IBOutlet weak var confirmLabel: UILabel!
+    @IBOutlet weak var viewContainer: UIView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let forms = ComplicationForms(vc: self)
-        forms.createForms()
-        form = forms.formDict[formName!]!
-        form +++ Section("Submit")
-
-            <<< ButtonRow() {
-                $0.title = "Submit log"
-                $0.presentationMode = .SegueName(segueName: "toConfirmation", completionCallback: nil)
-            }.onCellSelection { _, _ in
-                forms.extractDataAndCleanForms()
-            }
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("confirmation") as! ConfirmationCollectionViewController
+        self.addChildViewController(vc)
+        
+        let container = self.view.viewWithTag(42)!
+        container.addSubview(vc.view)
+        vc.view.frame = container.bounds
+        vc.didMoveToParentViewController(self)
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -45,5 +42,10 @@ class CFormViewController: FormViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    // MARK: - CollectionView setup
+    
+    // MARK: - Data submission
+    @IBAction func submitLog(sender: UIButton) {
+    }
 }

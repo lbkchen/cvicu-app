@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3ACC211F81851F8D19956052 /* Pods_complicationsapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 310EEA4ADDA67BDFE3B8E737 /* Pods_complicationsapp.framework */; };
 		5D09D62DCD4F64AE041394E0 /* Pods_complicationsappTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F709D4958E2086DC50D2D6EE /* Pods_complicationsappTests.framework */; };
+		841FBE8E1D09F9C40063D3EF /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FBE8D1D09F9C40063D3EF /* ConfirmationViewController.swift */; };
+		841FBE901D0A02620063D3EF /* ConfirmationCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FBE8F1D0A02620063D3EF /* ConfirmationCollectionViewController.swift */; };
 		843371B21CFF7473003E1FBA /* SessionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843371B11CFF7473003E1FBA /* SessionData.swift */; };
 		843371B41CFF8D76003E1FBA /* ComplicationHistoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843371B31CFF8D76003E1FBA /* ComplicationHistoryCollectionViewController.swift */; };
 		843371B81CFFABF1003E1FBA /* ComplicationHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843371B71CFFABF1003E1FBA /* ComplicationHistoryCollectionViewCell.swift */; };
@@ -54,6 +56,8 @@
 		0694AF27A179B89BB043DFB8 /* Pods-complicationsappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-complicationsappTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-complicationsappTests/Pods-complicationsappTests.release.xcconfig"; sourceTree = "<group>"; };
 		2304AB8EFFB35951025D194B /* Pods-complicationsappUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-complicationsappUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-complicationsappUITests/Pods-complicationsappUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		310EEA4ADDA67BDFE3B8E737 /* Pods_complicationsapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_complicationsapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		841FBE8D1D09F9C40063D3EF /* ConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
+		841FBE8F1D0A02620063D3EF /* ConfirmationCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationCollectionViewController.swift; sourceTree = "<group>"; };
 		843371B11CFF7473003E1FBA /* SessionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionData.swift; sourceTree = "<group>"; };
 		843371B31CFF8D76003E1FBA /* ComplicationHistoryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationHistoryCollectionViewController.swift; sourceTree = "<group>"; };
 		843371B71CFFABF1003E1FBA /* ComplicationHistoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationHistoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 				84D3AB5B1D062AA4001FB757 /* TimeViewController.swift */,
 				847DDD8C1D076B8200E59AF3 /* CFormViewController.swift */,
 				84D3EAAC1D08DAD10079AA34 /* SubmitRow.swift */,
+				841FBE8D1D09F9C40063D3EF /* ConfirmationViewController.swift */,
+				841FBE8F1D0A02620063D3EF /* ConfirmationCollectionViewController.swift */,
 			);
 			path = complicationsapp;
 			sourceTree = "<group>";
@@ -480,12 +486,14 @@
 			files = (
 				847DDD8D1D076B8200E59AF3 /* CFormViewController.swift in Sources */,
 				84CF32E71D05F23A00C36573 /* CalendarViewController.swift in Sources */,
+				841FBE8E1D09F9C40063D3EF /* ConfirmationViewController.swift in Sources */,
 				849CE34E1CF4D13300D9D81E /* MRNViewController.swift in Sources */,
 				843371B21CFF7473003E1FBA /* SessionData.swift in Sources */,
 				8474D0591CF636F400374E69 /* ComplicationsCollectionViewCell.swift in Sources */,
 				843371B41CFF8D76003E1FBA /* ComplicationHistoryCollectionViewController.swift in Sources */,
 				84D3EAAD1D08DAD10079AA34 /* SubmitRow.swift in Sources */,
 				849CE37A1CF5016600D9D81E /* KeypadButton.swift in Sources */,
+				841FBE901D0A02620063D3EF /* ConfirmationCollectionViewController.swift in Sources */,
 				849CE34C1CF4D13300D9D81E /* AppDelegate.swift in Sources */,
 				8474D05C1CF6512B00374E69 /* Complications.swift in Sources */,
 				849CE37C1CF507D200D9D81E /* SimpleKeypadButton.swift in Sources */,

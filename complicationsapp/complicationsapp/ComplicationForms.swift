@@ -14,6 +14,7 @@ class ComplicationForms {
     // Keeps a reference to the view controller being used to display
     var vc: FormViewController?
     
+    
     // Instantiates an empty Form dictionary
     var formDict = Complications.getEmptyDict(Complications.data) as! [String : Form]
     var nonsenseKeys = Complications.getEmptyDictArray(Complications.data)
@@ -25,6 +26,9 @@ class ComplicationForms {
     
     // When called, creates all forms for complications, and adds them to listOfForms
     func createForms() {
+        let arrForm = Form()
+        let cprForm = Form()
+        let mcsForm = Form()
         
         // ---------------------- Overall form setup ---------------------- //
         LabelRow.defaultCellUpdate = { cell, row in cell.textLabel?.textColor = .redColor()  }
@@ -32,8 +36,6 @@ class ComplicationForms {
         
         
         // ---------------------- Arrhythmia form ---------------------- //
-        let arrForm = Form()
-        
         arrForm +++ Section("Dates and times")
             
             <<< DateTimeInlineRow("date_1") {
@@ -89,8 +91,6 @@ class ComplicationForms {
         
         
         // ---------------------- CPR form ---------------------- //
-        let cprForm = Form()
-        
         cprForm +++ Section("Dates and times")
             
             <<< LabelRow() {
@@ -125,8 +125,6 @@ class ComplicationForms {
         
         
         // ---------------------- MCS form ---------------------- //
-        let mcsForm = Form()
-        
         mcsForm +++ Section("Dates and times")
         
             <<< DateTimeInlineRow("date_1") {
@@ -199,10 +197,13 @@ class ComplicationForms {
     }
     
     func extractDataAndCleanForms() {
-        let arrForm = formDict["arrlog"]
+        let arrForm = formDict["arrhythmialog"]
         var arrValues = arrForm!.values()
-        arrValues.removeValueForKey("Therapies present at discharge?")
         SessionData.sharedInstance.addData(convertAllValuesToString(arrValues))
+//        for key in formDict.keys {
+//            let form = formDict[key]
+//            SessionData.sharedInstance.addData(convertAllValuesToString(form!.values()))
+//        }
     }
     
     // MARK: - Helper functions
@@ -231,6 +232,8 @@ class ComplicationForms {
                 df.timeZone = NSTimeZone(abbreviation: "PST")
                 df.dateFormat = "MM/dd/yyyy hh:mm"
                 result[key] = df.stringFromDate(thisValue as! NSDate)
+            } else if (thisValue is String?) {
+                result[key] = (thisValue as! String?)!
             }
         }
         return result

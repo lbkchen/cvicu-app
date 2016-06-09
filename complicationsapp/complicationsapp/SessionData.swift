@@ -18,6 +18,15 @@ class SessionData {
     var patientLogs : [String : [String]]?
     var targetAction : String? // may be unnecessary, duplicate in NetworkHandler
     var postObject : [String : String] = [:]
+    var postKeys : [String] {
+        get {
+            var result = [String]()
+            for key in postObject.keys {
+                result.append(key)
+            }
+            return result
+        }
+    }
     
     let dateFormatter : NSDateFormatter = NSDateFormatter()
     
@@ -27,7 +36,7 @@ class SessionData {
     
     func addData(dict: [String : String]) {
         for key in dict.keys {
-            postObject[key] = dict[key]
+            postObject[key] = dict[key]!
         }
     }
     
