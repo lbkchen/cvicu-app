@@ -17,7 +17,8 @@ class ComplicationForms {
     
     // Instantiates an empty Form dictionary
     var formDict = [String : Form]()
-    var nonsenseKeys = Complications.getEmptyDictArray(Complications.data)
+//    var nonsenseKeys = Complications.getEmptyDictArray(Complications.data)
+    var nonsenseKeys = [String : [String]]()
     
     init(vc: FormViewController) {
         self.vc = vc
@@ -185,7 +186,7 @@ class ComplicationForms {
             
             <<< AlertRow<String>("Plan") {
                 $0.title = "Planned or Unplanned"
-                $0.selectorTitle = "Planed or Unplaned?"
+                $0.selectorTitle = "Planned or Unplanned?"
                 $0.options = ["Planned", "Unplanned"]
                 $0.value = "Enter"
         }
@@ -474,6 +475,7 @@ class ComplicationForms {
             
             +++ Section("Confirmation")
             
+            // Remove tag in form-processing
             <<< SwitchRow("Confirmation"){
                 $0.title = "Are you a Data Manager?"
                 }.onCellSelection {cell, row in
@@ -708,7 +710,7 @@ class ComplicationForms {
                     self.displayAlert(row.title!, message: "")
             }
             
-            <<< DateTimeInlineRow("RDRD") {
+            <<< DateTimeInlineRow("RFRD") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["Renal failure requiring dialysis at the time of hospital discharge"], { form -> Bool in
@@ -1338,6 +1340,102 @@ class ComplicationForms {
         formDict["mcslog"] = mcsForm
     }
     
+    // Cleans tags and combines multiple values of form in formDict associated with logName
+    func cleanTagsAndGetCombinedValues(logName: String) -> [String : String] {
+        var values = convertAllValuesToString(formDict[logName]!.values())
+        switch logName {
+            case "arrhythmialog":
+                values.removeValueForKey("Therapies present at discharge?")
+            case "cprlog":
+                break
+            case "dsclog":
+                break
+            case "infeclog":
+                values.removeValueForKey("Endocarditis")
+                values.removeValueForKey("Pneumonia")
+                
+                // If CLABSI was filled out
+                if (values.keys.contains("CLABSI") && values["CLABSI"]! == "YES") {
+                    values["CLA"] = values["CLA Type"]! + " (\(values["CLA"]!))"
+                    values.removeValueForKey("CLABSI")
+                    values.removeValueForKey("CLA Type")
+                }
+                
+                values.removeValueForKey("Sepsis")
+                
+                // If SSI was filled out
+                if (values.keys.contains("Surgical Site Infection") && values["Surgical Site Infection"]! == "YES") {
+                    values["SSI"] = "\(values["SSI Type"]!) (\(values["SSI"]!))"
+                    values.removeValueForKey("Surgical Site Infection")
+                    values.removeValueForKey("SSI Type")
+                }
+
+                values.removeValueForKey("Meningitis")
+                
+                // If UTI was filled out
+                if (values.keys.contains("UTIinfec") && values["UTIinfec"]! == "YES") {
+                    values["UTI"] = "\(values["UTI Type"]!) (\(values["UTI"]!))"
+                    values.removeValueForKey("UTIinfec")
+                    values.removeValueForKey("UTI Type")
+                }
+            case "lcoslog":
+                values.removeValueForKey("Confirmation")
+            case "mcslog":
+                break
+            case "odlog":
+                // If MSOF was filled out
+                if (values.keys.contains("MSOF") && values["MSOF"]! == "YES") {
+                    values["msof"] = "\(values["MSOF Type"]!) (\(values["msof"]!))"
+                    values.removeValueForKey("MSOF")
+                    values.removeValueForKey("MSOF Type")
+                }
+                
+                // If RFRD was filled out
+                let RFRD = "Renal failure requiring dialysis at the time of hospital discharge"
+                if (values.keys.contains(RFRD) && values[RFRD]! == "YES") {
+                    values["RFRD"] = "\(values["RFRD Type"]!) (\(values["RFRD"]!))"
+                    values.removeValueForKey(RFRD)
+                    values.removeValueForKey("RFRD Type")
+                }
+            
+                // If ND was filled out
+                if (values.keys.contains("Neurological deficit") && values["Neurological deficit"]! == "YES") {
+                    values["ND"] = "\(values["ND Presence"]!) (\(values["ND"]!))"
+                    values.removeValueForKey("Neurological deficit")
+                    values.removeValueForKey("ND Presence")
+                }
+            
+                values.removeValueForKey("Peripheral nerve injury, persistenting at discharge")
+                values.removeValueForKey("Seizure")
+                values.removeValueForKey("Spinal cord injury")
+                values.removeValueForKey("Stroke")
+                values.removeValueForKey("Wound dehiscence (sterile)")
+                values.removeValueForKey("Median sternotomy")
+            case "phlog":
+                values.removeValueForKey("Therapy present at discharge?")
+                values.removeValueForKey("Confirmation")
+            case "reslog":
+                values.removeValueForKey("NPCT")
+                values.removeValueForKey("chylothorax")
+                values.removeValueForKey("pleuraleffusion")
+                values.removeValueForKey("pneumothorax")
+                values.removeValueForKey("hemothorax")
+                values.removeValueForKey("ards")
+                values.removeValueForKey("pulmembol")
+                values.removeValueForKey("Post-operative/Post-procedureal respiratory insufficiency requiring mechanical ventilatory support")
+                values.removeValueForKey("Post-operative/Post-procedureal respiratory insufficiency requiring reintubation")
+                values.removeValueForKey("rfrt")
+                values.removeValueForKey("pd")
+                values.removeValueForKey("vcd")
+            case "uoplog":
+                break
+        default:
+            print("Invalid log to cleanTagsAndGetCombinedValues: \(logName)")
+        }
+        
+        return values
+    }
+    
     func extractDataAndCleanForms() {
         // Add cleaning operation
         
@@ -1346,11 +1444,13 @@ class ComplicationForms {
 //        SessionData.sharedInstance.addData(convertAllValuesToString(arrValues))
         for key in formDict.keys {
             let form = formDict[key]
+
             // reset confirmObject to postObject
             let data = SessionData.sharedInstance
             data.confirmObject = data.postObject
             
-            let toAdd = convertAllValuesToString(form!.values())
+            let toAdd = cleanTagsAndGetCombinedValues(key)
+//            let toAdd = convertAllValuesToString(form!.values())
             data.confirmObject = data.addData(data.confirmObject, toAdd: toAdd)
 //            SessionData.sharedInstance.addData(convertAllValuesToString(form!.values()))
         }
