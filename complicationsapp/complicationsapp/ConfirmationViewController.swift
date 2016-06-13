@@ -53,6 +53,8 @@ class ConfirmationViewController: UIViewController {
     
     // MARK: - Data submission
     @IBAction func submitLog(sender: UIButton) {
+        SessionData.sharedInstance.finalizeLong()
+        SessionData.sharedInstance.postToServer()
     }
     
     // MARK: - Helper functions

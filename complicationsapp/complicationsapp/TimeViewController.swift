@@ -41,7 +41,7 @@ class TimeViewController: UIViewController {
     
     @IBAction func submitLog(sender: UIButton) {
         recordTime()
-        SessionData.sharedInstance.finalize()
+        SessionData.sharedInstance.finalizeShort()
         SessionData.sharedInstance.postToServer()
     }
     

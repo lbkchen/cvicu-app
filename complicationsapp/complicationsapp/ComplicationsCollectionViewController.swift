@@ -58,9 +58,9 @@ class ComplicationsCollectionViewController: UICollectionViewController {
     
     @IBAction func segue(sender: UIButton) {
         let complication = sender.titleLabel!.text!
+        let table = Complications.dataB[complication]!
+        SessionData.sharedInstance.addData("Table", value: table)
         if (Complications.oneStep.contains(complication)) {
-            let table = Complications.dataB[complication]!
-            SessionData.sharedInstance.addData("Table", value: table)
             performSegueWithIdentifier("calendar", sender: sender)
         } else {
             performSegueWithIdentifier("toForm", sender: sender)

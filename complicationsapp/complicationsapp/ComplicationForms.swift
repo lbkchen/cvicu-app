@@ -478,6 +478,7 @@ class ComplicationForms {
             // Remove tag in form-processing
             <<< SwitchRow("Confirmation"){
                 $0.title = "Are you a Data Manager?"
+                $0.value = false
                 }.onCellSelection {cell, row in
                     self.displayAlert(row.title!, message: "")
             }
@@ -1320,26 +1321,6 @@ class ComplicationForms {
         return uopForm
     }
     
-    
-    // When called, creates all forms for complications, and adds them to listOfForms
-    func createForms() {
-        let arrForm = Form()
-        let cprForm = Form()
-        let mcsForm = Form()
-        
-        
-        
-        
-        
-        
-        
-        
-        // When done, add all forms to dictionary
-        formDict["cprlog"] = cprForm
-        formDict["arrhythmialog"] = arrForm
-        formDict["mcslog"] = mcsForm
-    }
-    
     // Cleans tags and combines multiple values of form in formDict associated with logName
     func cleanTagsAndGetCombinedValues(logName: String) -> [String : String] {
         var values = convertAllValuesToString(formDict[logName]!.values())
@@ -1351,32 +1332,39 @@ class ComplicationForms {
             case "dsclog":
                 break
             case "infeclog":
-                values.removeValueForKey("Endocarditis")
-                values.removeValueForKey("Pneumonia")
-                
                 // If CLABSI was filled out
                 if (values.keys.contains("CLABSI") && values["CLABSI"]! == "YES") {
                     values["CLA"] = values["CLA Type"]! + " (\(values["CLA"]!))"
-                    values.removeValueForKey("CLABSI")
                     values.removeValueForKey("CLA Type")
                 }
-                
-                values.removeValueForKey("Sepsis")
                 
                 // If SSI was filled out
                 if (values.keys.contains("Surgical Site Infection") && values["Surgical Site Infection"]! == "YES") {
                     values["SSI"] = "\(values["SSI Type"]!) (\(values["SSI"]!))"
-                    values.removeValueForKey("Surgical Site Infection")
                     values.removeValueForKey("SSI Type")
                 }
-
-                values.removeValueForKey("Meningitis")
                 
                 // If UTI was filled out
                 if (values.keys.contains("UTIinfec") && values["UTIinfec"]! == "YES") {
                     values["UTI"] = "\(values["UTI Type"]!) (\(values["UTI"]!))"
-                    values.removeValueForKey("UTIinfec")
                     values.removeValueForKey("UTI Type")
+                }
+            
+                let toChange = [
+                    "Endocarditis" : "END",
+                    "Pneumonia" : "PNE",
+                    "CLABSI" : "CLA",
+                    "Sepsis" : "SEP",
+                    "Surgical Site Infection" : "SSI",
+                    "Meningitis" : "MEN",
+                    "UTIinfec" : "UTI"
+                ]
+            
+                for (key, value) in toChange {
+                    if (values[key]! == "NO") {
+                        values[value] = "NO"
+                    }
+                    values.removeValueForKey(key)
                 }
             case "lcoslog":
                 values.removeValueForKey("Confirmation")
@@ -1386,7 +1374,6 @@ class ComplicationForms {
                 // If MSOF was filled out
                 if (values.keys.contains("MSOF") && values["MSOF"]! == "YES") {
                     values["msof"] = "\(values["MSOF Type"]!) (\(values["msof"]!))"
-                    values.removeValueForKey("MSOF")
                     values.removeValueForKey("MSOF Type")
                 }
                 
@@ -1394,39 +1381,56 @@ class ComplicationForms {
                 let RFRD = "Renal failure requiring dialysis at the time of hospital discharge"
                 if (values.keys.contains(RFRD) && values[RFRD]! == "YES") {
                     values["RFRD"] = "\(values["RFRD Type"]!) (\(values["RFRD"]!))"
-                    values.removeValueForKey(RFRD)
                     values.removeValueForKey("RFRD Type")
                 }
             
                 // If ND was filled out
                 if (values.keys.contains("Neurological deficit") && values["Neurological deficit"]! == "YES") {
                     values["ND"] = "\(values["ND Presence"]!) (\(values["ND"]!))"
-                    values.removeValueForKey("Neurological deficit")
                     values.removeValueForKey("ND Presence")
                 }
-            
-                values.removeValueForKey("Peripheral nerve injury, persistenting at discharge")
-                values.removeValueForKey("Seizure")
-                values.removeValueForKey("Spinal cord injury")
-                values.removeValueForKey("Stroke")
-                values.removeValueForKey("Wound dehiscence (sterile)")
-                values.removeValueForKey("Median sternotomy")
+                
+                let toChange = [
+                    "MSOF" : "msof",
+                    RFRD : "RFRD",
+                    "Neurological deficit" : "ND",
+                    "Peripheral nerve injury, persistenting at discharge" : "PNI",
+                    "Seizure" : "seizure",
+                    "Spinal cord injury" : "SCI",
+                    "Stroke" : "stroke",
+                    "Wound dehiscence (sterile)" : "wound",
+                    "Median sternotomy" : "MS"]
+
+                for (key, value) in toChange {
+                    if (values[key]! == "NO") {
+                        values[value] = "NO"
+                    }
+                    values.removeValueForKey(key)
+                }
             case "phlog":
                 values.removeValueForKey("Therapy present at discharge?")
                 values.removeValueForKey("Confirmation")
             case "reslog":
-                values.removeValueForKey("NPCT")
-                values.removeValueForKey("chylothorax")
-                values.removeValueForKey("pleuraleffusion")
-                values.removeValueForKey("pneumothorax")
-                values.removeValueForKey("hemothorax")
-                values.removeValueForKey("ards")
-                values.removeValueForKey("pulmembol")
-                values.removeValueForKey("Post-operative/Post-procedureal respiratory insufficiency requiring mechanical ventilatory support")
-                values.removeValueForKey("Post-operative/Post-procedureal respiratory insufficiency requiring reintubation")
-                values.removeValueForKey("rfrt")
-                values.removeValueForKey("pd")
-                values.removeValueForKey("vcd")
+                let toChange = [
+                    "NPCT" : "Necessary to place a chest tube?",
+                    "chylothorax" : "Chylothorax requiring intervention",
+                    "pleuraleffusion" : "Pleural effusion requiring drainage",
+                    "pneumothorax" : "Pneumothorax requiring drainage",
+                    "hemothorax" : "Hemothorax requiring drainage",
+                    "ards" : "ARDS",
+                    "pulmembol" : "Pulmonary embolism",
+                    "Post-operative/Post-procedureal respiratory insufficiency requiring mechanical ventilatory support" : "PPRIRMVS",
+                    "Post-operative/Post-procedureal respiratory insufficiency requiring reintubation" : "PPRIRR",
+                    "rfrt" : "Respiratory failure requiring tracheostomy",
+                    "pd" : "Paralyzed diaphragm",
+                    "vcd" : "Vocal cord dysfunction"
+                ]
+                for (key, value) in toChange {
+                    if (values[key]! == "NO") {
+                        values[value] = "NO"
+                    }
+                    values.removeValueForKey(key)
+                }
             case "uoplog":
                 break
         default:
@@ -1437,22 +1441,14 @@ class ComplicationForms {
     }
     
     func extractDataAndCleanForms() {
-        // Add cleaning operation
-        
-//        let arrForm = formDict["arrhythmialog"]
-//        var arrValues = arrForm!.values()
-//        SessionData.sharedInstance.addData(convertAllValuesToString(arrValues))
         for key in formDict.keys {
-            let form = formDict[key]
 
             // reset confirmObject to postObject
             let data = SessionData.sharedInstance
             data.confirmObject = data.postObject
             
             let toAdd = cleanTagsAndGetCombinedValues(key)
-//            let toAdd = convertAllValuesToString(form!.values())
             data.confirmObject = data.addData(data.confirmObject, toAdd: toAdd)
-//            SessionData.sharedInstance.addData(convertAllValuesToString(form!.values()))
         }
     }
     
@@ -1484,7 +1480,7 @@ class ComplicationForms {
                 result[key] = df.stringFromDate(thisValue as! NSDate)
             } else if (thisValue is String?) {
                 result[key] = (thisValue as! String?)!
-            }
+            } 
         }
         return result
     }

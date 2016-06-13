@@ -51,7 +51,7 @@ class SessionData {
     }
 
     // day and time must be already added to postObject before this function is called
-    func finalize() {
+    func finalizeShort() {
         
         // combine values for day and time into "date_1", and remove the constituent keys
         let date = "\(postObject["day"]!) \(postObject["time"]!)"
@@ -63,7 +63,11 @@ class SessionData {
         recordCurrentTime()
     }
     
-    // TODO: Add another finalize function that sets postObject to equal confirmObject and then post
+    // Another finalize function that sets postObject to equal confirmObject and then post
+    func finalizeLong() {
+        SessionData.sharedInstance.postObject = SessionData.sharedInstance.confirmObject
+        recordCurrentTime()
+    }
     
     // posts HTTP request to server with action addLog
     func postToServer() {
