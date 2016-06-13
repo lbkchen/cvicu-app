@@ -496,7 +496,7 @@ class ComplicationForms {
                     let row: RowOf<Bool>! = form.rowByTag("Confirmation")
                     return row.value ?? false == false
                 })
-                }.onCellSelection {cell, row in
+            }.onCellSelection {cell, row in
                     self.displayAlert(row.title!, message: "")
             }
             
@@ -930,7 +930,7 @@ class ComplicationForms {
             // Remove tag in form-processing
             <<< SwitchRow("Therapy present at discharge?") {
                 $0.title = $0.tag
-                $0.value = false
+                $0.value = true
                 }.onCellSelection {cell, row in
                     self.displayAlert(row.title!, message: "")
             }
@@ -941,7 +941,7 @@ class ComplicationForms {
                 $0.value = false
                 $0.hidden = .Function(["Therapy present at discharge?"], { form -> Bool in
                     let row: RowOf<Bool>! = form.rowByTag("Therapy present at discharge?")
-                    return row.value ?? false == false
+                    return row.value ?? false == true
                 })
                 }.onCellSelection {cell, row in
                     self.displayAlert(row.title!, message: "")

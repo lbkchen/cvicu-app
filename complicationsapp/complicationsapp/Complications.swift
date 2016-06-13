@@ -75,6 +75,27 @@ class Complications {
         "Intraoperative death or intraprocedural death"
     ]
     
+    static let mainDate = [
+        "arrhythmialog" : "date_1",
+        "cprlog" : "startDate",
+        "dsclog" : "date_1",
+        "ididlog" : "date_1",
+        "infeclog" : "Infections", // FIXME
+        "lcoslog" : "date_1",
+        "lhtlog" : "date_1",
+        "mcslog" : "date_1",
+        "odlog" : "ORGAN DYSFUNCTION", // FIXME
+        "perdlog" : "date_1",
+        "phlog" : "date_1",
+        "pvolog" : "",
+        "rblog" : "Reoperation for bleeding",
+        "reslog" : "RESPIRATORY",
+        "svolog" : "Systemic vein obstruction",
+        "uoplog" : "Unplanned operation/procedure",
+        "urcclog" : "Unplanned return to CICU (<48 hours)",
+        "urhlog" : "Unplanned readmission to the hospital within 30 days"
+    ]
+    
     // args must be a one to one mapping
     static func reverseKeyValue(args: [String : String]) -> [String : String] {
         var result = [String : String]()

@@ -88,7 +88,7 @@ class SessionData {
     
     // logs the patient's MRN
     func recordMRN() {
-        postObject["FIN"] = String(self.MRN!)
+        postObject["MRN"] = String(self.MRN!)
     }
     
     // logs the current time
