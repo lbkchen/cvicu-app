@@ -30,7 +30,7 @@ class ConfirmationViewController: UIViewController {
         
         // Set label to patient MRN number
         resetMRNLabel()
-        let MRN = String(SessionData.sharedInstance.MRN!)
+        let MRN = SessionData.sharedInstance.MRN!
         confirmLabel.text = confirmLabel.text! + MRN + "?"
     }
 

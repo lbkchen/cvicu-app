@@ -46,7 +46,7 @@ class MRNViewController: UIViewController {
         SessionData.clearData()
         
         // Set SessionData MRN and record
-        SessionData.sharedInstance.MRN = Int(MRNValue.text!)
+        SessionData.sharedInstance.MRN = MRNValue.text!
         SessionData.sharedInstance.recordMRN()
         
         // Reset stored CHCVC cache
@@ -54,7 +54,7 @@ class MRNViewController: UIViewController {
         
         // Connect to network and requestLogs
         let url = "http://localhost:3000"
-        let args = ["MRN" : String(SessionData.sharedInstance.MRN!)]
+        let args = ["FIN" : SessionData.sharedInstance.MRN!]
         let net = NetworkHandler(url: url, targetAction: "requestLogs", args: args)
         net.postToServer()
         while (SessionData.sharedInstance.patientLogs == nil) {

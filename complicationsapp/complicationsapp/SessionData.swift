@@ -14,7 +14,7 @@ class SessionData {
     static let sharedInstance = SessionData()
     private init() {} // Prevents access
     
-    var MRN : Int?
+    var MRN : String?
     var patientLogs : [String : [String]]?
     var targetAction : String? // may be unnecessary, duplicate in NetworkHandler
     var postObject : [String : String] = [:]
@@ -89,7 +89,7 @@ class SessionData {
     
     // logs the patient's MRN
     func recordMRN() {
-        postObject["MRN"] = String(self.MRN!)
+        postObject["MRN"] = self.MRN!
     }
     
     // logs the current time
