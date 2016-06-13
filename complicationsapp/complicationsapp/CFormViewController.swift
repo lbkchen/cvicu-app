@@ -17,8 +17,9 @@ class CFormViewController: FormViewController {
         super.viewDidLoad()
         
         // ----------------- Overall form setup ----------------- //
+        let green = UIColor(red: 57, green: 189, blue: 92, alpha: 1)
         LabelRow.defaultCellUpdate = { cell, row in cell.textLabel?.textColor = .redColor()  }
-        
+        SLabelRow.defaultCellUpdate = { cell, row in cell.textLabel?.textColor = row.value! == "YES" ? green : .redColor()}
         
         // ----------------- Create form ----------------- //
         let forms = ComplicationForms(vc: self)

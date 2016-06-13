@@ -14,6 +14,7 @@
 		843371B21CFF7473003E1FBA /* SessionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843371B11CFF7473003E1FBA /* SessionData.swift */; };
 		843371B41CFF8D76003E1FBA /* ComplicationHistoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843371B31CFF8D76003E1FBA /* ComplicationHistoryCollectionViewController.swift */; };
 		843371B81CFFABF1003E1FBA /* ComplicationHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843371B71CFFABF1003E1FBA /* ComplicationHistoryCollectionViewCell.swift */; };
+		844D78FE1D0F4452005A1E8C /* SLabelRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D78FD1D0F4452005A1E8C /* SLabelRow.swift */; };
 		845B0AE11D07790D00F6E4AB /* ComplicationForms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B0AE01D07790D00F6E4AB /* ComplicationForms.swift */; };
 		8474D0591CF636F400374E69 /* ComplicationsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474D0581CF636F400374E69 /* ComplicationsCollectionViewCell.swift */; };
 		8474D05C1CF6512B00374E69 /* Complications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474D05B1CF6512B00374E69 /* Complications.swift */; };
@@ -61,6 +62,7 @@
 		843371B11CFF7473003E1FBA /* SessionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionData.swift; sourceTree = "<group>"; };
 		843371B31CFF8D76003E1FBA /* ComplicationHistoryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationHistoryCollectionViewController.swift; sourceTree = "<group>"; };
 		843371B71CFFABF1003E1FBA /* ComplicationHistoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationHistoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		844D78FD1D0F4452005A1E8C /* SLabelRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLabelRow.swift; sourceTree = "<group>"; };
 		845B0AE01D07790D00F6E4AB /* ComplicationForms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationForms.swift; sourceTree = "<group>"; };
 		8474D0561CF6343A00374E69 /* ComplicationsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationsCollectionViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		8474D0581CF636F400374E69 /* ComplicationsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				84EA0ADF1CF8EA9700AD1748 /* NetworkHandler.swift */,
 				843371B11CFF7473003E1FBA /* SessionData.swift */,
 				845B0AE01D07790D00F6E4AB /* ComplicationForms.swift */,
+				844D78FD1D0F4452005A1E8C /* SLabelRow.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				847DDD8D1D076B8200E59AF3 /* CFormViewController.swift in Sources */,
 				84CF32E71D05F23A00C36573 /* CalendarViewController.swift in Sources */,
 				841FBE8E1D09F9C40063D3EF /* ConfirmationViewController.swift in Sources */,
+				844D78FE1D0F4452005A1E8C /* SLabelRow.swift in Sources */,
 				849CE34E1CF4D13300D9D81E /* MRNViewController.swift in Sources */,
 				843371B21CFF7473003E1FBA /* SessionData.swift in Sources */,
 				8474D0591CF636F400374E69 /* ComplicationsCollectionViewCell.swift in Sources */,
