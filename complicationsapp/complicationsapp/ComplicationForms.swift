@@ -66,14 +66,9 @@ class ComplicationForms {
             }
             
             // Need to remove tag in form-processing
-            <<< SwitchRow("Therapies present at discharge?") {
+            <<< SLabelRow("Therapies present at discharge?") {
                 $0.title = $0.tag
-                $0.value = true
-            }
-            
-            <<< SLabelRow("wef") {
-                $0.title = "Example"
-                $0.value = "NO"
+                $0.value = "YES"
                 $0.cell.selectionStyle = .Default
             }.onCellSelection {cell, row in
                 row.value = row.value! == "YES" ? "NO" : "YES"
@@ -84,12 +79,8 @@ class ComplicationForms {
             <<< DateTimeInlineRow("StopDate") {
                 $0.title = "Stop date/time"
                 $0.value = NSDate()
-//                $0.hidden = .Function(["Therapies present at discharge?"], { form -> Bool in
-//                    let row: RowOf<Bool>! = form.rowByTag("Therapies present at discharge?")
-//                    return row.value ?? false == true
-//                })
-                $0.hidden = .Function(["wef"], { form -> Bool in
-                    let row : RowOf! = form.rowByTag("wef") as! SLabelRow
+                $0.hidden = .Function(["Therapies present at discharge?"], { form -> Bool in
+                    let row : RowOf! = form.rowByTag("Therapies present at discharge?") as! SLabelRow
                     return row.value! == "YES" ? true : false
                 })
             }

@@ -17,9 +17,10 @@ class CFormViewController: FormViewController {
         super.viewDidLoad()
         
         // ----------------- Overall form setup ----------------- //
-        let green = UIColor(red: 57, green: 189, blue: 92, alpha: 1)
+        let green = UIColor(red: 57/255, green: 189/255, blue: 92/255, alpha: 1)
+        let red = UIColor(red: 230/255, green: 62/255, blue: 98/255, alpha: 1)
         LabelRow.defaultCellUpdate = { cell, row in cell.textLabel?.textColor = .redColor()  }
-        SLabelRow.defaultCellUpdate = { cell, row in cell.textLabel?.textColor = row.value! == "YES" ? green : .redColor()}
+        SLabelRow.defaultCellUpdate = { cell, row in cell.textLabel?.textColor = row.value! == "YES" ? green : red}
         
         // ----------------- Create form ----------------- //
         let forms = ComplicationForms(vc: self)
@@ -30,9 +31,9 @@ class CFormViewController: FormViewController {
             <<< ButtonRow() {
                 $0.title = "Submit log"
                 $0.presentationMode = .SegueName(segueName: "toConfirmation", completionCallback: nil)
-                }.onCellSelection { _, _ in
+            }.onCellSelection { _, _ in
                     forms.extractDataAndCleanForms()
-        }
+            }
         
 ////        For the future, when multiple submissions are allowed in one go
 //        let forms : ComplicationForms?

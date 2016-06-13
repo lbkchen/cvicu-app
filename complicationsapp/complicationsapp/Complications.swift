@@ -80,20 +80,20 @@ class Complications {
         "cprlog" : "startDate",
         "dsclog" : "date_1",
         "ididlog" : "date_1",
-        "infeclog" : "Infections", // FIXME
+        "infeclog" : "date", // FIXME: No "most recent date option"
         "lcoslog" : "date_1",
         "lhtlog" : "date_1",
         "mcslog" : "date_1",
-        "odlog" : "ORGAN DYSFUNCTION", // FIXME
+        "odlog" : "date", // FIXME: No "most recent date option"
         "perdlog" : "date_1",
         "phlog" : "date_1",
-        "pvolog" : "",
-        "rblog" : "Reoperation for bleeding",
-        "reslog" : "RESPIRATORY",
-        "svolog" : "Systemic vein obstruction",
-        "uoplog" : "Unplanned operation/procedure",
-        "urcclog" : "Unplanned return to CICU (<48 hours)",
-        "urhlog" : "Unplanned readmission to the hospital within 30 days"
+        "pvolog" : "date_1",
+        "rblog" : "date_1",
+        "reslog" : "date", // FIXME: No "most recent date option"
+        "svolog" : "date_1",
+        "uoplog" : "date_1",
+        "urcclog" : "date_1",
+        "urhlog" : "date_1"
     ]
     
     // args must be a one to one mapping

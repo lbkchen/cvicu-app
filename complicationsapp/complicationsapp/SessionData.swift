@@ -76,6 +76,7 @@ class SessionData {
     // Another finalize function that sets postObject to equal confirmObject and then post
     func finalizeLong() {
         SessionData.sharedInstance.postObject = SessionData.sharedInstance.confirmObject
+        changeMRNtoFIN()
         recordCurrentTime()
     }
     
@@ -98,6 +99,16 @@ class SessionData {
         dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
         let currentString = dateFormatter.stringFromDate(current)
         postObject["date"] = currentString
+    }
+    
+    // changes the label MRN to FIN (or Fin) just for logging purposes
+    // if the database changes, this function should change / be removed
+    func changeMRNtoFIN() {
+        if (postObject.keys.contains("MRN")) {
+            let replacement = postObject["Table"]! == "infeclog" ? "Fin" : "FIN"
+            postObject[replacement] = postObject["MRN"]
+            postObject.removeValueForKey("MRN")
+        }
     }
     
     // for debugging
