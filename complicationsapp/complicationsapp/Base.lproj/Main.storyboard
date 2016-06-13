@@ -737,6 +737,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="submitLog:" destination="xbx-yd-0td" eventType="touchUpInside" id="jv6-Tx-nwU"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="longSubmit" id="sxC-q6-aQ8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -822,6 +823,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="submitLog:" destination="oDS-7S-K2m" eventType="touchUpInside" id="0pY-NP-xfN"/>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="shortSubmit" id="ygz-e4-Cn7"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -876,4 +878,7 @@
             <point key="canvasLocation" x="2315" y="409"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ygz-e4-Cn7"/>
+    </inferredMetricsTieBreakers>
 </document>

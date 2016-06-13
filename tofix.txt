@@ -1,0 +1,4 @@
+infeclog: 
+	- one of only tables that has MRN number as “fin” instead of “FIN”, can’t log
+overall:
+	- display dates as date of complication, not logged (use a dict)

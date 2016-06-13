@@ -49,6 +49,16 @@ class SessionData {
         }
         return dict
     }
+    
+    static func clearData() {
+        let sd = SessionData.sharedInstance
+        sd.MRN = nil
+        sd.patientLogs = nil
+        sd.targetAction = nil
+        sd.postObject = [:]
+        sd.confirmObject = [:]
+        sd.forms = nil
+    }
 
     // day and time must be already added to postObject before this function is called
     func finalizeShort() {

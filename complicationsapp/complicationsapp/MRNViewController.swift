@@ -42,6 +42,9 @@ class MRNViewController: UIViewController {
     }
     
     @IBAction func submitValue(sender: SimpleKeypadButton) {
+        // Reset SessionData
+        SessionData.clearData()
+        
         // Set SessionData MRN and record
         SessionData.sharedInstance.MRN = Int(MRNValue.text!)
         SessionData.sharedInstance.recordMRN()
