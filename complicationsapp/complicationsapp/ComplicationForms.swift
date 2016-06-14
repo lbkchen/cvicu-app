@@ -279,51 +279,66 @@ class ComplicationForms {
             +++ Section("Details")
             
             // Remove tag in form-processing
-            <<< SwitchRow("Endocarditis") {
+            <<< SLabelRow("Endocarditis") {
                 $0.title = $0.tag
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             <<< DateTimeInlineRow("END") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["Endocarditis"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Endocarditis")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Endocarditis") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("Pneumonia") {
+            <<< SLabelRow("Pneumonia") {
                 $0.title = $0.tag
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             <<< DateTimeInlineRow("PNE") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["Pneumonia"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Pneumonia")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Pneumonia") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("CLABSI") {
+            <<< SLabelRow("CLABSI") {
                 $0.title = $0.tag
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             <<< DateTimeInlineRow("CLA") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["CLABSI"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("CLABSI")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("CLABSI") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
@@ -340,42 +355,52 @@ class ComplicationForms {
                     "Unknown"
                 ]
                 $0.hidden = .Function(["CLABSI"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("CLABSI")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("CLABSI") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("Sepsis") {
+            <<< SLabelRow("Sepsis") {
                 $0.title = $0.tag
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             <<< DateTimeInlineRow("SEP") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["Sepsis"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Sepsis")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Sepsis") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("Surgical Site Infection") {
+            <<< SLabelRow("Surgical Site Infection") {
                 $0.title = $0.tag
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             <<< DateTimeInlineRow("SSI") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["Surgical Site Infection"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Surgical Site Infection")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Surgical Site Infection") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
@@ -395,42 +420,52 @@ class ComplicationForms {
                     "Deep - Unknown"
                 ]
                 $0.hidden = .Function(["Surgical Site Infection"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Surgical Site Infection")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Surgical Site Infection") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("Meningitis") {
+            <<< SLabelRow("Meningitis") {
                 $0.title = $0.tag
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             <<< DateTimeInlineRow("MEN") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["Meningitis"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Meningitis")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Meningitis") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("UTIinfec") {
+            <<< SLabelRow("UTIinfec") {
                 $0.title = "UTI"
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             <<< DateTimeInlineRow("UTI") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["UTIinfec"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("UTIinfec")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("UTIinfec") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
@@ -447,8 +482,8 @@ class ComplicationForms {
                     "Unknown"
                 ]
                 $0.hidden = .Function(["UTIinfec"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("UTIinfec")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("UTIinfec") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
         }
         return infecForm
@@ -481,27 +516,30 @@ class ComplicationForms {
             +++ Section("Confirmation")
             
             // Remove tag in form-processing
-            <<< SwitchRow("Confirmation"){
+            <<< SLabelRow("Confirmation") {
                 $0.title = "Are you a Data Manager?"
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
                 }.onCellSelection {cell, row in
-                    self.displayAlert(row.title!, message: "")
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             +++ Section("Dates and times"){
                 $0.hidden = .Function(["Confirmation"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Confirmation")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Confirmation") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             <<< LabelRow () {
                 $0.title = "Do not enter: to be adjudicated by Data Manager"
                 $0.hidden = .Function(["Confirmation"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Confirmation")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Confirmation") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
-            }.onCellSelection {cell, row in
+                }.onCellSelection {cell, row in
                     self.displayAlert(row.title!, message: "")
             }
             
@@ -512,16 +550,16 @@ class ComplicationForms {
             
             +++ Section("Details"){
                 $0.hidden = .Function(["Confirmation"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Confirmation")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Confirmation") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             <<< LabelRow () {
                 $0.title = "Do not enter: to be adjudicated by Data Manager"
                 $0.hidden = .Function(["Confirmation"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Confirmation")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Confirmation") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
                 }.onCellSelection {cell, row in
                     self.displayAlert(row.title!, message: "")
@@ -534,13 +572,18 @@ class ComplicationForms {
                 $0.value = "Enter"
             }
             
-            <<< SwitchRow("SCF") {
+            <<< SLabelRow("SCF") {
                 $0.title = "Severe cardiac failure?"
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
         }
         return lcosForm
     }
-
+    
     func createMCS() -> Form {
         // ---------------------- MCS form ---------------------- //
         let mcsForm = Form()
@@ -552,21 +595,47 @@ class ComplicationForms {
                 $0.value = NSDate()
             }
             
+            // Remove tag in form-processing
+            <<< SLabelRow("Confirmation") {
+                $0.title = "Are you a Data Manager?"
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+            }.onCellSelection {cell, row in
+                row.value = row.value! == "YES" ? "NO" : "YES"
+                row.deselect()
+                row.updateCell()
+            }
+            
             <<< LabelRow() {
-                $0.title = "(End date) Do not enter: to be adjudicated by Data Manager"
+                $0.title = "Do not enter: to be adjudicated by Data Manager"
+                $0.hidden = .Function(["Confirmation"], { form -> Bool in
+                    let row : RowOf! = form.rowByTag("Confirmation") as! SLabelRow
+                    return row.value! == "NO" ? true : false
+                })
+            }.onCellSelection {cell, row in
+                self.displayAlert(row.title!, message: "")
             }
             
             // FIXME: nil results in unwrapping error, so need to hide this
             <<< DateTimeInlineRow("MCSE") {
                 $0.title = "MCS end date/time"
                 $0.value = NSDate()
+                $0.hidden = .Function(["Confirmation"], { form -> Bool in
+                    let row : RowOf! = form.rowByTag("Confirmation") as! SLabelRow
+                    return row.value! == "NO" ? true : false
+                })
             }
             
             +++ Section("Details")
             
-            <<< SwitchRow("In post-ope period") {
+            <<< SLabelRow("In post-ope period") {
                 $0.title = "In post-operative period?"
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+            }.onCellSelection {cell, row in
+                row.value = row.value! == "YES" ? "NO" : "YES"
+                row.deselect()
+                row.updateCell()
             }
             
             <<< AlertRow<String>("SupportType") {
@@ -602,12 +671,24 @@ class ComplicationForms {
                 ]
             }
             
-            <<< SwitchRow("MCSS") {
-                $0.title = "MCS present at start of CICU encounter?"
-                $0.value = false
-                }.onCellSelection { cell, row in
-                    self.displayAlert("Full description", message: row.title!)
-                }
+            <<< SLabelRow("MCSS") {
+                $0.title = "MCS present at start..."
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
+            }
+            
+            <<< AlertRow<String>() {
+                $0.title = "Full description"
+                $0.value = "Press to view"
+                $0.options = ["Accept"]
+                $0.selectorTitle = "MCS present at start of CICU encounter?"
+                } .onChange { row in
+                    row.value = "Press to view"
+        }
         return mcsForm
     }
     
@@ -674,17 +755,22 @@ class ComplicationForms {
             +++ Section("Details")
             
             // Remove tag in form-processing
-            <<< SwitchRow("MSOF") {
+            <<< SLabelRow("MSOF") {
                 $0.title = $0.tag
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             <<< DateTimeInlineRow("msof") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["MSOF"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("MSOF")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("MSOF") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
@@ -701,27 +787,30 @@ class ComplicationForms {
                     "Other"
                 ]
                 $0.hidden = .Function(["MSOF"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("MSOF")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("MSOF") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("Renal failure requiring dialysis at the time of hospital discharge") {
-                $0.title = $0.tag
-                $0.value = false
+            <<< SLabelRow("Renal failure requiring dialysis at the time of hospital discharge") {
+                $0.title = "RFRD"
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
                 }.onCellSelection {cell, row in
-                    self.displayAlert(row.title!, message: "")
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             <<< DateTimeInlineRow("RFRD") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["Renal failure requiring dialysis at the time of hospital discharge"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Renal failure requiring dialysis at the time of hospital discharge")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Renal failure requiring dialysis at the time of hospital discharge") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
@@ -736,25 +825,30 @@ class ComplicationForms {
                     "Requiring temporary hemofiltration"
                 ]
                 $0.hidden = .Function(["Renal failure requiring dialysis at the time of hospital discharge"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Renal failure requiring dialysis at the time of hospital discharge")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Renal failure requiring dialysis at the time of hospital discharge") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("Neurological deficit") {
+            <<< SLabelRow("Neurological deficit") {
                 $0.title = $0.tag
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             <<< DateTimeInlineRow("ND") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["Neurological deficit"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Neurological deficit")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Neurological deficit") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
@@ -768,134 +862,190 @@ class ComplicationForms {
                     "Transient"
                 ]
                 $0.hidden = .Function(["Neurological deficit"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Neurological deficit")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Neurological deficit") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("Peripheral nerve injury, persistenting at discharge") {
-                $0.title = $0.tag
-                $0.value = false
+            <<< SLabelRow("Peripheral nerve injury, persistenting at discharge") {
+                $0.title = "Peripheral nerve injury..."
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
                 }.onCellSelection {cell, row in
-                    self.displayAlert(row.title!, message: "")
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
+            }
+            
+            <<< AlertRow<String>() {
+                $0.title = "Full description"
+                $0.value = "Press to view"
+                $0.options = ["Accept"]
+                $0.selectorTitle = "Peripheral nerve injury, persistenting at discharge"
+                } .onChange { row in
+                    row.value = "Press to view"
             }
             
             <<< DateTimeInlineRow("PNI") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["Peripheral nerve injury, persistenting at discharge"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Peripheral nerve injury, persistenting at discharge")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Peripheral nerve injury, persistenting at discharge") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("Seizure") {
+            <<< SLabelRow("Seizure") {
                 $0.title = $0.tag
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             <<< DateTimeInlineRow("seizure") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["Seizure"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Seizure")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Seizure") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("Spinal cord injury") {
+            <<< SLabelRow("Spinal cord injury") {
                 $0.title = $0.tag
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             <<< DateTimeInlineRow("SCI") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["Spinal cord injury"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Spinal cord injury")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Spinal cord injury") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("Stroke") {
+            <<< SLabelRow("Stroke") {
                 $0.title = $0.tag
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             <<< DateTimeInlineRow("stroke") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["Stroke"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Stroke")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Stroke") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
-            <<< SwitchRow("SB") {
+            <<< SLabelRow("SB") {
                 $0.title = "Subdural bleed"
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
                 $0.hidden = .Function(["Stroke"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Stroke")
-                    return row.value ?? false == false
-                })
-            }
-            
-            <<< SwitchRow("IH") {
-                $0.title = "Interventricular hemorrhage (IVH > 2)"
-                $0.value = false
-                $0.hidden = .Function(["Stroke"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Stroke")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Stroke") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
                 }.onCellSelection {cell, row in
-                    self.displayAlert(row.title!, message: "")
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
+            }
+            
+            <<< SLabelRow("IH") {
+                $0.title = "Interventricular hemorrhage..."
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                $0.hidden = .Function(["Stroke"], { form -> Bool in
+                    let row : RowOf! = form.rowByTag("Stroke") as! SLabelRow
+                    return row.value! == "NO" ? true : false
+                })
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
+            }
+            
+            <<< AlertRow<String>() {
+                $0.title = "Full description"
+                $0.value = "Press to view"
+                $0.options = ["Accept"]
+                $0.selectorTitle = "Interventricular hemorrhage (IVH > 2)"
+                $0.hidden = .Function(["Stroke"], { form -> Bool in
+                    let row : RowOf! = form.rowByTag("Stroke") as! SLabelRow
+                    return row.value! == "NO" ? true : false
+                })
+                } .onChange { row in
+                    row.value = "Press to view"
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("Wound dehiscence (sterile)") {
+            <<< SLabelRow("Wound dehiscence (sterile)") {
                 $0.title = $0.tag
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
                 }.onCellSelection {cell, row in
-                    self.displayAlert(row.title!, message: "")
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             <<< DateTimeInlineRow("wound") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["Wound dehiscence (sterile)"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Wound dehiscence (sterile)")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Wound dehiscence (sterile)") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("Median sternotomy") {
+            <<< SLabelRow("Median sternotomy") {
                 $0.title = $0.tag
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             <<< DateTimeInlineRow("MS") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["Median sternotomy"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Median sternotomy")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Median sternotomy") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
         }
         return odForm
@@ -932,31 +1082,38 @@ class ComplicationForms {
                 $0.value = NSDate()
             }
             
-            // Remove tag in form-processing
-            <<< SwitchRow("Therapy present at discharge?") {
+            // Need to remove tag in form-processing
+            <<< SLabelRow("Therapy present at discharge?") {
                 $0.title = $0.tag
-                $0.value = true
+                $0.value = "YES"
+                $0.cell.selectionStyle = .Default
                 }.onCellSelection {cell, row in
-                    self.displayAlert(row.title!, message: "")
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             // Remove tag in form-processing
-            <<< SwitchRow("Confirmation") {
+            <<< SLabelRow("Confirmation") {
                 $0.title = "Are you a Data Manager?"
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
                 $0.hidden = .Function(["Therapy present at discharge?"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Therapy present at discharge?")
-                    return row.value ?? false == true
+                    let row : RowOf! = form.rowByTag("Therapy present at discharge?") as! SLabelRow
+                    return row.value! == "YES" ? true : false
                 })
                 }.onCellSelection {cell, row in
-                    self.displayAlert(row.title!, message: "")
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
+                    
             }
             
             <<< LabelRow () {
                 $0.title = "Do not enter: to be adjudicated by Data Manager"
                 $0.hidden = .Function(["Confirmation"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Confirmation")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Confirmation") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
                 }.onCellSelection {cell, row in
                     self.displayAlert(row.title!, message: "")
@@ -966,8 +1123,8 @@ class ComplicationForms {
                 $0.title = "Stop date/time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["Confirmation"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Confirmation")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Confirmation") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
@@ -987,9 +1144,15 @@ class ComplicationForms {
                     print(row.value)
             }
             
-            <<< SwitchRow("PHC") {
+            // Need to remove tag in form-processing
+            <<< SLabelRow("PHC") {
                 $0.title = $0.tag
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
         }
         return phForm
     }
@@ -1048,220 +1211,299 @@ class ComplicationForms {
             +++ Section("Details")
             
             // Remove tag in form-processing
-            <<< SwitchRow("NPCT") {
+            <<< SLabelRow("NPCT") {
                 $0.title = "Necessary to place a chest tube?"
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
                 }.onCellSelection {cell, row in
-                    self.displayAlert(row.title!, message: "")
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
+                    //self.displayAlert(row.title!, message: "")
             }
             
             <<< DateTimeInlineRow("Necessary to place a chest tube?") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["NPCT"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("NPCT")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("NPCT") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("chylothorax") {
+            <<< SLabelRow("chylothorax") {
                 $0.title = "Chylothorax requiring intervention"
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
                 }.onCellSelection {cell, row in
-                    self.displayAlert(row.title!, message: "")
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
+                    //self.displayAlert(row.title!, message: "")
             }
             
             <<< DateTimeInlineRow("Chylothorax requiring intervention") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["chylothorax"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("chylothorax")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("chylothorax") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("pleuraleffusion") {
+            <<< SLabelRow("pleuraleffusion") {
                 $0.title = "Pleural effusion requiring drainage"
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
                 }.onCellSelection {cell, row in
-                    self.displayAlert(row.title!, message: "")
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
+                    //self.displayAlert(row.title!, message: "")
             }
             
             <<< DateTimeInlineRow("Pleural effusion requiring drainage") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["pleuraleffusion"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("pleuraleffusion")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("pleuraleffusion") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("pneumothorax") {
+            <<< SLabelRow("pneumothorax") {
                 $0.title = "Pneumothorax requiring drainage"
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
                 }.onCellSelection {cell, row in
-                    self.displayAlert(row.title!, message: "")
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
+                    //self.displayAlert(row.title!, message: "")
             }
             
             <<< DateTimeInlineRow("Pneumothorax requiring drainage") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["pneumothorax"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("pneumothorax")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("pneumothorax") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("hemothorax") {
+            <<< SLabelRow("hemothorax") {
                 $0.title = "Hemothorax requiring drainage"
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
                 }.onCellSelection {cell, row in
-                    self.displayAlert(row.title!, message: "")
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
+                    //self.displayAlert(row.title!, message: "")
             }
             
             <<< DateTimeInlineRow("Hemothorax requiring drainage") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["hemothorax"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("hemothorax")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("hemothorax") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("ards") {
+            <<< SLabelRow("ards") {
                 $0.title = "ARDS"
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             <<< DateTimeInlineRow("ARDS") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["ards"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("ards")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("ards") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("pulmembol") {
+            <<< SLabelRow("pulmembol") {
                 $0.title = "Pulmonary embolism"
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             <<< DateTimeInlineRow("Pulmonary embolism") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["pulmembol"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("pulmembol")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("pulmembol") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("Post-operative/Post-procedureal respiratory insufficiency requiring mechanical ventilatory support") {
-                $0.title = "Mechanical ventilatory support: " + $0.tag!
-                $0.value = false
+            <<< SLabelRow("Post-operative/Post-procedureal respiratory insufficiency requiring mechanical ventilatory support") {
+                $0.title = "Mechanical ventilatory support..."
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
                 }.onCellSelection {cell, row in
-                    self.displayAlert(row.title!, message: "")
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
+                    //self.displayAlert(row.title!, message: "")
             }
             
-            <<< DateTimeInlineRow("PPRIRMVS") {
+            <<< AlertRow<String>() {
+                $0.title = "Full description"
+                $0.value = "Press to view"
+                $0.options = ["Accept"]
+                $0.selectorTitle = "Mechanical ventilatory support: Post-operative/Post-procedureal respiratory insufficiency requiring mechanical ventilatory support"
+                } .onChange { row in
+                    row.value = "Press to view"
+            }
+            
+            <<< DateTimeInlineRow("pprirmvs") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["Post-operative/Post-procedureal respiratory insufficiency requiring mechanical ventilatory support"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Post-operative/Post-procedureal respiratory insufficiency requiring mechanical ventilatory support")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Post-operative/Post-procedureal respiratory insufficiency requiring mechanical ventilatory support") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("Post-operative/Post-procedureal respiratory insufficiency requiring reintubation") {
-                $0.title = "Reintubation: " + $0.tag!
-                $0.value = false
+            <<< SLabelRow("Post-operative/Post-procedureal respiratory insufficiency requiring reintubation") {
+                $0.title = "Reintubation..."
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
                 }.onCellSelection {cell, row in
-                    self.displayAlert(row.title!, message: "")
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
+                    //self.displayAlert(row.title!, message: "")
             }
             
-            <<< DateTimeInlineRow("PPRIRR") {
+            <<< AlertRow<String>() {
+                $0.title = "Full description"
+                $0.value = "Press to view"
+                $0.options = ["Accept"]
+                $0.selectorTitle = "Reintubation: Post-operative/Post-procedureal respiratory insufficiency requiring reintubation"
+                } .onChange { row in
+                    row.value = "Press to view"
+            }
+            
+            <<< DateTimeInlineRow("pprirr") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["Post-operative/Post-procedureal respiratory insufficiency requiring reintubation"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("Post-operative/Post-procedureal respiratory insufficiency requiring reintubation")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("Post-operative/Post-procedureal respiratory insufficiency requiring reintubation") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("rfrt") {
-                $0.title = "Respiratory failure requiring tracheostomy"
-                $0.value = false
+            <<< SLabelRow("rfrt") {
+                $0.title = "Respiratory failure req..."
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
                 }.onCellSelection {cell, row in
-                    self.displayAlert(row.title!, message: "")
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
+                    //self.displayAlert(row.title!, message: "")
+            }
+            
+            <<< AlertRow<String>() {
+                $0.title = "Full description"
+                $0.value = "Press to view"
+                $0.options = ["Accept"]
+                $0.selectorTitle = "Respiratory failure requiring tracheostomy"
+                } .onChange { row in
+                    row.value = "Press to view"
             }
             
             <<< DateTimeInlineRow("Respiratory failure requiring tracheostomy") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["rfrt"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("rfrt")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("rfrt") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("pd") {
+            <<< SLabelRow("pd") {
                 $0.title = "Paralyzed diaphragm"
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             <<< DateTimeInlineRow("Paralyzed diaphragm") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["pd"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("pd")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("pd") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
             }
             
             +++ Section()
             
             // Remove tag in form-processing
-            <<< SwitchRow("vcd") {
+            <<< SLabelRow("vcd") {
                 $0.title = "Vocal cord dysfunction"
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
             <<< DateTimeInlineRow("Vocal cord dysfunction") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
                 $0.hidden = .Function(["vcd"], { form -> Bool in
-                    let row: RowOf<Bool>! = form.rowByTag("vcd")
-                    return row.value ?? false == false
+                    let row : RowOf! = form.rowByTag("vcd") as! SLabelRow
+                    return row.value! == "NO" ? true : false
                 })
         }
         return resForm
@@ -1309,19 +1551,37 @@ class ComplicationForms {
             
             +++ Section("Details")
             
-            <<< SwitchRow("UCR") {
+            // Need to remove tag in form-processing
+            <<< SLabelRow("UCR") {
                 $0.title = $0.tag
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
-            <<< SwitchRow("UICC") {
+            // Need to remove tag in form-processing
+            <<< SLabelRow("UICC") {
                 $0.title = $0.tag
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
             }
             
-            <<< SwitchRow("UNR") {
+            // Need to remove tag in form-processing
+            <<< SLabelRow("UNR") {
                 $0.title = $0.tag
-                $0.value = false
+                $0.value = "NO"
+                $0.cell.selectionStyle = .Default
+                }.onCellSelection {cell, row in
+                    row.value = row.value! == "YES" ? "NO" : "YES"
+                    row.deselect()
+                    row.updateCell()
         }
         return uopForm
     }
@@ -1330,114 +1590,114 @@ class ComplicationForms {
     func cleanTagsAndGetCombinedValues(logName: String) -> [String : String] {
         var values = convertAllValuesToString(formDict[logName]!.values())
         switch logName {
-            case "arrhythmialog":
-                values.removeValueForKey("Therapies present at discharge?")
-            case "cprlog":
-                break
-            case "dsclog":
-                break
-            case "infeclog":
-                // If CLABSI was filled out
-                if (values.keys.contains("CLABSI") && values["CLABSI"]! == "YES") {
-                    values["CLA"] = values["CLA Type"]! + " (\(values["CLA"]!))"
-                    values.removeValueForKey("CLA Type")
-                }
-                
-                // If SSI was filled out
-                if (values.keys.contains("Surgical Site Infection") && values["Surgical Site Infection"]! == "YES") {
-                    values["SSI"] = "\(values["SSI Type"]!) (\(values["SSI"]!))"
-                    values.removeValueForKey("SSI Type")
-                }
-                
-                // If UTI was filled out
-                if (values.keys.contains("UTIinfec") && values["UTIinfec"]! == "YES") {
-                    values["UTI"] = "\(values["UTI Type"]!) (\(values["UTI"]!))"
-                    values.removeValueForKey("UTI Type")
-                }
+        case "arrhythmialog":
+            values.removeValueForKey("Therapies present at discharge?")
+        case "cprlog":
+            break
+        case "dsclog":
+            break
+        case "infeclog":
+            // If CLABSI was filled out
+            if (values.keys.contains("CLABSI") && values["CLABSI"]! == "YES") {
+                values["CLA"] = values["CLA Type"]! + " (\(values["CLA"]!))"
+                values.removeValueForKey("CLA Type")
+            }
             
-                let toChange = [
-                    "Endocarditis" : "END",
-                    "Pneumonia" : "PNE",
-                    "CLABSI" : "CLA",
-                    "Sepsis" : "SEP",
-                    "Surgical Site Infection" : "SSI",
-                    "Meningitis" : "MEN",
-                    "UTIinfec" : "UTI"
-                ]
+            // If SSI was filled out
+            if (values.keys.contains("Surgical Site Infection") && values["Surgical Site Infection"]! == "YES") {
+                values["SSI"] = "\(values["SSI Type"]!) (\(values["SSI"]!))"
+                values.removeValueForKey("SSI Type")
+            }
             
-                for (key, value) in toChange {
-                    if (values[key]! == "NO") {
-                        values[value] = "NO"
-                    }
-                    values.removeValueForKey(key)
-                }
-            case "lcoslog":
-                values.removeValueForKey("Confirmation")
-            case "mcslog":
-                break
-            case "odlog":
-                // If MSOF was filled out
-                if (values.keys.contains("MSOF") && values["MSOF"]! == "YES") {
-                    values["msof"] = "\(values["MSOF Type"]!) (\(values["msof"]!))"
-                    values.removeValueForKey("MSOF Type")
-                }
-                
-                // If RFRD was filled out
-                let RFRD = "Renal failure requiring dialysis at the time of hospital discharge"
-                if (values.keys.contains(RFRD) && values[RFRD]! == "YES") {
-                    values["RFRD"] = "\(values["RFRD Type"]!) (\(values["RFRD"]!))"
-                    values.removeValueForKey("RFRD Type")
-                }
+            // If UTI was filled out
+            if (values.keys.contains("UTIinfec") && values["UTIinfec"]! == "YES") {
+                values["UTI"] = "\(values["UTI Type"]!) (\(values["UTI"]!))"
+                values.removeValueForKey("UTI Type")
+            }
             
-                // If ND was filled out
-                if (values.keys.contains("Neurological deficit") && values["Neurological deficit"]! == "YES") {
-                    values["ND"] = "\(values["ND Presence"]!) (\(values["ND"]!))"
-                    values.removeValueForKey("ND Presence")
+            let toChange = [
+                "Endocarditis" : "END",
+                "Pneumonia" : "PNE",
+                "CLABSI" : "CLA",
+                "Sepsis" : "SEP",
+                "Surgical Site Infection" : "SSI",
+                "Meningitis" : "MEN",
+                "UTIinfec" : "UTI"
+            ]
+            
+            for (key, value) in toChange {
+                if (values[key]! == "NO") {
+                    values[value] = "NO"
                 }
-                
-                let toChange = [
-                    "MSOF" : "msof",
-                    RFRD : "RFRD",
-                    "Neurological deficit" : "ND",
-                    "Peripheral nerve injury, persistenting at discharge" : "PNI",
-                    "Seizure" : "seizure",
-                    "Spinal cord injury" : "SCI",
-                    "Stroke" : "stroke",
-                    "Wound dehiscence (sterile)" : "wound",
-                    "Median sternotomy" : "MS"]
-
-                for (key, value) in toChange {
-                    if (values[key]! == "NO") {
-                        values[value] = "NO"
-                    }
-                    values.removeValueForKey(key)
+                values.removeValueForKey(key)
+            }
+        case "lcoslog":
+            values.removeValueForKey("Confirmation")
+        case "mcslog":
+            values.removeValueForKey("Confirmation")
+        case "odlog":
+            // If MSOF was filled out
+            if (values.keys.contains("MSOF") && values["MSOF"]! == "YES") {
+                values["msof"] = "\(values["MSOF Type"]!) (\(values["msof"]!))"
+                values.removeValueForKey("MSOF Type")
+            }
+            
+            // If RFRD was filled out
+            let RFRD = "Renal failure requiring dialysis at the time of hospital discharge"
+            if (values.keys.contains(RFRD) && values[RFRD]! == "YES") {
+                values["RFRD"] = "\(values["RFRD Type"]!) (\(values["RFRD"]!))"
+                values.removeValueForKey("RFRD Type")
+            }
+            
+            // If ND was filled out
+            if (values.keys.contains("Neurological deficit") && values["Neurological deficit"]! == "YES") {
+                values["ND"] = "\(values["ND Presence"]!) (\(values["ND"]!))"
+                values.removeValueForKey("ND Presence")
+            }
+            
+            let toChange = [
+                "MSOF" : "msof",
+                RFRD : "RFRD",
+                "Neurological deficit" : "ND",
+                "Peripheral nerve injury, persistenting at discharge" : "PNI",
+                "Seizure" : "seizure",
+                "Spinal cord injury" : "SCI",
+                "Stroke" : "stroke",
+                "Wound dehiscence (sterile)" : "wound",
+                "Median sternotomy" : "MS"]
+            
+            for (key, value) in toChange {
+                if (values[key]! == "NO") {
+                    values[value] = "NO"
                 }
-            case "phlog":
-                values.removeValueForKey("Therapy present at discharge?")
-                values.removeValueForKey("Confirmation")
-            case "reslog":
-                let toChange = [
-                    "NPCT" : "Necessary to place a chest tube?",
-                    "chylothorax" : "Chylothorax requiring intervention",
-                    "pleuraleffusion" : "Pleural effusion requiring drainage",
-                    "pneumothorax" : "Pneumothorax requiring drainage",
-                    "hemothorax" : "Hemothorax requiring drainage",
-                    "ards" : "ARDS",
-                    "pulmembol" : "Pulmonary embolism",
-                    "Post-operative/Post-procedureal respiratory insufficiency requiring mechanical ventilatory support" : "PPRIRMVS",
-                    "Post-operative/Post-procedureal respiratory insufficiency requiring reintubation" : "PPRIRR",
-                    "rfrt" : "Respiratory failure requiring tracheostomy",
-                    "pd" : "Paralyzed diaphragm",
-                    "vcd" : "Vocal cord dysfunction"
-                ]
-                for (key, value) in toChange {
-                    if (values[key]! == "NO") {
-                        values[value] = "NO"
-                    }
-                    values.removeValueForKey(key)
+                values.removeValueForKey(key)
+            }
+        case "phlog":
+            values.removeValueForKey("Therapy present at discharge?")
+            values.removeValueForKey("Confirmation")
+        case "reslog":
+            let toChange = [
+                "NPCT" : "Necessary to place a chest tube?",
+                "chylothorax" : "Chylothorax requiring intervention",
+                "pleuraleffusion" : "Pleural effusion requiring drainage",
+                "pneumothorax" : "Pneumothorax requiring drainage",
+                "hemothorax" : "Hemothorax requiring drainage",
+                "ards" : "ARDS",
+                "pulmembol" : "Pulmonary embolism",
+                "Post-operative/Post-procedureal respiratory insufficiency requiring mechanical ventilatory support" : "pprirmvs",
+                "Post-operative/Post-procedureal respiratory insufficiency requiring reintubation" : "pprirr",
+                "rfrt" : "Respiratory failure requiring tracheostomy",
+                "pd" : "Paralyzed diaphragm",
+                "vcd" : "Vocal cord dysfunction"
+            ]
+            for (key, value) in toChange {
+                if (values[key]! == "NO") {
+                    values[value] = "NO"
                 }
-            case "uoplog":
-                break
+                values.removeValueForKey(key)
+            }
+        case "uoplog":
+            break
         default:
             print("Invalid log to cleanTagsAndGetCombinedValues: \(logName)")
         }
@@ -1447,7 +1707,7 @@ class ComplicationForms {
     
     func extractDataAndCleanForms() {
         for key in formDict.keys {
-
+            
             // reset confirmObject to postObject
             let data = SessionData.sharedInstance
             data.confirmObject = data.postObject
@@ -1485,7 +1745,7 @@ class ComplicationForms {
                 result[key] = df.stringFromDate(thisValue as! NSDate)
             } else if (thisValue is String?) {
                 result[key] = (thisValue as! String?)!
-            } 
+            }
         }
         return result
     }

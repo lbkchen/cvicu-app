@@ -1,2 +1,2 @@
 overall:
-	- display dates as date of complication, not logged (use a dict)
+	- Add the alert for same date of complication

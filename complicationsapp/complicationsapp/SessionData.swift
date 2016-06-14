@@ -69,6 +69,9 @@ class SessionData {
         postObject.removeValueForKey("day")
         postObject.removeValueForKey("time")
         
+        // change "MRN" from the gui to the "FIN" as used in the database
+        changeMRNtoFIN()
+        
         // add the current time as a variable "date"
         recordCurrentTime()
     }
