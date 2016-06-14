@@ -122,36 +122,9 @@ function main() {
             connection.end();
         }
 
-        // All queries requesting logs
-        // if (request["targetAction"] == "requestLogs") {
-        //     var toClient = [];
-        //     var connection = db.createConnection(connectionInfo);
-        //     connection.connect();
-        //
-        //     for (comp in complicationTables) {
-        //         var query = "SELECT date FROM ?? WHERE FIN = ?;";
-        //         connection.query("USE cvicu;");
-        //         connection.query(query, [comp, request["FIN"]], function(err, results) {
-        //             if (err) {
-        //                 console.error("Error in requesting " + comp + ": " + err.stack);
-        //                 return;
-        //             } else if (!isEmpty(results)) {
-        //                 var lastLog = {
-        //                     table : comp,
-        //                     date : results[results.length - 1]["date"]
-        //                 };
-        //             } else {
-        //                 var lastLog = {
-        //                     table : "null"
-        //                 };
-        //             }
-        //         });
-        //         toClient.push(lastLog);
-        //     }
-        // }
-
+        // Helper functions for requestLogs
         function queryComplication(comp) {
-            var query = "SELECT date from ?? where FIN = ?;";
+            var query = "SELECT " + mainDate[comp] + " from ?? where FIN = ?;";
             connection.query("USE cvicu;");
             connection.query(query, [comp, request["FIN"]], function(err, results) {
                 if (err) {
@@ -159,7 +132,7 @@ function main() {
                 } else {
                     var lastLog = {
                         table : comp,
-                        dates : results.map(function(obj) {return obj["date"];})
+                        dates : results.map(function(obj) {return obj[mainDate[comp]];})
                     }
                     toClient.push(lastLog);
                     lock--;
@@ -241,3 +214,26 @@ function main() {
         console.log('Server running at port 3000.');
     });
 }
+
+// Miscellaneous
+
+var mainDate = {
+        "arrhythmialog" : "date_1",
+        "cprlog" : "startDate",
+        "dsclog" : "date_1",
+        "ididlog" : "date_1",
+        "infeclog" : "date", // FIXME: No "most recent date option"
+        "lcoslog" : "date_1",
+        "lhtlog" : "date_1",
+        "mcslog" : "date_1",
+        "odlog" : "date", // FIXME: No "most recent date option"
+        "perdlog" : "date_1",
+        "phlog" : "date_1",
+        "pvolog" : "date_1",
+        "rblog" : "date_1",
+        "reslog" : "date", // FIXME: No "most recent date option"
+        "svolog" : "date_1",
+        "uoplog" : "date_1",
+        "urcclog" : "date_1",
+        "urhlog" : "date_1"
+};
