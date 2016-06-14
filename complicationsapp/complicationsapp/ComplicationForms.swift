@@ -752,7 +752,7 @@ class ComplicationForms {
                     row.value = "Press to view"
             }
             
-            +++ Section("Details")
+            +++ Section("Multi-System Organ Failure")
             
             // Remove tag in form-processing
             <<< SLabelRow("MSOF") {
@@ -792,7 +792,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Renal failure requiring dialysis at the time of hospital discharge")
             
             // Remove tag in form-processing
             <<< SLabelRow("Renal failure requiring dialysis at the time of hospital discharge") {
@@ -830,7 +830,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Neurological deficit")
             
             // Remove tag in form-processing
             <<< SLabelRow("Neurological deficit") {
@@ -867,7 +867,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Peripheral nerve injury, persistenting at discharge")
             
             // Remove tag in form-processing
             <<< SLabelRow("Peripheral nerve injury, persistenting at discharge") {
@@ -880,15 +880,6 @@ class ComplicationForms {
                     row.updateCell()
             }
             
-            <<< AlertRow<String>() {
-                $0.title = "Full description"
-                $0.value = "Press to view"
-                $0.options = ["Accept"]
-                $0.selectorTitle = "Peripheral nerve injury, persistenting at discharge"
-                } .onChange { row in
-                    row.value = "Press to view"
-            }
-            
             <<< DateTimeInlineRow("PNI") {
                 $0.title = "Date/Time"
                 $0.value = NSDate()
@@ -898,7 +889,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Seizure")
             
             // Remove tag in form-processing
             <<< SLabelRow("Seizure") {
@@ -920,7 +911,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Spinal cord injury")
             
             // Remove tag in form-processing
             <<< SLabelRow("Spinal cord injury") {
@@ -942,7 +933,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Stroke")
             
             // Remove tag in form-processing
             <<< SLabelRow("Stroke") {
@@ -1005,7 +996,7 @@ class ComplicationForms {
                     row.value = "Press to view"
             }
             
-            +++ Section()
+            +++ Section("Wound dehiscence (sterile)")
             
             // Remove tag in form-processing
             <<< SLabelRow("Wound dehiscence (sterile)") {
@@ -1027,7 +1018,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Median sternotomy")
             
             // Remove tag in form-processing
             <<< SLabelRow("Median sternotomy") {
