@@ -276,7 +276,7 @@ class ComplicationForms {
                     row.value = "Press to view"
             }
             
-            +++ Section("Details")
+            +++ Section("Endocarditis")
             
             // Remove tag in form-processing
             <<< SLabelRow("Endocarditis") {
@@ -298,7 +298,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Pneumonia")
             
             // Remove tag in form-processing
             <<< SLabelRow("Pneumonia") {
@@ -320,7 +320,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("CLABSI")
             
             // Remove tag in form-processing
             <<< SLabelRow("CLABSI") {
@@ -360,7 +360,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Sepsis")
             
             // Remove tag in form-processing
             <<< SLabelRow("Sepsis") {
@@ -382,7 +382,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Surgical Site Infection")
             
             // Remove tag in form-processing
             <<< SLabelRow("Surgical Site Infection") {
@@ -425,7 +425,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Meningitis")
             
             // Remove tag in form-processing
             <<< SLabelRow("Meningitis") {
@@ -447,7 +447,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("UTI")
             
             // Remove tag in form-processing
             <<< SLabelRow("UTIinfec") {
@@ -1199,7 +1199,7 @@ class ComplicationForms {
                     row.value = "Press to view"
             }
             
-            +++ Section("Details")
+            +++ Section("Necessary to place a chest tube?")
             
             // Remove tag in form-processing
             <<< SLabelRow("NPCT") {
@@ -1222,7 +1222,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Chylothorax requiring intervention")
             
             // Remove tag in form-processing
             <<< SLabelRow("chylothorax") {
@@ -1245,7 +1245,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Pleural effusion requiring drainage")
             
             // Remove tag in form-processing
             <<< SLabelRow("pleuraleffusion") {
@@ -1268,7 +1268,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Pneumothorax requiring drainage")
             
             // Remove tag in form-processing
             <<< SLabelRow("pneumothorax") {
@@ -1291,7 +1291,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Hemothorax requiring drainage")
             
             // Remove tag in form-processing
             <<< SLabelRow("hemothorax") {
@@ -1314,7 +1314,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("ARDS")
             
             // Remove tag in form-processing
             <<< SLabelRow("ards") {
@@ -1336,7 +1336,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Pulmonary embolism")
             
             // Remove tag in form-processing
             <<< SLabelRow("pulmembol") {
@@ -1358,7 +1358,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Post-operative/Post-procedural respiratory insufficiency requiring mechanical ventilatory support")
             
             // Remove tag in form-processing
             <<< SLabelRow("Post-operative/Post-procedureal respiratory insufficiency requiring mechanical ventilatory support") {
@@ -1372,14 +1372,14 @@ class ComplicationForms {
                     //self.displayAlert(row.title!, message: "")
             }
             
-            <<< AlertRow<String>() {
-                $0.title = "Full description"
-                $0.value = "Press to view"
-                $0.options = ["Accept"]
-                $0.selectorTitle = "Mechanical ventilatory support: Post-operative/Post-procedureal respiratory insufficiency requiring mechanical ventilatory support"
-                } .onChange { row in
-                    row.value = "Press to view"
-            }
+//            <<< AlertRow<String>() {
+//                $0.title = "Full description"
+//                $0.value = "Press to view"
+//                $0.options = ["Accept"]
+//                $0.selectorTitle = "Mechanical ventilatory support: Post-operative/Post-procedureal respiratory insufficiency requiring mechanical ventilatory support"
+//                } .onChange { row in
+//                    row.value = "Press to view"
+//            }
             
             <<< DateTimeInlineRow("pprirmvs") {
                 $0.title = "Date/Time"
@@ -1390,7 +1390,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Post-operative/Post-procedural respiratory insufficiency requiring reintubation")
             
             // Remove tag in form-processing
             <<< SLabelRow("Post-operative/Post-procedureal respiratory insufficiency requiring reintubation") {
@@ -1404,14 +1404,14 @@ class ComplicationForms {
                     //self.displayAlert(row.title!, message: "")
             }
             
-            <<< AlertRow<String>() {
-                $0.title = "Full description"
-                $0.value = "Press to view"
-                $0.options = ["Accept"]
-                $0.selectorTitle = "Reintubation: Post-operative/Post-procedureal respiratory insufficiency requiring reintubation"
-                } .onChange { row in
-                    row.value = "Press to view"
-            }
+//            <<< AlertRow<String>() {
+//                $0.title = "Full description"
+//                $0.value = "Press to view"
+//                $0.options = ["Accept"]
+//                $0.selectorTitle = "Reintubation: Post-operative/Post-procedureal respiratory insufficiency requiring reintubation"
+//                } .onChange { row in
+//                    row.value = "Press to view"
+//            }
             
             <<< DateTimeInlineRow("pprirr") {
                 $0.title = "Date/Time"
@@ -1422,7 +1422,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Respiratory failure requiring tracheostomy")
             
             // Remove tag in form-processing
             <<< SLabelRow("rfrt") {
@@ -1436,14 +1436,14 @@ class ComplicationForms {
                     //self.displayAlert(row.title!, message: "")
             }
             
-            <<< AlertRow<String>() {
-                $0.title = "Full description"
-                $0.value = "Press to view"
-                $0.options = ["Accept"]
-                $0.selectorTitle = "Respiratory failure requiring tracheostomy"
-                } .onChange { row in
-                    row.value = "Press to view"
-            }
+//            <<< AlertRow<String>() {
+//                $0.title = "Full description"
+//                $0.value = "Press to view"
+//                $0.options = ["Accept"]
+//                $0.selectorTitle = "Respiratory failure requiring tracheostomy"
+//                } .onChange { row in
+//                    row.value = "Press to view"
+//            }
             
             <<< DateTimeInlineRow("Respiratory failure requiring tracheostomy") {
                 $0.title = "Date/Time"
@@ -1454,7 +1454,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Paralyzed diaphragm")
             
             // Remove tag in form-processing
             <<< SLabelRow("pd") {
@@ -1476,7 +1476,7 @@ class ComplicationForms {
                 })
             }
             
-            +++ Section()
+            +++ Section("Vocal cord dysfunction")
             
             // Remove tag in form-processing
             <<< SLabelRow("vcd") {
