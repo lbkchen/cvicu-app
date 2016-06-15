@@ -220,14 +220,13 @@ function main() {
 
             var query = "SELECT " + mainDate[table] + " as datime FROM ?? WHERE FIN = ? GROUP BY datime HAVING DATEDIFF(STR_TO_DATE('" + date + "', '%m/%d/%Y %H:%i'), STR_TO_DATE(" + mainDate[table] + ", '%m/%d/%Y %H:%i')) = 0;";
             connection.query("USE cvicu;");
-            var q = connection.query(query, [table, request["FIN"]], function(err, results) {
+            connection.query(query, [table, request["FIN"]], function(err, results) {
                 results = results.map(function(obj) {return obj["datime"];});
                 toClient.push(results);
                 toClient = JSON.stringify(toClient);
                 res.write(toClient);
                 res.end();
             });
-            console.log(q.sql);
 
             connection.end();
         }

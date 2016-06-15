@@ -94,5 +94,4 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
         
         return "\(month)/\(day)/\(year)"
     }
-
 }

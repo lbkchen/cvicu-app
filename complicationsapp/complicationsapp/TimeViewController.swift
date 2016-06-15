@@ -19,6 +19,12 @@ class TimeViewController: UIViewController {
         // Do any additional setup after loading the view.
         dateFormatter.timeZone = NSTimeZone(abbreviation: "PST")
         dateFormatter.dateFormat = "HH:mm"
+        
+        let dateToCheck = SessionData.sharedInstance.postObject["day"]!
+        let responseString = SessionData.sharedInstance.checkDateFromServer(dateToCheck)
+        if (responseString.characters.count > 0) {
+            self.displayAlert("Warning", message: "This patient was already logged for this complication on \(dateToCheck) at these times:\n\n\(responseString)\n\nAre you sure you want to continue?")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,5 +58,11 @@ class TimeViewController: UIViewController {
     
     func getCurrentTimeString() -> String {
         return dateFormatter.stringFromDate(timePicker.date)
+    }
+    
+    func displayAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
