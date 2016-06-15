@@ -107,13 +107,18 @@ class SessionData {
         postObject["MRN"] = self.MRN!
     }
     
-    // logs the current time
-    func recordCurrentTime() {
+    // returns the current time
+    static func getCurrentTimeString() -> String {
+        let dateFormatter : NSDateFormatter = NSDateFormatter()
         let current = NSDate()
         dateFormatter.timeZone = NSTimeZone(abbreviation: "PST")
         dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
-        let currentString = dateFormatter.stringFromDate(current)
-        postObject["date"] = currentString
+        return dateFormatter.stringFromDate(current)
+    }
+    
+    // logs the current time
+    func recordCurrentTime() {
+        postObject["date"] = SessionData.getCurrentTimeString()
     }
     
     // changes the label MRN to FIN (or Fin) just for logging purposes

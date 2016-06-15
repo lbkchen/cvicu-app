@@ -75,6 +75,12 @@ class Complications {
         "Intraoperative death or intraprocedural death"
     ]
     
+    static let disabledDate = [
+        "infeclog",
+        "odlog",
+        "reslog"
+    ]
+    
     static let mainDate = [
         "arrhythmialog" : "date_1",
         "cprlog" : "startDate",
