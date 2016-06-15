@@ -1704,6 +1704,13 @@ class ComplicationForms {
             data.confirmObject = data.postObject
             
             let toAdd = cleanTagsAndGetCombinedValues(key)
+            
+            // check for any concurrent logging date conflicts
+            let dateVariable = Complications.mainDate[SessionData.sharedInstance.postObject["Table"]!]!
+            let dateToCheck = toAdd[dateVariable]!
+            let responseString = SessionData.sharedInstance.checkDateFromServer(dateToCheck)
+            displayAlert("Warning", message: "This patient was already logged for this complication on \(dateToCheck) at these times:\n\n\(responseString)\n\nAre you sure you want to continue?")
+            
             data.confirmObject = data.addData(data.confirmObject, toAdd: toAdd)
         }
     }

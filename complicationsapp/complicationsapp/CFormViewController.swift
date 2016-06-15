@@ -32,7 +32,7 @@ class CFormViewController: FormViewController {
                 $0.title = "Submit log"
                 $0.presentationMode = .SegueName(segueName: "toConfirmation", completionCallback: nil)
             }.onCellSelection { _, _ in
-                    forms.extractDataAndCleanForms()
+                forms.extractDataAndCleanForms()
             }
         
 ////        For the future, when multiple submissions are allowed in one go

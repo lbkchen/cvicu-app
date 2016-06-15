@@ -90,6 +90,18 @@ class SessionData {
         net.postToServer()
     }
     
+    // checks and returns any conflicting dates from the server
+    func checkDateFromServer(dateString : String) -> String {
+        let url = "http://localhost:3000"
+        let args = [
+            "Table" : postObject["Table"]!,
+            "dateToCheck" : dateString,
+            "FIN" : postObject["MRN"]!
+        ]
+        let net = NetworkHandler(url: url, targetAction: "checkConflicts", args: args)
+        return net.postToServer()
+    }
+    
     // logs the patient's MRN
     func recordMRN() {
         postObject["MRN"] = self.MRN!

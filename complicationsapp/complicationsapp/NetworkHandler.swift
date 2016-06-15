@@ -20,10 +20,11 @@ class NetworkHandler {
         postString = "targetAction=\(targetAction)&" + convertDictionaryToHTTPString(args)
     }
     
-    func postToServer() {
+    func postToServer() -> String {
         let request = NSMutableURLRequest(URL: myURL)
         request.HTTPMethod = "POST"
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        var serverResponse : String?
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
             data, response, error in
@@ -53,8 +54,13 @@ class NetworkHandler {
                 print(SessionData.sharedInstance.patientLogs)
             case "addLog":
                 print("Added log to database with arguments \(SessionData.sharedInstance.postObject)")
+            case "checkConflicts":
+                serverResponse = NetworkHandler.joinBy(self.convertStringToArray(responseString as! String)!, sep: "\n")
             default: print("Invalid targetAction \(self.targetAction)")
             }
+            
+            serverResponse = serverResponse == nil ? String(responseString!) : serverResponse
+            
 //            // If request sent to check patient MRN in system
 //            if (self.targetAction == "checkFIN") {
 //                
@@ -76,6 +82,10 @@ class NetworkHandler {
         }
         task.resume()
         print("posted \(postString)")
+        while (serverResponse == nil) {
+            // wait until serverResponse is filled
+        }
+        return serverResponse!
         
     }
     
@@ -106,6 +116,15 @@ class NetworkHandler {
         for comp in patientLog {
             result[comp["table"] as! String] = comp["dates"] as? [String]
         }
+        return result
+    }
+    
+    static func joinBy(arr : NSArray, sep : String) -> String {
+        var result = ""
+        for item in arr {
+            result += "\(item) "
+        }
+        result = String(result.characters.dropLast().dropLast().dropLast().dropFirst().dropFirst())
         return result
     }
 }

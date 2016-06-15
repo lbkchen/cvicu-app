@@ -208,6 +208,29 @@ function main() {
             connection.end();
             console.log("End: adding to " + thisComplication);
         }
+
+
+        // All queries checking concurrent log conflicts
+        if (request["targetAction"] == "checkConflicts") {
+            var toClient = [];
+            var table = request["Table"];
+            var date = request["dateToCheck"];
+            var connection = db.createConnection(connectionInfo);
+            connection.connect();
+
+            var query = "SELECT " + mainDate[comp] + " as datime FROM ?? WHERE FIN = ? GROUP BY datime HAVING DATEDIFF(STR_TO_DATE('" + date + "', '%m/%d/%Y %H:%i'), STR_TO_DATE(" + mainDate[comp] + ", '%m/%d/%Y %H:%i')) = 0;";
+            connection.query("USE cvicu;");
+            var q = connection.query(query, [table, request["FIN"]], function(err, results) {
+                results = results.map(function(obj) {return obj["datime"];});
+                toClient.push(results);
+                toClient = JSON.stringify(toClient);
+                res.write(toClient);
+                res.end();
+            });
+            console.log(q.sql);
+
+            connection.end();
+        }
     });
 
     app.listen(3000, function() {
