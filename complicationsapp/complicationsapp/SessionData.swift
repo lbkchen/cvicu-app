@@ -86,6 +86,7 @@ class SessionData {
     // posts HTTP request to server with action addLog
     func postToServer() {
         let url = "http://localhost:3000"
+//        let url = "http://10.19.242.127:3000"
         let net = NetworkHandler(url: url, targetAction: "addLog", args: self.postObject)
         net.postToServer()
     }
@@ -93,6 +94,7 @@ class SessionData {
     // checks and returns any conflicting dates from the server
     func checkDateFromServer(dateString : String) -> String {
         let url = "http://localhost:3000"
+//        let url = "http://10.19.242.127:3000"
         let args = [
             "Table" : postObject["Table"]!,
             "dateToCheck" : dateString,

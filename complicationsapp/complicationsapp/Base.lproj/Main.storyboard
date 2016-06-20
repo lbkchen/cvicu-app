@@ -528,11 +528,11 @@
                             <size key="itemSize" width="120" height="40"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="20"/>
+                            <inset key="sectionInset" minX="3" minY="3" maxX="3" maxY="3"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="history" id="vGr-o3-yOJ" customClass="ComplicationHistoryCollectionViewCell" customModule="complicationsapp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
+                                <rect key="frame" x="3" y="3" width="120" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
@@ -547,6 +547,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" red="0.84310007095336914" green="0.28771206736564636" blue="0.47839140892028809" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="wO7-zz-qEi" secondAttribute="trailing" id="6ky-WN-D87"/>
                                     <constraint firstItem="wO7-zz-qEi" firstAttribute="leading" secondItem="vGr-o3-yOJ" secondAttribute="leading" id="Cjm-Qg-UnU"/>
@@ -555,6 +556,11 @@
                                     <constraint firstAttribute="bottom" secondItem="wO7-zz-qEi" secondAttribute="bottom" id="xDj-58-yYf"/>
                                     <constraint firstItem="wO7-zz-qEi" firstAttribute="top" secondItem="vGr-o3-yOJ" secondAttribute="top" id="xvM-zp-oT4"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="timeLabel" destination="wO7-zz-qEi" id="8WF-zB-qOP"/>
                                 </connections>

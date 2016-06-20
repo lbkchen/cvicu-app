@@ -105,8 +105,10 @@ class ComplicationsCollectionViewController: UICollectionViewController {
         // Add the appropriate CollectionViewController to the right frame
         let subView = cell.viewWithTag(42)!
         let thisController = Complications.chcvcDict[logName] as! ComplicationHistoryCollectionViewController
-        thisController.view.frame = subView.frame
-        cell.addSubview(thisController.view)
+//        thisController.view.frame = subView.frame
+//        cell.addSubview(thisController.view)
+        subView.addSubview(thisController.view)
+        thisController.view.frame = subView.bounds
         thisController.view.tag = 40
         thisController.didMoveToParentViewController(self)
         cell.chcvc = thisController

@@ -215,6 +215,7 @@ function main() {
             var toClient = [];
             var table = request["Table"];
             var date = request["dateToCheck"];
+            console.log("End: checking log conflicts for " + table)
             var connection = db.createConnection(connectionInfo);
             connection.connect();
 
@@ -227,8 +228,8 @@ function main() {
                 res.write(toClient);
                 res.end();
             });
-
             connection.end();
+            console.log("End: checking log conflicts for " + table)
         }
     });
 

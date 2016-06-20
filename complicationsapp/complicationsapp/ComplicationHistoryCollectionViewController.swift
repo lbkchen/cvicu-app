@@ -14,11 +14,10 @@ class ComplicationHistoryCollectionViewController : UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Additional
-        let width = (CGRectGetWidth(collectionView!.frame))
-        let layout = collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSizeMake(width, width / 10)
+//        let width = (CGRectGetWidth(collectionView!.frame))
+//        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+//        layout.itemSize = CGSizeMake(width, width / 10)
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,7 +29,7 @@ class ComplicationHistoryCollectionViewController : UICollectionViewController {
     func collectionView(collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width, height: self.view.frame.width / 3)
+        return CGSize(width: self.view.frame.width * 0.92, height: self.view.frame.width / 3)
     }
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -44,9 +43,11 @@ class ComplicationHistoryCollectionViewController : UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("history", forIndexPath: indexPath) as! ComplicationHistoryCollectionViewCell
-        cell.backgroundColor = UIColor(red: 0.5, green: 0.1, blue: 0.2, alpha: 0)
+        cell.layer.cornerRadius = 5
+//        cell.backgroundColor = UIColor(red: 0.5, green: 0.1, blue: 0.2, alpha: 0)
+        
         let dates = SessionData.sharedInstance.patientLogs![self.complication!]!
-        cell.timeLabel.text = dates[indexPath.row]
+        cell.timeLabel.text = dates[getReverseIndex(indexPath.row, size: dates.count)]
 //        cell.timeLabel.text = Complications.complications[indexPath.row]
         
 //        let cellView = UIView(frame: cell.bounds)
@@ -54,5 +55,10 @@ class ComplicationHistoryCollectionViewController : UICollectionViewController {
 //        cell.addSubview(cellView)
         
         return cell
+    }
+    
+    // MARK: - Helper functions
+    func getReverseIndex(index : Int, size : Int) -> Int {
+        return size - index - 1
     }
 }
