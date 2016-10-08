@@ -15,9 +15,6 @@ class ComplicationHistoryCollectionViewController : UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Additional
-//        let width = (CGRectGetWidth(collectionView!.frame))
-//        let layout = collectionViewLayout as! UICollectionViewFlowLayout
-//        layout.itemSize = CGSizeMake(width, width / 10)
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,7 +41,6 @@ class ComplicationHistoryCollectionViewController : UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("history", forIndexPath: indexPath) as! ComplicationHistoryCollectionViewCell
         cell.layer.cornerRadius = 5
-//        cell.backgroundColor = UIColor(red: 0.5, green: 0.1, blue: 0.2, alpha: 0)
         
         let dates = SessionData.sharedInstance.patientLogs![self.complication!]!
         cell.timeLabel.text = dates[getReverseIndex(indexPath.row, size: dates.count)]

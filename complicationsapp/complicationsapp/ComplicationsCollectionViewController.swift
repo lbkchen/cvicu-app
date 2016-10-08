@@ -87,6 +87,7 @@ class ComplicationsCollectionViewController: UICollectionViewController {
     
         // Configure the cell
         cell.complicationLabel.text = Complications.complications[indexPath.row]
+        cell.complicationLabel.adjustsFontSizeToFitWidth = true
         
         // Instantiate necessary child CollectionViewControllers and store them
         let logName = Complications.dataB[cell.complicationLabel.text!]!

@@ -1759,8 +1759,14 @@ class ComplicationForms {
                 result[key] = df.stringFromDate(thisValue as! NSDate)
             } else if (thisValue is String?) {
                 result[key] = (thisValue as! String?)!
-            } else if (thisValue is [String]) {
-                result[key] = (thisValue as! [String]).joinWithSeparator(" + ")
+            }
+            
+            if (thisValue is Set<String>) {
+                var arrayValue = [String]()
+                for element in (thisValue as! Set<String>) {
+                    arrayValue.append(element)
+                }
+                result[key] = arrayValue.joinWithSeparator(" + ")
             }
         }
         return result

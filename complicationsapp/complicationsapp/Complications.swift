@@ -17,7 +17,7 @@ class Complications {
     // well
     
     static let complications = [
-        "Cardiopulmonary resuscitation",
+        "Cardio-pulmonary resuscitation",
         "Unplanned return to CICU (<48 hours)",
         "Unplanned readmission to the hospital within 30 days",
         "Arrhythmia",
@@ -27,31 +27,31 @@ class Complications {
         "Pulmonary hypertension",
         "Pulmonary vein obstruction",
         "Systemic vein obstruction",
-        "RESPIRATORY",
+        "Respiratory",
         "Listed for heart transplant during CICU encounter",
         "Reoperation for bleeding",
-        "ORGAN DYSFUNCTION",
+        "Organ Dysfunction",
         "Delayed Sternal Closure",
-        "Intraoperative death or intraprocedural death",
+        "Intra-operative death or intra-procedural death",
         "Infections",
         "Unplanned operation/procedure"
     ].sort()
     
     static let data = [
         "arrhythmialog" : "Arrhythmia",
-        "cprlog" : "Cardiopulmonary resuscitation",
+        "cprlog" : "Cardio-pulmonary resuscitation",
         "dsclog" : "Delayed Sternal Closure",
-        "ididlog" : "Intraoperative death or intraprocedural death",
+        "ididlog" : "Intra-operative death or intra-procedural death",
         "infeclog" : "Infections",
         "lcoslog" : "Low Cardiac Output Syndrome",
         "lhtlog" : "Listed for heart transplant during CICU encounter",
         "mcslog" : "Mechanical circulatory support during CICU encounter",
-        "odlog" : "ORGAN DYSFUNCTION",
+        "odlog" : "Organ Dysfunction",
         "perdlog" : "Pericardial effusion requiring drainage",
         "phlog" : "Pulmonary hypertension",
         "pvolog" : "Pulmonary vein obstruction",
         "rblog" : "Reoperation for bleeding",
-        "reslog" : "RESPIRATORY",
+        "reslog" : "Respiratory",
         "svolog" : "Systemic vein obstruction",
         "uoplog" : "Unplanned operation/procedure",
         "urcclog" : "Unplanned return to CICU (<48 hours)",
@@ -72,7 +72,7 @@ class Complications {
         "Systemic vein obstruction",
         "Listed for heart transplant during CICU encounter",
         "Reoperation for bleeding",
-        "Intraoperative death or intraprocedural death"
+        "Intra-operative death or intra-procedural death"
     ]
     
     static let disabledDate = [
