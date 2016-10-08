@@ -103,10 +103,21 @@ class ComplicationForms {
                     print(row.value)
             }
             
-            <<< AlertRow<String>("Therapy") {
+//            <<< AlertRow<String>("Therapy") {
+//                $0.title = "Therapy"
+//                $0.value = "Enter"
+//                $0.selectorTitle = "Which type of arrhythmia therapy?\n\nDefinition: Treatment with intravenous therapy (continuous infusion, bolus dosing, or electrolyte therapy)"
+//                $0.options = [
+//                    "Drug",
+//                    "Electrical Cardioversion/Defibrillation",
+//                    "Permanent Pacemaker / AICD",
+//                    "Temporary Pacemaker",
+//                    "Cooling < 35 degrees"
+//                ]
+//            }
+            
+            <<< MultipleSelectorRow<String>("Therapy") {
                 $0.title = "Therapy"
-                $0.value = "Enter"
-                $0.selectorTitle = "Which type of arrhythmia therapy?\n\nDefinition: Treatment with intravenous therapy (continuous infusion, bolus dosing, or electrolyte therapy)"
                 $0.options = [
                     "Drug",
                     "Electrical Cardioversion/Defibrillation",
@@ -114,7 +125,9 @@ class ComplicationForms {
                     "Temporary Pacemaker",
                     "Cooling < 35 degrees"
                 ]
+                $0.selectorTitle = "Which type of arrhythmia therapy?\n\nDefinition: Treatment with intravenous therapy (continuous infusion, bolus dosing, or electrolyte therapy)"
             }
+        
         return arrForm
     }
     
@@ -1746,6 +1759,8 @@ class ComplicationForms {
                 result[key] = df.stringFromDate(thisValue as! NSDate)
             } else if (thisValue is String?) {
                 result[key] = (thisValue as! String?)!
+            } else if (thisValue is [String]) {
+                result[key] = (thisValue as! [String]).joinWithSeparator(" + ")
             }
         }
         return result

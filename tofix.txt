@@ -1,2 +1,26 @@
 overall:
-	- Add the alert for same date of complication
+	- FIX ARRHYTHMIA LOG SO THAT MULTIPLE SELECTOR GETS LOGGED PROPERLY
+	- Add the alert for same date of complication (DONE)
+	- Change all “do not enter” fields to the please text version
+	- Word-wrap small fix on complications grid
+	- Organ dysfunction: show which organ dysfunction
+	- Multiple submissions with extra button on complications grid page, go back 	and double check
+	- Redo logs on ORGAN DYS/RESPIRATORY/ETC so that they appear with the label 	of sub complication, and appear in reverse chronological order of time 	entered
+	- 5 min grain on time entry
+arrhythmia:
+	- For therapy, enable multi-choice field
+	- Add (above stop time) a DO NOT ENTER: To be adjucated
+	- Move “Therapies present at discharge” below to details field, default NO
+infections:
+	- Put a “Do not enter: please text Data Manager [650-785-1575] with date and 	time of event” above everything.
+pulmonary hypertension:
+	- Move “Therapy present at discharge” to bottom and default NO, keep data 		manager conditional column
+other:
+	- Other complications
+	- Date/time
+	- Free text
+misc (STS and PC4)
+
+NEW FEATURES (9/22)
+- Fingerprint authentication
+- Multi-form submission completed and test that it works properly.

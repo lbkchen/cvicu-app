@@ -1,0 +1,7 @@
+options for organs for failure
+
+rougher scale for the minutes - ask if precision is necessary. Manual input for time?
+
+add popup to confirm submission went through to database, cross otherwise
+
+add TREE
